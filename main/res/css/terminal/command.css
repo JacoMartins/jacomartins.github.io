@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Default";
+    font-weight: normal;
+    font-style: normal;
+    src: url("/main/res/fonts/terminal.ttf") format(truetype);
+}
+
+body{
+    background-color: black;
+}
+
+.kernel-terminal {
+    position: absolute;
+    background-color: black;
+    color: lightgray;
+    width: 94%;
+    height: 94%;
+    left: 20px;
+    top: 0px;
+    margin: 0px;
+    font-family: Default;
+    font-size: 16px;
+    border: 0px;
+    outline: 0px;
+    resize: none;
+}
+
+.kernel-prompt {
+    position: absolute;
+    color: lightgray;
+    left: 8x;
+    top: 3px;
+    margin: 0px;
+    font-family: Default;
+    font-size: 16px;
+    border: 0px;
+    outline: 0px;
+    resize: none;
+    animation: blinker 1s step-start infinite;
+}
+
+@keyframes blinker {
+    50%{
+        opacity: 0;
+    }
+}
