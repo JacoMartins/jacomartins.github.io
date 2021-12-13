@@ -6,14 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
+    <script type="text/javascript" src="desktop-ui.js"></script>
     <title>Eclipse UI</title>
 </head>
 <body>
     <div id="owner-user" class="desktop">
         <div class="desktop-taskbar">
-            <button class="desktop-taskbar-button"></button>
+            <button class="desktop-taskbar-button" style="top: 5px; left: 6px; background-image: url(../../res/images/icons/imageres/menu-small.png);" onclick="menutrigger()"></button>
+            <button class="desktop-taskbar-button" style="top: 5px; left: 41px; background-image: url(../../res/images/icons/imageres/settings-small.png);"></button>
+            <a class="desktop-taskbar-text">december, 12, 2021.</a>
         </div>
-        <p class="desktop-beta-info">Build 1, 11/12/2021 UNDER CONSTRUCTION.</p>
+        <div id="desktop-menu-main" class="desktop-menu" style="top: 46px; left: 6px; display: none;">
+            <div class="desktop-menu-categories-basic-apps" style="position: absolute; margin-left: 6px;">
+                <div class="desktop-menu-category-info" style="position: absolute; top: 10px; left: 6px; width: 85%;">
+                    <div class="desktop-menu-category-icon"></div>
+                    <a class="desktop-menu-category-text">Basic apps</a>
+                </div>
+
+                <div class="desktop-menu-category-menu">
+                    <button class="desktop-menu-button">Developer</button>
+                </div>
+            </div>
+        </div>
+        <p class="desktop-beta-info">Build 2, 12/12/2021 UNDER CONSTRUCTION.</p>
     </div>
 </body>
 </html>
