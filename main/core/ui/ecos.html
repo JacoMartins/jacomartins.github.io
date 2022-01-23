@@ -24,11 +24,21 @@
                 </div>
 
                 <div class="desktop-menu-category-menu">
-                    <button class="desktop-menu-button">Developer</button>
+                    <button class="desktop-menu-button" onclick="opendeveloperapp()">Igor</button>
                 </div>
             </div>
         </div>
-        <p class="desktop-beta-info">Build 2, 12/12/2021 UNDER CONSTRUCTION.</p>
+        <p class="desktop-beta-info">Build 3, 23/01/2021 UNDER CONSTRUCTION.</p>
+
+        <div id="developer-window-background" style="display: none;"> 
+            <div id="developer-window-header">
+                <a class="interactive-text" onclick="closedeveloperapp()">Close Window</a>
+            </div>
+            <div id="developer-window-content">
+                <div id="igorcareca"></div>
+                <a class="interactive-text" style="position: absolute; top: 38px; left: 90px; font-size: 18px;" onclick="igorcareca()">Igor Careca</a>
+            </div>
+        </div>
     </div>
 </body>
 </html>

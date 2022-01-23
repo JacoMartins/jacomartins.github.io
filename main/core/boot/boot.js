@@ -38,6 +38,10 @@ window.addEventListener('keyup', event => {
       if(kernelterminal.value.includes("uniaoss")){
          kernelterminal.value = (kernelterminal.value).toUpperCase() + '\na bond that will never be broken.\n';
       }
+
+      if(kernelterminal.value.includes("jaco")){
+         kernelterminal.value = (kernelterminal.value).toUpperCase() + '\nMaybe i am too lazy for it. Maybe it is just not my destiny.\n';
+      }
       kernelterminal.value = (kernelterminal.value) + '> ';
    }
 })
