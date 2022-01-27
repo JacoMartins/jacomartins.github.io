@@ -3,6 +3,11 @@
     src: url(../../res/fonts/Inter-Medium.ttf);
 }
 
+* {
+	cursor: url(../../res/cursors/busy.png), progress;
+    cursor: url(../../res/cursors/arrow.png), default;
+}
+
 /* Desktop */
 
 .desktop {
@@ -249,12 +254,6 @@
 }
 
 #settings-window {
-    width: 260px;
-    height: 260px;
-    display: none;
-}
-
-#settings-window-background {
     width: 256px;
     height: 400px;
     left: 206px;
