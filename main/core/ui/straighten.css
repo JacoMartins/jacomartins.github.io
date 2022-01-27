@@ -3,6 +3,8 @@
     src: url(../../res/fonts/Inter-Medium.ttf);
 }
 
+/* Desktop */
+
 .desktop {
     position: absolute;
     width: 100%;
@@ -56,25 +58,41 @@
     text-align: center;
 }
 
+#desktop-taskbar-button-menu {
+    top: 5px; 
+    left: 6px; 
+    background-image: url(../../res/images/icons/imageres/menu-small.png);
+}
+
+#desktop-taskbar-button-settings {
+    top: 5px; 
+    left: 41px; 
+    background-image: url(../../res/images/icons/imageres/settings-small.png);
+}
+
 .desktop-taskbar-text {
     position: absolute;
     color: white;
-    top: 9px;
+    top: 10px;
     right: 12px;
     font-family: 'Inter';
     font-size: 15px;
     text-align: center;
 }
 
+/* Desktop (Main Menu)*/
+
 .desktop-menu {
     position: absolute;
     color: white;
     width: 182px;
-    height: 154px;
+    height: 150px;
     border-radius: 4px;
     border: 1px solid rgb(0, 0, 0, 0.35);
     outline: 0px;
     background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(30px);
+    -webkit-backdrop-filter: blur(30px);
 }
 
 .desktop-menu-category-icon {
@@ -102,31 +120,40 @@
 }
 
 .desktop-menu-category-menu {
-    position: absolute;
+    position: relative;
     top: 31px;
     left: 0px;
-    width: 170px;
+    width: 176px;
     height: 116px;
     background-color: rgba(0, 0, 0, 0.25);
-    border-radius: 4px;
+    border-radius: 3px;
 }
 
-.desktop-beta-info {
+.desktop-menu-category-info {
+    position: absolute; 
+    top: 9px; 
+    left: 6px; 
+    width: 85%;
+}
+
+#desktop-menu-main {
+    top: 46px;
+    left: 6px;
+    display: none;
+}
+
+#desktop-menu-categories-essential {
     position: absolute;
-    bottom: 6px;
-    right: 6px;
-    font-family: Inter;
-    font-size: 16px;
-    color:rgba(255, 255, 255, 1);
+    margin-left: 3px;
 }
 
-.desktop-menu-button {
+.desktop-menu-button-first {
     position: relative;
     margin: 1px;
-    width: 99%;
+    width: calc(100% - 2px);
     height: 29px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/background/igor\ careca.png);
+    background-image: url(../../res/images/icons/imageres/app-small.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 10px 9px;
@@ -136,15 +163,98 @@
     text-align: left;
     padding-left: 29px;
     border: 0px;
-    border-radius: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
     outline: 0px;
+}
+
+.desktop-menu-button {
+    position: relative;
+    margin: 1px;
+    width: calc(100% - 2px);
+    height: 29px;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 10px 9px;
+    color: white;
+    font-family: Inter;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 29px;
+    border: 0px;
+    border-radius: 0px;
+    outline: 0px;
+}
+
+.desktop-menu-button-last {
+    position: relative;
+    margin: 1px;
+    width: calc(100% - 2px);
+    height: 29px;
+    background-color: rgba(255, 255, 255, 0);
+    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 10px 9px;
+    color: white;
+    font-family: Inter;
+    font-size: 15px;
+    text-align: left;
+    padding-left: 29px;
+    border: 0px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    outline: 0px;
+}
+
+.desktop-menu-button-first:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
 .desktop-menu-button:hover {
     background-color: rgba(255, 255, 255, 0.05);
 }
 
-#developer-window-background {
+.desktop-menu-button-last:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+
+/* Desktop (Settings Menu)*/
+
+#desktop-menu-settings {
+    top: 46px;
+    left: 41px;
+}
+
+.desktop-menu-settings-content {
+    position: absolute;
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    margin: 3px;
+    background-color: rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+    
+}
+
+.desktop-beta-info {
+    position: absolute;
+    bottom: -3px;
+    right: 8px;
+    font-family: Inter;
+    font-size: 16px;
+    color:rgba(255, 255, 255, 1);
+}
+
+#settings-window {
+    width: 260px;
+    height: 260px;
+    display: none;
+}
+
+#settings-window-background {
     width: 256px;
     height: 400px;
     left: 206px;
@@ -158,14 +268,14 @@
     border-radius: 4px;
 }
 
-#developer-window-header {
+#settings-window-header {
     height: 30px;
     width: 100%;
     top: 0px;
     position: absolute;
 }
 
-#developer-window-content {
+#settings-window-content {
     height: calc(100% - 30px);
     width: 100%;
     top: 30px;

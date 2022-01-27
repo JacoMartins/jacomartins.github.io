@@ -44,15 +44,27 @@ window.addEventListener("load", function(){
     
     });
 
-function menutrigger(menumain = document.getElementById('desktop-menu-main')){
+function menutrigger(menumain = document.getElementById('desktop-menu-main'), menusettings = document.getElementById('desktop-menu-settings')){
     if(menumain.style.display === "none"){
         menumain.style.display = "block";
+        menusettings.style.display = "none";
     } else {
         menumain.style.display = "none";
     }
 }
 
-function opendeveloperapp(app = document.getElementById('developer-window-background')){
+function settingstrigger(menusettings = document.getElementById('desktop-menu-settings'), menumain = document.getElementById('desktop-menu-main')){
+  if(menusettings.style.display === "none"){
+      menusettings.style.display = "block";
+      menumain.style.display = "none";
+  } else {
+      menusettings.style.display = "none";
+  }
+}
+
+// Settings
+
+function opensettingsapp(app = document.getElementById('settings-window')){
     app.style.display = "block";
     menumain = document.getElementById('desktop-menu-main')
 
@@ -61,7 +73,7 @@ function opendeveloperapp(app = document.getElementById('developer-window-backgr
     }
 }
 
-function closedeveloperapp(app = document.getElementById('developer-window-background')){
+function closesettingsapp(app = document.getElementById('settings-window')){
     app.style.display = "none";
 }
 
