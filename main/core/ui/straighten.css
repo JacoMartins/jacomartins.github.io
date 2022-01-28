@@ -253,6 +253,57 @@
     color:rgba(255, 255, 255, 1);
 }
 
+.window {
+    width: 256px;
+    height: 400px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    resize: both;
+    overflow: auto;
+    -webkit-backdrop-filter: blur(30px);
+    backdrop-filter: blur(30px);
+    border-radius: 4px;
+    z-index: 0;
+}
+
+.window-header {
+    height: 37px;
+    width: 100%;
+    z-index: 1;
+    top: 0px;
+    position: absolute;
+}
+
+.window-header-close-button {
+    position: absolute;
+	z-index: 1;
+	border: 0px;
+	border-radius: 3px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27);
+	outline: none;
+	top: 11px;
+	left: 11px;
+	background-image: url("../../res/images/icons/imageres/close.png");
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-color: rgba(0, 0, 0, 0);
+	-webkit-filter: brightness(1);
+    filter: brightness(1);
+    opacity: 0.5;
+	width: 16px;
+	height: 16px;
+
+}
+
+.window-content {
+    height: calc(100% - 37px);
+    width: 100%;
+    top: 37px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 1);
+    border-radius: 4px;
+}
+
 #settings-window {
     width: 256px;
     height: 400px;
@@ -268,16 +319,16 @@
 }
 
 #settings-window-header {
-    height: 30px;
+    height: 37px;
     width: 100%;
     top: 0px;
     position: absolute;
 }
 
 #settings-window-content {
-    height: calc(100% - 30px);
+    height: calc(100% - 37px);
     width: 100%;
-    top: 30px;
+    top: 37px;
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
     border-radius: 4px;
