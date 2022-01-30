@@ -1,3 +1,5 @@
+/* Main */
+
 @font-face {
     font-family: Inter;
     src: url(../../res/fonts/Inter-Medium.ttf);
@@ -6,6 +8,11 @@
 * {
 	cursor: url(../../res/cursors/busy.png), progress;
     cursor: url(../../res/cursors/arrow.png), default;
+}
+
+body {
+    overflow: hidden;
+    user-select: none;
 }
 
 /* Desktop */
@@ -144,7 +151,6 @@
 #desktop-menu-main {
     top: 46px;
     left: 6px;
-    display: none;
 }
 
 #desktop-menu-categories-essential {
@@ -257,6 +263,8 @@
     width: 256px;
     height: 400px;
     position: absolute;
+    left: 90px;
+    top: 90px;
     background-color: rgba(0, 0, 0, 0.5);
     resize: both;
     overflow: auto;
@@ -274,12 +282,26 @@
     position: absolute;
 }
 
+.window-header-title {
+    position: absolute;
+	font-family: Inter;
+	font-size: 16px;
+	text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+	text-align: center;
+    color: white;
+    opacity: 0.75;
+	margin: auto;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
 .window-header-close-button {
     position: absolute;
 	z-index: 1;
 	border: 0px;
 	border-radius: 3px;
-	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.27);
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.0);
 	outline: none;
 	top: 11px;
 	left: 11px;
@@ -289,10 +311,50 @@
 	background-color: rgba(0, 0, 0, 0);
 	-webkit-filter: brightness(1);
     filter: brightness(1);
-    opacity: 0.5;
+    opacity: 0.75;
 	width: 16px;
 	height: 16px;
 
+}
+
+.window-header-resize-button {
+    position: absolute;
+	z-index: 1;
+	border: 0px;
+	border-radius: 3px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.0);
+	outline: none;
+	top: 11px;
+	left: 31px;
+	background-image: url("../../res/images/icons/imageres/max.png");
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-color: rgba(0, 0, 0, 0);
+	-webkit-filter: brightness(1);
+    filter: brightness(1);
+    opacity: 0.75;
+	width: 16px;
+	height: 16px;
+}
+
+.window-header-minimize-button {
+    position: absolute;
+	z-index: 1;
+	border: 0px;
+	border-radius: 3px;
+	box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.0);
+	outline: none;
+	top: 11px;
+	left: 51px;
+	background-image: url("../../res/images/icons/imageres/min.png");
+	background-repeat: no-repeat;
+	background-size: 16px 16px;
+	background-color: rgba(0, 0, 0, 0);
+	-webkit-filter: brightness(1);
+    filter: brightness(1);
+    opacity: 0.75;
+	width: 16px;
+	height: 16px;
 }
 
 .window-content {
@@ -301,8 +363,11 @@
     top: 37px;
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
-    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
+
+/* Settings */
 
 #settings-window {
     width: 256px;
@@ -331,7 +396,20 @@
     top: 37px;
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
-    border-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/* DEMO WINDOW */
+
+#demo-window-content {
+    height: calc(100% - 37px);
+    width: 100%;
+    top: 37px;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 1);
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 
 .interactive-text {

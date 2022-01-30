@@ -20,7 +20,7 @@
             <a class="desktop-taskbar-text">january, 27, 2021.</a>
         </div>
         
-        <div id="desktop-menu-main" class="desktop-menu">
+        <div id="desktop-menu-main" class="desktop-menu" style="display: none;">
             
             <div id="desktop-menu-categories-essential" class="desktop-menu-categories">
                 
@@ -31,6 +31,7 @@
 
                 <div class="desktop-menu-category-menu">
                     <button class="desktop-menu-button-first" onclick="opensettingsapp()">Settings App</button>
+                    <button class="desktop-menu-button" onclick="opendemoapp()">UI Demo</button>
                 </div>
             
             </div>
@@ -47,14 +48,17 @@
 
         </div>
         
-        <p class="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Build 6 Compilation: 280120221910</p>
+        <p class="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Build 9 Compilation: 300120221216</p>
 
         <div id="settings-window" class="window" style="display: none;"> 
 
-            <div id="settings-window-header">
+            <div id="settings-window-header" class="window-header">
                 
-                <button class="window-header-close-button" onclick="closesettingsapp()"></button>
-            
+                <button id="settings-window-close-button" class="window-header-close-button" onclick="closesettingsapp()"></button>
+                <button id="settings-window-resize-button" class="window-header-resize-button" onclick="closesettingsapp()"></button>
+                <button id="settings-window-minimize-button" class="window-header-minimize-button" onclick="closesettingsapp()"></button>
+                
+                <a class="window-header-title">Settings</a>
             </div>
 
             <div id="settings-window-content">
@@ -62,6 +66,25 @@
             </div>
 
         </div>
+
+        <div id="demo-window" class="window" style="display: none;"> 
+
+            <div id="demo-window-header" class="window-header">
+                
+                <button id="demo-window-close-button" class="window-header-close-button" onclick="closedemoapp()"></button>
+                <button id="demo-window-resize-button" class="window-header-resize-button" onclick="resizedemoapp()"></button>
+                <button id="demo-window-minimize-button" class="window-header-minimize-button" onclick="closesettingsapp()"></button>
+                
+                <a class="window-header-title">OS Demo</a>
+
+            </div>
+
+            <div id="demo-window-content" class="window-content">
+                
+            </div>
+
+        </div>
+
     </div>
 </body>
 

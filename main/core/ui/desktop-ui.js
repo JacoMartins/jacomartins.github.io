@@ -82,3 +82,119 @@ window.addEventListener("load", function(){
   }
   
   });
+
+// Demo APP
+
+let taskbarpos = ['document.getElementById("desktop-taskbar").style.top', 'document.getElementById("desktop-taskbar").style.bottom'];
+  var restoreheight;
+  var restorewidth;
+  var restoretop;
+  var restoreleft;
+
+
+function opendemoapp(app = document.getElementById('demo-window')){
+  app.style.display = "block";
+  menumain = document.getElementById('desktop-menu-main')
+  menusettings = document.getElementById('desktop-menu-settings')
+
+  if(menumain.style.display = "block"){
+      menumain.style.display = "none";
+      menusettings.style.display = "none";
+  }
+
+  app.style.width = '232px';
+	app.style.height = '336px';
+
+  restoreheight = app.style.height;
+  restorewidth = app.style.width;
+  restoretop = app.style.top;
+  restoreleft = app.style.left;
+}
+
+function resizedemoapp(app = document.getElementById("demo-window")){
+  if (app.style.width === '100%') {
+		app.style.width = restorewidth;
+		app.style.height = restoreheight;
+    app.style.left = restoreleft;
+    app.style.top = restoretop;
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+	} else {
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 40px)';
+		app.style.top = "40px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+	}
+}
+
+function snapdemoapp(app = document.getElementById("demo-window")){
+  var posleft = window.event.clientX - (window.event.clientX * 0.25);
+  var posleftcss = posleft + 'px';
+  var postop = window.event.clientY + 'px';
+
+  if (app.style.width === '100%') {
+		app.style.width = restorewidth;
+		app.style.height = restoreheight;
+    app.style.left = posleftcss;
+    app.style.top = '40px';
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+	}
+}
+
+function closedemoapp(app = document.getElementById('demo-window')){
+  app.style.display = "none";
+}
+
+window.addEventListener("load", function(){
+dragElement(document.getElementById("demo-window"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("demo-window-header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById("demo-window-header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    snapdemoapp();
+  }
+
+  function closeDragElement() {
+    /* stop moving when mouse button is released:*/
+    document.onmouseup = null;
+    document.onmousemove = null;
+  }
+}
+
+});
