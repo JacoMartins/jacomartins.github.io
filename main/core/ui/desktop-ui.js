@@ -85,12 +85,11 @@ window.addEventListener("load", function(){
 
 // Demo APP
 
-let taskbarpos = ['document.getElementById("desktop-taskbar").style.top', 'document.getElementById("desktop-taskbar").style.bottom'];
+  let taskbarpos = ['document.getElementById("desktop-taskbar").style.top', 'document.getElementById("desktop-taskbar").style.bottom'];
   var restoreheight;
   var restorewidth;
   var restoretop;
   var restoreleft;
-
 
 function opendemoapp(app = document.getElementById('demo-window')){
   app.style.display = "block";
@@ -104,6 +103,10 @@ function opendemoapp(app = document.getElementById('demo-window')){
 
   app.style.width = '232px';
 	app.style.height = '336px';
+  app.style.top = '120px';
+	app.style.left = '120px';
+  app.style.resize = "both";
+  app.style.borderRadius = "4px";
 
   restoreheight = app.style.height;
   restorewidth = app.style.width;
@@ -133,12 +136,36 @@ function resizedemoapp(app = document.getElementById("demo-window")){
 	}
 }
 
-function snapdemoapp(app = document.getElementById("demo-window")){
-  var posleft = window.event.clientX - (window.event.clientX * 0.25);
+function sidedemoapp(app = document.getElementById("demo-window")){
+  var appleft = parseInt(app.style.left, 10);
+  var appwidth = parseInt(app.style.width, 10);
+  
+  if (appleft < 0) {
+    app.style.left = '0px';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+  }
+
+  if (appleft > (window.innerWidth - appwidth)) {
+    app.style.left = '50%';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+  }
+}
+
+function snapmindemoapp(app = document.getElementById("demo-window")){
+  var appwidth = parseInt(restorewidth, 10);
+  var posleft = window.event.clientX - (appwidth * 0.5);
   var posleftcss = posleft + 'px';
   var postop = window.event.clientY + 'px';
 
-  if (app.style.width === '100%') {
+  if (app.style.height === 'calc(100% - 40px)') {
 		app.style.width = restorewidth;
 		app.style.height = restoreheight;
     app.style.left = posleftcss;
@@ -148,8 +175,46 @@ function snapdemoapp(app = document.getElementById("demo-window")){
 	}
 }
 
+function snapdemoapp(app = document.getElementById("demo-window")){
+  var apptop = parseInt(app.style.top, 10);
+  var appleft = parseInt(app.style.left, 10);
+  var appwidth = parseInt(app.style.width, 10);
+
+  if (apptop < 0) {
+    if (app.style.width === 'calc(100% - 40px)') {
+      app.style.width = restorewidth;
+      app.style.height = restoreheight;
+      app.style.resize = "both";
+      app.style.borderRadius = "4px";
+    } else {
+      app.style.width = '100%';
+      app.style.height = 'calc(100% - 40px)';
+      app.style.top = "40px";
+      app.style.left = "0px";
+      app.style.resize = "none";
+      app.style.borderRadius = "0px";
+    }
+  }
+
+  if (appleft < 0) {
+    sidedemoapp()
+    // document.getElementById("demo-window-header-title").innerHTML = 'Detected';
+  }
+
+  if(appleft > (window.innerWidth - appwidth)){
+    sidedemoapp()
+  }
+}
+
 function closedemoapp(app = document.getElementById('demo-window')){
   app.style.display = "none";
+}
+
+function saverestorepos(app = document.getElementById('demo-window')){
+  restoreheight = app.style.height;
+  restorewidth = app.style.width; 
+  restoretop = app.style.top;
+  restoreleft = app.style.left;
 }
 
 window.addEventListener("load", function(){
@@ -187,14 +252,16 @@ function dragElement(elmnt) {
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    snapdemoapp();
+    snapmindemoapp();
   }
 
   function closeDragElement() {
     /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
+    snapdemoapp();
   }
 }
 
 });
+
