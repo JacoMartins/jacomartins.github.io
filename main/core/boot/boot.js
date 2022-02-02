@@ -42,6 +42,10 @@ window.addEventListener('keyup', event => {
       if(kernelterminal.value.includes("jaco")){
          kernelterminal.value = (kernelterminal.value).toUpperCase() + '\nMaybe i am too lazy for it. Maybe it is just not my destiny.\n';
       }
+
+      if(kernelterminal.value.includes("igorcareca")){
+         kernelterminal.value = (kernelterminal.value).toUpperCase() + '\nRunning igorcareca.png...\n';
+      }
       kernelterminal.value = (kernelterminal.value) + '> ';
    }
 })

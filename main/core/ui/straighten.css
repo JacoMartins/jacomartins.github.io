@@ -1,8 +1,28 @@
 /* Main */
 
 @font-face {
-    font-family: Inter;
+    font-family: Inter Regular;
+    src: url(../../res/fonts/Inter-Regular.ttf);
+}
+
+@font-face {
+    font-family: Inter Med;
     src: url(../../res/fonts/Inter-Medium.ttf);
+}
+
+@font-face {
+    font-family: Inter SemiBold;
+    src: url(../../res/fonts/Inter-SemiBold.ttf);
+}
+
+@font-face {
+    font-family: Inter Bold;
+    src: url(../../res/fonts/Inter-Bold.ttf);
+}
+
+@font-face {
+    font-family: Terminal;
+    src: url(../../res/fonts/terminal.ttf);
 }
 
 * {
@@ -65,7 +85,7 @@ body {
     color: white;
     top: 0px;
     right: 6px;
-    font-family: 'Inter';
+    font-family: 'Inter Med';
     font-size: 15px;
     text-align: center;
 }
@@ -87,7 +107,7 @@ body {
     color: white;
     top: 10px;
     right: 12px;
-    font-family: 'Inter';
+    font-family: 'Inter Med';
     font-size: 15px;
     text-align: center;
 }
@@ -126,7 +146,7 @@ body {
     top: -2px;
     left: 23px;
     width: 100px;
-    font-family: 'Inter';
+    font-family: 'Inter Med';
     font-size: 15px;
     text-align: left;
     opacity: 0.5;
@@ -273,6 +293,7 @@ body {
     backdrop-filter: blur(30px);
     border-radius: 4px;
     z-index: 0;
+    box-shadow: inset 0px 1px 0px rgba(255,255,255, 0.10);
 }
 
 .window-header {
@@ -368,6 +389,25 @@ body {
     border-bottom-right-radius: 4px;
 }
 
+.text-header1 {
+    color: rgba(255, 255, 255, 0.85);
+    font-family: Inter Bold;
+    font-size: 32px;
+    margin-left: 21px;
+    margin-top: 15px;
+}
+
+.text-header2 {
+    color: rgba(255, 255, 255, 0.85);
+    font-family: Inter Med;
+    font-size: 20px;
+    margin-left: 21px;
+}
+
+.text-default {
+
+}
+
 /* Settings */
 
 #settings-window {
@@ -411,6 +451,7 @@ body {
     background-color: rgba(0, 0, 0, 1);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+    overflow: hidden;
 }
 
 .interactive-text {
@@ -440,4 +481,14 @@ body {
     background-image: url(../../res/images/background/igor\ careca.png);
     background-size: 64px 64px;
     border-radius: 100%;
+}
+
+.terminalinput {
+    height: 100%;
+    width: 100%;
+    color: lightgray;
+    background-color: rgba(0, 0, 0, 0.50);
+    font-family: Lucida Console;
+    font-size: 16px;
+    overflow: hidden;
 }
