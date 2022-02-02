@@ -1,3 +1,5 @@
+
+
 function menutrigger(menumain = document.getElementById('desktop-menu-main'), menusettings = document.getElementById('desktop-menu-settings')){
     if(menumain.style.display === "none"){
         menumain.style.display = "block";
@@ -31,10 +33,6 @@ function opensettingsapp(app = document.getElementById('settings-window')){
 
 function closesettingsapp(app = document.getElementById('settings-window')){
     app.style.display = "none";
-}
-
-function igorcareca(desktop = document.getElementById("owner-user")){
-    desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
 }
 
 window.addEventListener("load", function(){
@@ -84,12 +82,11 @@ window.addEventListener("load", function(){
   });
 
 // Demo APP
-
-  let taskbarpos = ['document.getElementById("desktop-taskbar").style.top', 'document.getElementById("desktop-taskbar").style.bottom'];
-  var restoreheight;
-  var restorewidth;
-  var restoretop;
-  var restoreleft;
+let taskbarpos = ['document.getElementById("desktop-taskbar").style.top', 'document.getElementById("desktop-taskbar").style.bottom'];
+var restoreheight;
+var restorewidth;
+var restoretop;
+var restoreleft;
 
 function opendemoapp(app = document.getElementById('demo-window')){
   app.style.display = "block";
@@ -256,7 +253,6 @@ function dragElement(elmnt) {
   }
 
   function closeDragElement() {
-    /* stop moving when mouse button is released:*/
     document.onmouseup = null;
     document.onmousemove = null;
     snapdemoapp();
@@ -264,4 +260,40 @@ function dragElement(elmnt) {
 }
 
 });
+
+function terminal(terminal = document.getElementById("terminal-window-terminal")){
+  if(event.keyCode == 13){
+    if(terminal.value.includes("exit")){
+      terminal.value = (terminal.value).toUpperCase() + '\n[EXIT] Exitting terminal...\n';
+       closedemoapp()
+    }
+
+    if(terminal.value.includes("info")){
+      terminal.value = (terminal.value).toUpperCase() + '\n[OS INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] 1.0.0, Build 12, 02/02/2022\n';
+    }
+
+    if(terminal.value.includes("andre")){
+      terminal.value = (terminal.value).toUpperCase() + '\nSer matemáticamente perfeito.\n';
+    }
+
+    if(terminal.value.includes("clear")){
+      terminal.value = '';
+    }
+
+    if(terminal.value.includes("isworking")){
+      terminal.value = (terminal.value).toUpperCase() + '\nyes\n';
+    }
+
+    if(terminal.value.includes("uniaoss")){
+      terminal.value = (terminal.value).toUpperCase() + '\na bond that will never be broken.\n';
+    }
+
+    if(terminal.value.includes("igorcareca")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
+      terminal.value = (terminal.value).toUpperCase() + '\nRunning igorcareca.png...\n';
+    }
+    terminal.value = (terminal.value) + '> ';
+ }
+}
 

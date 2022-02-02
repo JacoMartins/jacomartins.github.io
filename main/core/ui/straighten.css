@@ -280,6 +280,8 @@ body {
     color:rgba(255, 255, 255, 1);
 }
 
+/* Windows and Inputs */
+
 .window {
     width: 256px;
     height: 400px;
@@ -390,22 +392,90 @@ body {
 }
 
 .text-header1 {
+    position: absolute;
     color: rgba(255, 255, 255, 0.85);
     font-family: Inter Bold;
     font-size: 32px;
-    margin-left: 21px;
-    margin-top: 15px;
+    line-height: 0px;
+    user-select: all;
 }
 
 .text-header2 {
+    position: absolute;
     color: rgba(255, 255, 255, 0.85);
     font-family: Inter Med;
     font-size: 20px;
-    margin-left: 21px;
+    line-height: 0px;
+    user-select: all;
 }
 
 .text-default {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: Inter Regular;
+    font-size: 15px;
+    user-select: all;
+}
 
+.system-input-text {
+    position: absolute;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(26, 26, 26, 1);
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-family: Inter Med;
+    
+}
+
+.system-input-button {
+    position: absolute;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(26, 26, 26, 1);
+    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-left: 8%;
+    padding-right: 8%;
+    font-size: 15px;
+    font-family: Inter Med;
+}
+
+/* Demo Application */
+
+#demo-window-content-header1 {
+    top: 15px;
+    left: 20px;
+}
+
+#demo-window-content-header2 {
+    top: 56px;
+    left: 20px;
+}
+
+#demo-window-content-p {
+    top: 90px;
+    left: 20px;
+}
+
+#demo-window-content-input-text1 {
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: calc(100% - 48px);
+}
+
+#demo-window-content-input-button1 {
+    top: 163px;
+    left: 20px;
 }
 
 /* Settings */
@@ -491,4 +561,6 @@ body {
     font-family: Lucida Console;
     font-size: 16px;
     overflow: hidden;
+    border: 0px;
+    outline: 0px;
 }

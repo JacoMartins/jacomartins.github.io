@@ -20,11 +20,11 @@ window.addEventListener('keyup', event => {
       }
 
       if(kernelterminal.value.includes("info")){
-         kernelterminal.value = (kernelterminal.value).toUpperCase() + '\n[OS INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] 1.0.0, Build 1, 11/12/2021\n';
+         kernelterminal.value = (kernelterminal.value).toUpperCase() + '\n[OS INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] 1.0.0, Build 12, 02/02/2022\n';
       }
 
       if(kernelterminal.value.includes("andre")){
-         kernelterminal.value = (kernelterminal.value).toUpperCase() + '\n[~EUCLACIANO~]\n';
+         kernelterminal.value = (kernelterminal.value).toUpperCase() + '\nSer matemáticamente perfeito\n';
       }
 
       if(kernelterminal.value.includes("clear")){
