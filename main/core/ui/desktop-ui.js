@@ -292,7 +292,7 @@ function dragElement(elmnt) {
 
 });
 
-function terminal(terminal = document.getElementById("terminal-window-terminal")){
+function terminal(terminal = document.getElementById("demo-window-terminal")){
   if(event.keyCode == 13){
     if(terminal.value.includes("exit")){
       terminal.value = (terminal.value).toUpperCase() + '\n[EXIT] Exitting terminal...\n';
