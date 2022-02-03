@@ -2,7 +2,7 @@
     font-family: "Default";
     font-weight: normal;
     font-style: normal;
-    src: url("/main/res/fonts/terminal.ttf") format(truetype);
+    src: url("/main/res/fonts/lucon.ttf") format(truetype);
 }
 
 body{

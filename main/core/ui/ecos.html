@@ -38,7 +38,7 @@
                 </div>
 
                 <div class="desktop-menu-category-menu">
-                    <button class="desktop-menu-button-first" onclick="opensettingsapp()">Settings App</button>
+                    <button class="desktop-menu-button-first" onclick="opensettingsapp()">Settings</button>
                     <button class="desktop-menu-button" onclick="opendemoapp()">UI Demo</button>
                 </div>
             
@@ -75,7 +75,7 @@
 
         </div>
 
-        <div id="demo-window" class="window" style="display: none;"> 
+        <div id="demo-window" class="window" style="display: none;" onfocus="demoappfocus()"> 
 
             <div id="demo-window-header" class="window-header">
                 
@@ -88,13 +88,12 @@
             </div>
 
             <div id="demo-window-content" class="window-content">
-                <!-- <h1 class="text-header1" id="demo-window-content-header1">H1</h1> -->
-                <!-- <h2 class="text-header2" id="demo-window-content-header2">H2</h2> -->
-                <!-- <a class="text-default" id="demo-window-content-p">Paragraph</a> -->
-                <!-- <input class="system-input-text" type="text" id="demo-window-content-input-text1"> -->
-                <!-- <input class="system-input-button" type="button" id="demo-window-content-input-button1" value="Button"> -->
-                <!-- <input class="system-input-checkbox" type="checkbox" id="demo-window-content-input-checkbox1" value="CheckBox"> -->
-                <textarea class="terminalinput" id="demo-window-terminal" onkeyup="terminal()"></textarea>
+                <h1 class="text-header1" id="demo-window-content-header1">H1</h1>
+                <h2 class="text-header2" id="demo-window-content-header2">H2</h2>
+                <a class="text-default" id="demo-window-content-p">Paragraph</a>
+                <input class="system-input-text" type="text" id="demo-window-content-input-text1">
+                <input class="system-input-button" type="button" id="demo-window-content-input-button1" value="Button">
+                <input class="system-input-checkbox" type="checkbox" id="demo-window-content-input-checkbox1" value="CheckBox">
             </div>
 
         </div>

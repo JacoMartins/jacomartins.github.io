@@ -3,18 +3,27 @@
 function menutrigger(menumain = document.getElementById('desktop-menu-main'), menusettings = document.getElementById('desktop-menu-settings')){
     if(menumain.style.display === "none"){
         menumain.style.display = "block";
+        menumain.style.animation = 'openmenu 0.15s ease-out';
         menusettings.style.display = "none";
     } else {
-        menumain.style.display = "none";
+        menumain.style.animation = 'closemenu 0.15s ease-out';
+        setTimeout(() => {
+          menumain.style.display = "none";
+        }, 150);
     }
 }
 
 function settingstrigger(menusettings = document.getElementById('desktop-menu-settings'), menumain = document.getElementById('desktop-menu-main')){
   if(menusettings.style.display === "none"){
+      menusettings.style.animation = 'openmenu 0.15s ease-out';
       menusettings.style.display = "block";
       menumain.style.display = "none";
   } else {
-      menusettings.style.display = "none";
+      menusettings.style.animation = 'closemenu 0.15s ease-out';
+      setTimeout(() => {
+        menusettings.style.display = "none";
+      }, 150);
+      
   }
 }
 
@@ -228,6 +237,10 @@ function snapdemoapp(app = document.getElementById("demo-window")){
   }
 }
 
+function demoappfocus(app = document.getElementById('demo-window')){
+  app.style.zIndex = '2';
+}
+
 function closedemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
@@ -323,6 +336,12 @@ function terminal(terminal = document.getElementById("demo-window-terminal")){
       const desktop = document.getElementById('owner-user');
       desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
       terminal.value = (terminal.value).toUpperCase() + '\nRunning igorcareca.png...\n';
+    }
+
+    if(terminal.value.includes("default")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nRunning default.png...\n';
     }
     terminal.value = (terminal.value) + '> ';
  }
