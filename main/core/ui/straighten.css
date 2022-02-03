@@ -75,6 +75,20 @@ body {
     background-position: center;
 }
 
+.desktop-taskbar-app-button {
+    position: relative;
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 4px;
+    border: 1px solid rgb(0, 0, 0, 0.35);
+    outline: 0px;
+    background-color: rgba(0, 0, 0, 0.25);
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 .desktop-taskbar-button:hover {
     border: 1px solid rgb(0, 0, 0, 0.35);
     background-color: rgba(0, 0, 0, 0.0);
@@ -100,6 +114,17 @@ body {
     top: 5px; 
     left: 41px; 
     background-image: url(../../res/images/icons/imageres/settings-small.png);
+}
+
+.desktop-taskbar-minimized-apps {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0);
+    top: 0px;
+    left: 76px;
+    height: calc(100% - 10px);
+    padding: 5px;
+    width: calc(100% - 251px);
+    border-left: dotted 2px rgba(0, 0, 0, 0.25);
 }
 
 .desktop-taskbar-text {
@@ -282,6 +307,70 @@ body {
 
 /* Windows and Inputs */
 
+@keyframes openwindow {
+    
+    from{transform: scale(0.75); opacity: 0.5;}
+
+	to{transform: scale(1); opacity: 1;}
+
+}
+
+@keyframes closewindow {
+    
+    from{transform: scale(1); opacity: 1;}
+
+	to{transform: scale(0.75); opacity: 0.0;}
+
+}
+
+@keyframes callwindow {
+    
+    from{
+        transform: scale(0.5);
+        opacity: 0.5;
+        top: -50px;
+        left: 100px;
+    }
+
+	to{
+        transform: scale(1);
+        opacity: 1;
+    }
+
+}
+
+@keyframes minimizewindow {
+    
+    from{
+        transform: scale(1);
+        opacity: 1;
+
+    }
+
+	to{
+        transform: scale(0.5);
+        opacity: 0.5;
+        top: -50px;
+        left: 100px;
+    }
+
+}
+
+@keyframes maximizewindow {
+    
+    from{
+        
+    }
+
+	to{
+        top: 40px;
+        left: 0px;
+        width: 100%;
+        height: calc(100% - 40px);
+    }
+
+}
+
 .window {
     width: 256px;
     height: 400px;
@@ -296,6 +385,7 @@ body {
     border-radius: 4px;
     z-index: 0;
     box-shadow: inset 0px 1px 0px rgba(255,255,255, 0.10);
+    animation-fill-mode: forwards;
 }
 
 .window-header {
@@ -473,7 +563,7 @@ body {
     border: 0px;
     outline: 0px;
     background-color: rgba(26, 26, 26, 1);
-    box-shadow: inset 0px 2px 0px rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 6px;
     padding-bottom: 6px;
@@ -598,6 +688,10 @@ body {
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
     overflow: hidden;
+}
+
+#desktop-taskbar-demo-app-button {
+    background-image: url(../../res/images/icons/imageres/app-small.png);
 }
 
 .interactive-text {

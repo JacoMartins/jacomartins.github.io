@@ -15,9 +15,17 @@
     <div id="owner-user" class="desktop">
         
         <div class="desktop-taskbar">
+            
             <button class="desktop-taskbar-button" id="desktop-taskbar-button-menu" onclick="menutrigger()"></button>
+            
             <button class="desktop-taskbar-button" id="desktop-taskbar-button-settings" onclick="settingstrigger()"></button>
+            
             <a class="desktop-taskbar-text">february, 02, 2022.</a>
+            
+            <div class="desktop-taskbar-minimized-apps">
+                <button class="desktop-taskbar-app-button" id="desktop-taskbar-demo-app-button" style="display: none;" onclick="minimizedemoapp()"></button>
+            </div>
+
         </div>
         
         <div id="desktop-menu-main" class="desktop-menu" style="display: none;">
@@ -48,7 +56,7 @@
 
         </div>
         
-        <p class="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Build 12 Compilation: 020220222029</p>
+        <p class="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Build 13 Compilation: 030220220039</p>
 
         <div id="settings-window" class="window" style="display: none;"> 
 
@@ -73,7 +81,7 @@
                 
                 <button id="demo-window-close-button" class="window-header-close-button" onclick="closedemoapp()"></button>
                 <button id="demo-window-resize-button" class="window-header-resize-button" onclick="resizedemoapp()"></button>
-                <button id="demo-window-minimize-button" class="window-header-minimize-button" onclick="closesettingsapp()"></button>
+                <button id="demo-window-minimize-button" class="window-header-minimize-button" onclick="minimizedemoapp()"></button>
                 
                 <a class="window-header-title" id="demo-window-header-title">OS Demo</a>
 

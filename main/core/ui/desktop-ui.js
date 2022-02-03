@@ -87,9 +87,13 @@ var restoreheight;
 var restorewidth;
 var restoretop;
 var restoreleft;
+let demowindowopen = false;
 
-function opendemoapp(app = document.getElementById('demo-window')){
+function opendemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
+  demowindowopen = true;
   app.style.display = "block";
+  app.style.animation = 'openwindow 0.25s';
+  miniapp.style.display = "block";
   menumain = document.getElementById('desktop-menu-main')
   menusettings = document.getElementById('desktop-menu-settings')
 
@@ -119,6 +123,7 @@ function resizedemoapp(app = document.getElementById("demo-window")){
     app.style.top = restoretop;
     app.style.resize = "both";
     app.style.borderRadius = "4px";
+    app.style.animation = 'maximizewindow 0.25s';
 	} else {
     restoreheight = app.style.height;
     restorewidth = app.style.width; 
@@ -130,7 +135,27 @@ function resizedemoapp(app = document.getElementById("demo-window")){
 		app.style.left = "0px";
     app.style.resize = "none";
     app.style.borderRadius = "0px";
+    app.style.animation = 'maximizewindow 0.25s';
 	}
+}
+
+function minimizedemoapp(app = document.getElementById("demo-window"), miniapp = document.getElementById('desktop-taskbar-demo-app-button')) {
+  if (demowindowopen = true) {
+    if(app.style.display === 'block'){
+      app.style.animation = 'minimizewindow 0.25s';
+      app.style.animationDuration = '0.25s';
+      setTimeout(() => {
+        app.style.display = 'none';
+      }, 250);
+    }
+    else {
+      app.style.display = 'block';
+      app.style.animation = 'callwindow 0.25s';
+    }
+  }
+  else {
+    opendemoapp()
+  }
 }
 
 function sidedemoapp(app = document.getElementById("demo-window")){
@@ -203,8 +228,14 @@ function snapdemoapp(app = document.getElementById("demo-window")){
   }
 }
 
-function closedemoapp(app = document.getElementById('demo-window')){
-  app.style.display = "none";
+function closedemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
+  app.style.animation = 'closewindow 0.25s';
+  app.style.animationDuration = '0.25s';
+  setTimeout(() => {
+    app.style.display = "none";
+    miniapp.style.display = "none";
+    demowindowopen = false;
+  }, 250);
 }
 
 function saverestorepos(app = document.getElementById('demo-window')){
