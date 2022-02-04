@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <div class="bootscreen"></div>
     <div id="owner-user" class="desktop">
         
         <div class="desktop-taskbar">
@@ -24,6 +25,7 @@
             
             <div class="desktop-taskbar-minimized-apps">
                 <button class="desktop-taskbar-app-button" id="desktop-taskbar-demo-app-button" style="display: none;" onclick="minimizedemoapp()"></button>
+                <button class="desktop-taskbar-app-button" id="desktop-taskbar-terminal-app-button" style="display: none;" onclick="minimizeterminalapp()"></button>
             </div>
 
         </div>
@@ -38,6 +40,7 @@
                 </div>
 
                 <div class="desktop-menu-category-menu">
+                    <button class="desktop-menu-button" onclick="openterminalapp()">Terminal</button>
                     <button class="desktop-menu-button-first" onclick="opensettingsapp()">Settings</button>
                     <button class="desktop-menu-button" onclick="opendemoapp()">UI Demo</button>
                 </div>
@@ -93,11 +96,31 @@
                 <a class="text-default" id="demo-window-content-p">Paragraph</a>
                 <input class="system-input-text" type="text" id="demo-window-content-input-text1">
                 <input class="system-input-button" type="button" id="demo-window-content-input-button1" value="Button">
-                <input class="system-input-checkbox" type="checkbox" id="demo-window-content-input-checkbox1" value="CheckBox">
+                <label class="system-input-checkbox-label" for="demo-window-content-input-checkbox1">CheckBox
+                    <input class="system-input-checkbox" type="checkbox" name="demo-window-content-input-checkbox1" id="demo-window-content-input-checkbox1" checked="checked">
+                </label>
             </div>
 
         </div>
 
+        <div id="terminal-window" class="window" style="display: none;" onfocus="terminalappfocus()"> 
+
+            <div id="terminal-window-header" class="window-header">
+                
+                <button id="terminal-window-close-button" class="window-header-close-button" onclick="closeterminalapp()"></button>
+                <button id="terminal-window-resize-button" class="window-header-resize-button" onclick="resizeterminalapp()"></button>
+                <button id="terminal-window-minimize-button" class="window-header-minimize-button" onclick="minimizeterminalapp()"></button>
+                
+                <a class="window-header-title" id="terminal-window-header-title">Terminal (Beta)</a>
+
+            </div>
+
+            <div id="terminal-window-content" class="window-content">
+                <textarea class="terminalinput" id="terminal-window-terminal" onkeyup="terminal()"></textarea>
+            </div>
+
+        </div>
+        
     </div>
 </body>
 
