@@ -1,5 +1,27 @@
-
 // Desktop
+let build = 15;
+let isbeta = true;
+let betastage = 1;
+let version = '1.0.0';
+var date = new Date();
+
+setInterval(function time() {
+  var date = new Date();
+  var DateMonths = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+  var DateDays = 0;
+  var DateHours = 0;
+  var DateMinutes = 0;
+  var DateSeconds = 0;
+  if (date.getDate() < 10) {DateDays = '0' + date.getDate();} else {DateDays = date.getDate();}
+  if (date.getHours() < 10) {DateHours = '0' + date.getHours();} else {DateHours = date.getHours();}
+  if (date.getMinutes() < 10) {DateMinutes = '0' + date.getMinutes();} else {DateMinutes = date.getMinutes();}
+  if (date.getSeconds() < 10) {DateSeconds = '0' + date.getSeconds();} else {DateSeconds = date.getSeconds();}
+
+  document.getElementById('desktop-taskbar-clock').innerHTML = '<span style="opacity: 0.6; margin-right: 4px;">' + DateHours + ':' + DateMinutes + '</span>' + '  ' + DateMonths[date.getMonth()] + ', ' + DateDays + ', ' + date.getFullYear();
+}, 1000);
+
+let today = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+
 function menutrigger(menumain = document.getElementById('desktop-menu-main'), menusettings = document.getElementById('desktop-menu-settings')){
     if(menumain.style.display === "none"){
         menumain.style.display = "block";
@@ -27,19 +49,42 @@ function settingstrigger(menusettings = document.getElementById('desktop-menu-se
   }
 }
 
+
+
 // Demo APP
 let taskbarpos = ['document.getElementById("desktop-taskbar").style.top', 'document.getElementById("desktop-taskbar").style.bottom'];
 var restoreheight;
 var restorewidth;
 var restoretop;
 var restoreleft;
+var z = 0;
 let demowindowopen = false;
 
-function opendemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
+function opendemoapp(app = document.getElementById('demo-window')){
   demowindowopen = true;
+  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
+  
+  var miniapp = document.createElement('button');
+  var miniappclass = document.createAttribute('class');
+  var miniappid = document.createAttribute('id');
+  var miniapponclick = document.createAttribute('onclick');
+  var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
+  var miniappidname = miniappid.value = 'desktop-taskbar-demo-app-button';
+  var miniapponclickfunction = miniapponclick.value = 'minimizedemoapp()';
+  
+  taskbarminimizedapps.appendChild(miniapp);
+  miniapp.miniappclassname;
+  miniapp.setAttributeNode(miniappclass);
+  miniapp.miniappidname;
+  miniapp.setAttributeNode(miniappid);
+  miniapp.miniapponclickfunction;
+  miniapp.setAttributeNode(miniapponclick);
+  
   app.style.display = "block";
   app.style.animation = 'openwindow 0.25s';
-  miniapp.style.display = "block";
+  app.style.zIndex = z++;
+  app.focus();
+  miniapp.style.display = "inline-block";
   menumain = document.getElementById('desktop-menu-main')
   menusettings = document.getElementById('desktop-menu-settings')
 
@@ -59,6 +104,24 @@ function opendemoapp(app = document.getElementById('demo-window'), miniapp = doc
   restorewidth = app.style.width;
   restoretop = app.style.top;
   restoreleft = app.style.left;
+}
+
+function demoappfocus(app = document.getElementById('demo-window')){
+  z++;
+  app.style.zIndex = z;
+  app.focus();
+}
+
+function closedemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
+  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
+  
+  app.style.animation = 'closewindow 0.25s';
+  app.style.animationDuration = '0.25s';
+  setTimeout(() => {
+    app.style.display = "none";
+    miniapp.parentNode.removeChild(miniapp);
+    demowindowopen = false;
+  }, 250);
 }
 
 function resizedemoapp(app = document.getElementById("demo-window")){
@@ -174,20 +237,6 @@ function snapdemoapp(app = document.getElementById("demo-window")){
   }
 }
 
-function demoappfocus(app = document.getElementById('demo-window')){
-  app.style.zIndex = '2';
-}
-
-function closedemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
-  app.style.animation = 'closewindow 0.25s';
-  app.style.animationDuration = '0.25s';
-  setTimeout(() => {
-    app.style.display = "none";
-    miniapp.style.display = "none";
-    demowindowopen = false;
-  }, 250);
-}
-
 function saverestorepos(app = document.getElementById('demo-window')){
   restoreheight = app.style.height;
   restorewidth = app.style.width; 
@@ -247,14 +296,31 @@ var terminalrestoreheight;
 var terminalrestorewidth;
 var terminalrestoretop;
 var terminalrestoreleft;
-let terminalwindowopen = false;
+var terminalwindowopen = false;
 
 function openterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
-  terminalwindowopen = true;
   var terminal = document.getElementById('terminal-window-terminal');
+  
+  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
+  
+  var miniapp = document.createElement('button');
+  var miniappclass = document.createAttribute('class');
+  var miniappid = document.createAttribute('id');
+  var miniapponclick = document.createAttribute('onclick');
+  var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
+  var miniappidname = miniappid.value = 'desktop-taskbar-terminal-app-button';
+  var miniapponclickfunction = miniapponclick.value = 'minimizeterminalapp()';
+  
+  taskbarminimizedapps.appendChild(miniapp);
+  miniapp.miniappclassname;
+  miniapp.setAttributeNode(miniappclass);
+  miniapp.miniappidname;
+  miniapp.setAttributeNode(miniappid);
+  miniapp.miniapponclickfunction;
+  miniapp.setAttributeNode(miniapponclick);
+  
   app.style.display = "block";
   app.style.animation = 'openwindow 0.25s';
-  miniapp.style.display = "block";
   menumain = document.getElementById('desktop-menu-main')
   menusettings = document.getElementById('desktop-menu-settings')
 
@@ -269,13 +335,31 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
-  terminal.value = 'Eclipse Cloud Operating System (ECOS) Codename Sunset, Version 1.0.0, Build 14, 04/02/2022\n\n> ';
-  terminal.focus()
+  terminal.value = 'Eclipse Cloud Operating System (ECOS) Codename Sunset, Version ' + version +', Build '+ build + ', '+ today + '\n\n> ';
+  app.style.zIndex = z++;
+  terminal.focus();
 
   terminalrestoreheight = app.style.height;
   terminalrestorewidth = app.style.width;
   terminalrestoretop = app.style.top;
   terminalrestoreleft = app.style.left;
+  terminalwindowopen = true;
+}
+
+function terminalappfocus(app = document.getElementById('terminal-window')){
+  z++;
+  app.style.zIndex = z;
+  app.focus();
+}
+
+function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
+  app.style.animation = 'closewindow 0.25s';
+  app.style.animationDuration = '0.25s';
+  setTimeout(() => {
+    app.style.display = "none";
+    miniapp.parentNode.removeChild(miniapp);
+    terminalwindowopen = false;
+  }, 250);
 }
 
 function resizeterminalapp(app = document.getElementById("terminal-window")){
@@ -391,20 +475,6 @@ function snapterminalapp(app = document.getElementById("terminal-window")){
   }
 }
 
-function terminalappfocus(app = document.getElementById('terminal-window')){
-  app.style.zIndex = '2';
-}
-
-function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
-  app.style.animation = 'closewindow 0.25s';
-  app.style.animationDuration = '0.25s';
-  setTimeout(() => {
-    app.style.display = "none";
-    miniapp.style.display = "none";
-    terminalwindowopen = false;
-  }, 250);
-}
-
 function saveterminalrestorepos(app = document.getElementById('terminal-window')){
   terminalrestoreheight = app.style.height;
   terminalrestorewidth = app.style.width; 
@@ -467,11 +537,11 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
     }
 
     if(terminal.value.includes("info")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[OS INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] 1.0.0, Build 14, 04/02/2022\n';
+      terminal.value = (terminal.value).toUpperCase() + '\n[INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] ' + version +', Build '+ build + ', '+ today + '\n';
     }
 
     if(terminal.value.includes("help")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[HELP] Available commands: INFO, CLEAR, EXIT, ISWORKING. Please type all commands in lowercase.\n';
+      terminal.value = (terminal.value).toUpperCase() + '\n[HELP] Available commands: INFO, CLEAR, EXIT, ISWORKING, COMP.UPDATE. Please type all commands in lowercase.\n';
     }
 
     if(terminal.value.includes("andre")){
@@ -496,11 +566,31 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       terminal.value = (terminal.value).toUpperCase() + '\nRunning IGORCARECA.png...\n';
     }
 
-    if(terminal.value.includes("default")){
+    if(terminal.value.includes("-r")){
       const desktop = document.getElementById('owner-user');
       desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
       terminal.value = (terminal.value).toUpperCase() + '\nRunning default.png...\n';
     }
+
+    if(terminal.value.includes("comp.update")){
+      var date = new Date();
+      var compyear = date.getFullYear();
+      var compmonths = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+      var compdays = 0;
+      var comphours = 0;
+      var compminutes = 0;
+
+      if (date.getDate() < 10) {compdays = '0' + date.getDate();} else {compdays = date.getDate();}
+      if (date.getHours() < 10) {comphours = '0' + date.getHours();} else {comphours = date.getHours();}
+      if (date.getMinutes() < 10) {compminutes = '0' + date.getMinutes();} else {compminutes = date.getMinutes();}
+      
+      var comp = compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes;
+      build = build + 1;
+
+      terminal.value = (terminal.value).toUpperCase() + '\nThe current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '.\n';
+      document.getElementById('desktop-beta-info').innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp;
+    }
+
     terminal.value = (terminal.value) + '> ';
  }
 }

@@ -21,11 +21,11 @@
             
             <button class="desktop-taskbar-button" id="desktop-taskbar-button-settings" onclick="settingstrigger()"></button>
             
-            <a class="desktop-taskbar-text">february, 02, 2022.</a>
+            <a class="desktop-taskbar-text" id="desktop-taskbar-clock"></a>
             
-            <div class="desktop-taskbar-minimized-apps">
-                <button class="desktop-taskbar-app-button" id="desktop-taskbar-demo-app-button" style="display: none;" onclick="minimizedemoapp()"></button>
-                <button class="desktop-taskbar-app-button" id="desktop-taskbar-terminal-app-button" style="display: none;" onclick="minimizeterminalapp()"></button>
+            <div class="desktop-taskbar-minimized-apps" id="desktop-taskbar-minimized-apps">
+                <!-- <button class="desktop-taskbar-app-button" id="desktop-taskbar-terminal-app-button" style="display: none;" onclick="minimizeterminalapp()"></button> -->
+                <!-- <button class="desktop-taskbar-app-button" id="desktop-taskbar-demo-app-button" style="display: none;" onclick="minimizedemoapp()"></button> -->
             </div>
 
         </div>
@@ -40,9 +40,9 @@
                 </div>
 
                 <div class="desktop-menu-category-menu">
-                    <button class="desktop-menu-button" onclick="openterminalapp()">Terminal</button>
-                    <button class="desktop-menu-button-first" onclick="opensettingsapp()">Settings</button>
-                    <button class="desktop-menu-button" onclick="opendemoapp()">UI Demo</button>
+                    <button class="desktop-menu-button-first" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-settings" onclick="opensettingsapp()">Settings</button>
+                    <button class="desktop-menu-button-last" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
                 </div>
             
             </div>
@@ -59,7 +59,7 @@
 
         </div>
         
-        <p class="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Build 13 Compilation: 030220220039</p>
+        <p class="desktop-beta-info" id="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Beta 1, Build 15 Compilation: 040220222012</p>
 
         <div id="settings-window" class="window" style="display: none;"> 
 
@@ -78,7 +78,7 @@
 
         </div>
 
-        <div id="demo-window" class="window" style="display: none;" onfocus="demoappfocus()"> 
+        <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()" onfocusout="demoappfocus()"> 
 
             <div id="demo-window-header" class="window-header">
                 
@@ -103,7 +103,7 @@
 
         </div>
 
-        <div id="terminal-window" class="window" style="display: none;" onfocus="terminalappfocus()"> 
+        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()" onfocusout="teminalappfocus()"> 
 
             <div id="terminal-window-header" class="window-header">
                 
