@@ -12,8 +12,19 @@
 </head>
 
 <body>
-    <div class="bootscreen"></div>
-    <div id="owner-user" class="desktop">
+    <div class="bootscreen" id="bootscreen">
+        <a class="bootscreen-text-default" id="bootscreen-text-default-main"></a>
+        <a class="bootscreen-text-h1">project eclipse</a>
+        
+        <div class="progressbar">
+            <div class="progress"></div>
+        </div>
+    </div>
+    <div id="logon-screen">
+        <input class="system-input-text" type="password" placeholder="Password" id="logon-screen-input-text" onkeydown="loginauth()">
+        <a class="bootscreen-text-default" id="bootscreen-text-default-main">Type pix to unlock.</a>
+    </div>
+    <div id="owner-user" class="desktop" style="display: none;">
         
         <div class="desktop-taskbar">
             
@@ -78,7 +89,7 @@
 
         </div>
 
-        <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()" onfocusout="demoappfocus()"> 
+        <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()"> 
 
             <div id="demo-window-header" class="window-header">
                 
@@ -97,13 +108,13 @@
                 <input class="system-input-text" type="text" id="demo-window-content-input-text1">
                 <input class="system-input-button" type="button" id="demo-window-content-input-button1" value="Button">
                 <label class="system-input-checkbox-label" for="demo-window-content-input-checkbox1">CheckBox
-                    <input class="system-input-checkbox" type="checkbox" name="demo-window-content-input-checkbox1" id="demo-window-content-input-checkbox1" checked="checked">
+                <input class="system-input-checkbox" type="checkbox" name="demo-window-content-input-checkbox1" id="demo-window-content-input-checkbox1" checked="checked">
                 </label>
             </div>
 
         </div>
 
-        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()" onfocusout="teminalappfocus()"> 
+        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()"> 
 
             <div id="terminal-window-header" class="window-header">
                 
@@ -116,7 +127,7 @@
             </div>
 
             <div id="terminal-window-content" class="window-content">
-                <textarea class="terminalinput" id="terminal-window-terminal" onkeyup="terminal()"></textarea>
+                <textarea class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()"></textarea>
             </div>
 
         </div>

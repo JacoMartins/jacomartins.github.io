@@ -45,7 +45,95 @@ body {
     left: 0px;
     z-index: 1000;
     background-color: black;
-    display: none;
+    display: block;
+    opacity: 1;
+}
+
+.bootscreen-text-h1 {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: Inter Med;
+    font-size: 26px;
+    line-height: 0px;
+    user-select: none;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.bootscreen-text-default {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.85);
+    font-family: Inter Regular;
+    font-size: 15px;
+    user-select: none;
+}
+
+#bootscreen-text-default-main {
+    position: absolute;
+    left: 50%;
+	top: calc(50% - 28px);
+    transform: translate(-50%, -50%);
+}
+
+.progressbar {
+	position: absolute;
+	cursor: none;
+	border-radius: 1px;
+	height: 4px;
+	width: 120px;
+	left: 50%;
+	top: calc(50% + 80px);
+    transform: translate(-50%, -50%);
+	background-color: rgba(255, 255, 255, .2);
+}
+
+.progress {
+	position: absolute;
+	animation: progress 2s linear;
+	cursor: none;
+	border-radius: 1px;
+	width: 40px;
+	height: 100%;
+	background-color: rgb(255, 255, 255);
+	animation-iteration-count: infinite;
+	animation-fill-mode: forwards;
+}
+
+@keyframes progress{
+	0%{left: 0px; width: 0px;}
+	25%{left: 0px; width: 40px;}
+	50%{left: 40px; width: 40px;}
+	75%{left: 80px; width: 40px;}
+	100%{left: 120px; width: 0px;}
+}
+
+.done {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background-color: black;
+    display: block;
+    opacity: 0.0;
+}
+
+#logon-screen {
+    position: absolute;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+#logon-screen-input-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .desktop {

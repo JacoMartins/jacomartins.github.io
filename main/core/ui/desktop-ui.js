@@ -1,9 +1,12 @@
-// Desktop
-let build = 15;
+// Main
+let build = 16;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
+let userpw = 'pix';
 var date = new Date();
+
+
 
 setInterval(function time() {
   var date = new Date();
@@ -21,6 +24,49 @@ setInterval(function time() {
 }, 1000);
 
 let today = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
+
+setTimeout(() => {
+  var date = new Date();
+  var compyear = date.getFullYear();
+  var compmonths = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
+  var compdays = 0;
+  var comphours = 0;
+  var compminutes = 0;
+
+  if (date.getDate() < 10) {compdays = '0' + date.getDate();} else {compdays = date.getDate();}
+  if (date.getHours() < 10) {comphours = '0' + date.getHours();} else {comphours = date.getHours();}
+  if (date.getMinutes() < 10) {compminutes = '0' + date.getMinutes();} else {compminutes = date.getMinutes();}
+      
+  var comp = compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes;
+
+  const bootbetatext = document.getElementById('bootscreen-text-default-main');
+  const desktopbetatext = document.getElementById('desktop-beta-info');
+
+  bootbetatext.innerHTML = 'beta ' + betastage + ' build ' + build;
+  desktopbetatext.innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp + '.';
+}, 250);
+
+window.addEventListener('load', function(){
+  const bootscreen = document.getElementById('bootscreen');
+  bootscreen.className += '.done';
+})
+
+// Login
+function loginauth(user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text')){
+  if(event.keyCode == 13){
+    if(logininput.value == userpw){
+      user.style.display = 'block';
+      logininput.setAttribute('placeholder', 'Password');
+    } else {
+      logininput.setAttribute('placeholder', 'Wrong password.');
+    }
+    logininput.value = '';
+  }
+}
+
+// Desktop
+
+var z = 0;
 
 function menutrigger(menumain = document.getElementById('desktop-menu-main'), menusettings = document.getElementById('desktop-menu-settings')){
     if(menumain.style.display === "none"){
@@ -57,7 +103,6 @@ var restoreheight;
 var restorewidth;
 var restoretop;
 var restoreleft;
-var z = 0;
 let demowindowopen = false;
 
 function opendemoapp(app = document.getElementById('demo-window')){
@@ -159,6 +204,7 @@ function minimizedemoapp(app = document.getElementById("demo-window"), miniapp =
     }
     else {
       app.style.display = 'block';
+      demoappfocus()
       app.style.animation = 'callwindow 0.25s';
     }
   }
@@ -397,6 +443,7 @@ function minimizeterminalapp(app = document.getElementById("terminal-window"), m
     }
     else {
       app.style.display = 'block';
+      terminalappfocus()
       app.style.animation = 'callwindow 0.25s';
     }
   }
