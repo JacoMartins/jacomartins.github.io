@@ -55,7 +55,7 @@ window.addEventListener('load', function(){
 function loginauth(user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text')){
   if(event.keyCode == 13){
     if(logininput.value == userpw){
-      user.style.display = 'block';
+      user.style.display = 'table';
       logininput.setAttribute('placeholder', 'Password');
     } else {
       logininput.setAttribute('placeholder', 'Wrong password.');
@@ -178,6 +178,10 @@ function resizedemoapp(app = document.getElementById("demo-window")){
     app.style.resize = "both";
     app.style.borderRadius = "4px";
     app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
 	} else {
     restoreheight = app.style.height;
     restorewidth = app.style.width; 
@@ -189,7 +193,10 @@ function resizedemoapp(app = document.getElementById("demo-window")){
 		app.style.left = "0px";
     app.style.resize = "none";
     app.style.borderRadius = "0px";
-    app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
 	}
 }
 
@@ -224,6 +231,10 @@ function sidedemoapp(app = document.getElementById("demo-window")){
     app.style.width = '50%';
     app.style.resize = "none";
     app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
 
   if (appleft > (window.innerWidth - appwidth)) {
@@ -233,6 +244,10 @@ function sidedemoapp(app = document.getElementById("demo-window")){
     app.style.width = '50%';
     app.style.resize = "none";
     app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
 }
 
@@ -270,6 +285,10 @@ function snapdemoapp(app = document.getElementById("demo-window")){
       app.style.left = "0px";
       app.style.resize = "none";
       app.style.borderRadius = "0px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
     }
   }
 
@@ -417,11 +436,19 @@ function resizeterminalapp(app = document.getElementById("terminal-window")){
     app.style.resize = "both";
     app.style.borderRadius = "4px";
     app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
 	} else {
     terminalrestoreheight = app.style.height;
     terminalrestorewidth = app.style.width; 
     terminalrestoretop = app.style.top;
     terminalrestoreleft = app.style.left;
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
 		app.style.width = '100%';
 		app.style.height = 'calc(100% - 40px)';
 		app.style.top = "40px";
@@ -463,6 +490,10 @@ function sideterminalapp(app = document.getElementById("terminal-window")){
     app.style.width = '50%';
     app.style.resize = "none";
     app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
   }
 
   if (appleft > (window.innerWidth - appwidth)) {
@@ -472,6 +503,10 @@ function sideterminalapp(app = document.getElementById("terminal-window")){
     app.style.width = '50%';
     app.style.resize = "none";
     app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
   }
 }
 
@@ -502,6 +537,10 @@ function snapterminalapp(app = document.getElementById("terminal-window")){
       app.style.height = terminalrestoreheight;
       app.style.resize = "both";
       app.style.borderRadius = "4px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		  }, 150)
     } else {
       app.style.width = '100%';
       app.style.height = 'calc(100% - 40px)';
@@ -509,6 +548,10 @@ function snapterminalapp(app = document.getElementById("terminal-window")){
       app.style.left = "0px";
       app.style.resize = "none";
       app.style.borderRadius = "0px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		  }, 150)
     }
   }
 
@@ -610,6 +653,7 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
     if(terminal.value.includes("igorcareca")){
       const desktop = document.getElementById('owner-user');
       desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
+      desktop.style.backgroundSize = 'contain';
       terminal.value = (terminal.value).toUpperCase() + '\nRunning IGORCARECA.png...\n';
     }
 

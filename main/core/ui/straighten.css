@@ -33,6 +33,8 @@
 body {
     overflow: hidden;
     user-select: none;
+    height: 100%;
+    width: 100%;
 }
 
 /* Desktop */
@@ -785,6 +787,7 @@ body {
     overflow: hidden;
     border: 0px;
     outline: 0px;
+    display: table;
     overflow: none;
 }
 
