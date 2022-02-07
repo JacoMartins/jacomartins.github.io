@@ -20,11 +20,11 @@
             <div class="progress"></div>
         </div>
     </div>
-    <div id="logon-screen">
+    <div id="logon-screen" style="display: none;">
         <input class="system-input-text" type="password" placeholder="Password" id="logon-screen-input-text" onkeydown="loginauth()">
         <a class="bootscreen-text-default" id="bootscreen-text-default-main">Type pix to unlock.</a>
     </div>
-    <div id="owner-user" class="desktop" style="display: none;">
+    <div id="owner-user" class="desktop" style="display: inline-block;">
         
         <div class="desktop-taskbar">
             
@@ -51,8 +51,8 @@
                 </div>
 
                 <div class="desktop-menu-category-menu">
+                    <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="opencalculatorapp()">Calculator</button>
                     <button class="desktop-menu-button-first" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
-                    <!-- <button class="desktop-menu-button" id="desktop-menu-button-settings" onclick="opensettingsapp()">Settings</button> -->
                     <button class="desktop-menu-button-last" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
                 </div>
             
@@ -128,6 +128,24 @@
 
             <div id="terminal-window-content" class="window-content">
                 <textarea class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()"></textarea>
+            </div>
+
+        </div>
+
+        <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorappfocus()"> 
+
+            <div id="calculator-window-header" class="window-header">
+                
+                <button id="calculator-window-close-button" class="window-header-close-button" onclick="closecalculatorapp()"></button>
+                <button id="calculator-window-resize-button" class="window-header-resize-button" onclick="resizecalculatorapp()"></button>
+                <button id="calculator-window-minimize-button" class="window-header-minimize-button" onclick="minimizecalculatorapp()"></button>
+                
+                <a class="window-header-title" id="calculator-window-header-title">Calculator (Beta)</a>
+
+            </div>
+
+            <div id="calculator-window-content" class="window-content">
+                <input class="system-input-transparent-text" type="text" id="calculator-window-content-input-text1">
             </div>
 
         </div>

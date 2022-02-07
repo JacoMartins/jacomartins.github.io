@@ -674,7 +674,53 @@ body {
     opacity: 1;
 }
 
+.system-input-transparent-text {
+    position: absolute;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgb(0, 0, 0, 0.35);
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.66);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-family: Inter Med;
+    opacity: 0.6;
+}
 
+.system-input-transparent-text:hover {
+    position: absolute;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.66);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-family: Inter Med;
+    opacity: 0.8;
+}
+
+.system-input-transparent-text:focus {
+    position: absolute;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(0, 0, 0, 0.35);
+    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.66);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-family: Inter Med;
+    opacity: 1;
+}
 
 .system-input-button {
     position: absolute;
@@ -880,4 +926,17 @@ body {
     background-image: url(../../res/images/background/igor\ careca.png);
     background-size: 64px 64px;
     border-radius: 100%;
+}
+
+#calculator-window-content {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#calculator-window-content-input-text1 {
+    top: 0px;
+    left: 6px;
+    width: calc(100% - 24px);
+    height: 48px;
+    font-size: 40px;
+    text-align: right;
 }

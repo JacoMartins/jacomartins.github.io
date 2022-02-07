@@ -3,7 +3,7 @@ let build = 16;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
-let userpw = 'pipimenta';
+let userpw = 'pix';
 var date = new Date();
 
 
@@ -356,15 +356,15 @@ function dragElement(elmnt) {
 
 });
 
-// terminal APP
-var terminalrestoreheight;
-var terminalrestorewidth;
-var terminalrestoretop;
-var terminalrestoreleft;
-var terminalwindowopen = false;
+// calculator APP
+var calculatorrestoreheight;
+var calculatorrestorewidth;
+var calculatorrestoretop;
+var calculatorrestoreleft;
+var calculatorwindowopen = false;
 
-function openterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
-  var terminal = document.getElementById('terminal-window-terminal');
+function opencalculatorapp(app = document.getElementById('calculator-window'), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')){
+  var calculator = document.getElementById('calculator-window-calculator');
   
   var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
   
@@ -373,8 +373,8 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   var miniappid = document.createAttribute('id');
   var miniapponclick = document.createAttribute('onclick');
   var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
-  var miniappidname = miniappid.value = 'desktop-taskbar-terminal-app-button';
-  var miniapponclickfunction = miniapponclick.value = 'minimizeterminalapp()';
+  var miniappidname = miniappid.value = 'desktop-taskbar-calculator-app-button';
+  var miniapponclickfunction = miniapponclick.value = 'minimizecalculatorapp()';
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -400,39 +400,39 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
-  terminal.value = 'Eclipse Cloud Operating System (ECOS) Codename Sunset, Version ' + version +', Build '+ build + ', '+ today + '\n\n> ';
+  calculator.value = 'Eclipse Cloud Operating System (ECOS) Codename Sunset, Version ' + version +', Build '+ build + ', '+ today + '\n\n> ';
   app.style.zIndex = z++;
-  terminal.focus();
+  calculator.focus();
 
-  terminalrestoreheight = app.style.height;
-  terminalrestorewidth = app.style.width;
-  terminalrestoretop = app.style.top;
-  terminalrestoreleft = app.style.left;
-  terminalwindowopen = true;
+  calculatorrestoreheight = app.style.height;
+  calculatorrestorewidth = app.style.width;
+  calculatorrestoretop = app.style.top;
+  calculatorrestoreleft = app.style.left;
+  calculatorwindowopen = true;
 }
 
-function terminalappfocus(app = document.getElementById('terminal-window')){
+function calculatorappfocus(app = document.getElementById('calculator-window')){
   z++;
   app.style.zIndex = z;
   app.focus();
 }
 
-function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
+function closecalculatorapp(app = document.getElementById('calculator-window'), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')){
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
     app.style.display = "none";
     miniapp.parentNode.removeChild(miniapp);
-    terminalwindowopen = false;
+    calculatorwindowopen = false;
   }, 250);
 }
 
-function resizeterminalapp(app = document.getElementById("terminal-window")){
+function resizecalculatorapp(app = document.getElementById("calculator-window")){
   if (app.style.width === '100%') {
-		app.style.width = terminalrestorewidth;
-		app.style.height = terminalrestoreheight;
-    app.style.left = terminalrestoreleft;
-    app.style.top = terminalrestoretop;
+		app.style.width = calculatorrestorewidth;
+		app.style.height = calculatorrestoreheight;
+    app.style.left = calculatorrestoreleft;
+    app.style.top = calculatorrestoretop;
     app.style.resize = "both";
     app.style.borderRadius = "4px";
     app.style.animation = 'maximizewindow 0.25s';
@@ -441,10 +441,10 @@ function resizeterminalapp(app = document.getElementById("terminal-window")){
 			app.style.transition = "none";
 		}, 150)
 	} else {
-    terminalrestoreheight = app.style.height;
-    terminalrestorewidth = app.style.width; 
-    terminalrestoretop = app.style.top;
-    terminalrestoreleft = app.style.left;
+    calculatorrestoreheight = app.style.height;
+    calculatorrestorewidth = app.style.width; 
+    calculatorrestoretop = app.style.top;
+    calculatorrestoreleft = app.style.left;
     app.style.transition = "0.15s";
     setTimeout(function() {
 			app.style.transition = "none";
@@ -459,8 +459,8 @@ function resizeterminalapp(app = document.getElementById("terminal-window")){
 	}
 }
 
-function minimizeterminalapp(app = document.getElementById("terminal-window"), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')) {
-  if (terminalwindowopen = true) {
+function minimizecalculatorapp(app = document.getElementById("calculator-window"), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')) {
+  if (calculatorwindowopen = true) {
     if(app.style.display === 'block'){
       app.style.animation = 'minimizewindow 0.25s';
       app.style.animationDuration = '0.25s';
@@ -470,16 +470,16 @@ function minimizeterminalapp(app = document.getElementById("terminal-window"), m
     }
     else {
       app.style.display = 'block';
-      terminalappfocus()
+      calculatorappfocus()
       app.style.animation = 'callwindow 0.25s';
     }
   }
   else {
-    openterminalapp()
+    opencalculatorapp()
   }
 }
 
-function sideterminalapp(app = document.getElementById("terminal-window")){
+function sidecalculatorapp(app = document.getElementById("calculator-window")){
   var appleft = parseInt(app.style.left, 10);
   var appwidth = parseInt(app.style.width, 10);
   
@@ -510,15 +510,15 @@ function sideterminalapp(app = document.getElementById("terminal-window")){
   }
 }
 
-function snapminterminalapp(app = document.getElementById("terminal-window")){
-  var appwidth = parseInt(terminalrestorewidth, 10);
+function snapmincalculatorapp(app = document.getElementById("calculator-window")){
+  var appwidth = parseInt(calculatorrestorewidth, 10);
   var posleft = window.event.clientX - (appwidth * 0.5);
   var posleftcss = posleft + 'px';
   var postop = window.event.clientY + 'px';
 
   if (app.style.height === 'calc(100% - 40px)') {
-		app.style.width = terminalrestorewidth;
-		app.style.height = terminalrestoreheight;
+		app.style.width = calculatorrestorewidth;
+		app.style.height = calculatorrestoreheight;
     app.style.left = posleftcss;
     app.style.top = '40px';
     app.style.resize = "both";
@@ -526,15 +526,15 @@ function snapminterminalapp(app = document.getElementById("terminal-window")){
 	}
 }
 
-function snapterminalapp(app = document.getElementById("terminal-window")){
+function snapcalculatorapp(app = document.getElementById("calculator-window")){
   var apptop = parseInt(app.style.top, 10);
   var appleft = parseInt(app.style.left, 10);
   var appwidth = parseInt(app.style.width, 10);
 
   if (apptop < 0) {
     if (app.style.width === 'calc(100% - 40px)') {
-      app.style.width = terminalrestorewidth;
-      app.style.height = terminalrestoreheight;
+      app.style.width = calculatorrestorewidth;
+      app.style.height = calculatorrestoreheight;
       app.style.resize = "both";
       app.style.borderRadius = "4px";
       app.style.transition = "0.15s";
@@ -556,30 +556,30 @@ function snapterminalapp(app = document.getElementById("terminal-window")){
   }
 
   if (appleft < 0) {
-    sideterminalapp()
-    // document.getElementById("terminal-window-header-title").innerHTML = 'Detected';
+    sidecalculatorapp()
+    // document.getElementById("calculator-window-header-title").innerHTML = 'Detected';
   }
 
   if(appleft > (window.innerWidth - appwidth)){
-    sideterminalapp()
+    sidecalculatorapp()
   }
 }
 
-function saveterminalrestorepos(app = document.getElementById('terminal-window')){
-  terminalrestoreheight = app.style.height;
-  terminalrestorewidth = app.style.width; 
-  terminalrestoretop = app.style.top;
-  terminalrestoreleft = app.style.left;
+function savecalculatorrestorepos(app = document.getElementById('calculator-window')){
+  calculatorrestoreheight = app.style.height;
+  calculatorrestorewidth = app.style.width; 
+  calculatorrestoretop = app.style.top;
+  calculatorrestoreleft = app.style.left;
 }
 
 window.addEventListener("load", function(){
-dragElement(document.getElementById("terminal-window"));
+dragElement(document.getElementById("calculator-window"));
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById("terminal-window-header")) {
+  if (document.getElementById("calculator-window-header")) {
     /* if present, the header is where you move the DIV from:*/
-    document.getElementById("terminal-window-header").onmousedown = dragMouseDown;
+    document.getElementById("calculator-window-header").onmousedown = dragMouseDown;
   } else {
     /* otherwise, move the DIV from anywhere inside the DIV:*/
     elmnt.onmousedown = dragMouseDown;
@@ -607,63 +607,63 @@ function dragElement(elmnt) {
     // set the element's new position:
     elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
     elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    snapminterminalapp();
+    snapmincalculatorapp();
   }
 
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
-    snapterminalapp();
+    snapcalculatorapp();
   }
 }
 
 });
 
-function terminal(terminal = document.getElementById("terminal-window-terminal")){
+function calculator(calculator = document.getElementById("calculator-window-calculator")){
   if(event.keyCode == 13){
-    if(terminal.value.includes("exit")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[EXIT] Exitting terminal...\n';
-       closeterminalapp()
+    if(calculator.value.includes("exit")){
+      calculator.value = (calculator.value).toUpperCase() + '\n[EXIT] Exitting calculator...\n';
+       closecalculatorapp()
     }
 
-    if(terminal.value.includes("info")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] ' + version +', Build '+ build + ', '+ today + '\n';
+    if(calculator.value.includes("info")){
+      calculator.value = (calculator.value).toUpperCase() + '\n[INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] ' + version +', Build '+ build + ', '+ today + '\n';
     }
 
-    if(terminal.value.includes("help")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[HELP] Available commands: INFO, CLEAR, EXIT, ISWORKING, COMP.UPDATE. Please type all commands in lowercase.\n';
+    if(calculator.value.includes("help")){
+      calculator.value = (calculator.value).toUpperCase() + '\n[HELP] Available commands: INFO, CLEAR, EXIT, ISWORKING, COMP.UPDATE. Please type all commands in lowercase.\n';
     }
 
-    if(terminal.value.includes("andre")){
-      terminal.value = (terminal.value).toUpperCase() + '\nSer matemáticamente perfeito.\n';
+    if(calculator.value.includes("andre")){
+      calculator.value = (calculator.value).toUpperCase() + '\nSer matemáticamente perfeito.\n';
     }
 
-    if(terminal.value.includes("clear")){
-      terminal.value = '';
+    if(calculator.value.includes("clear")){
+      calculator.value = '';
     }
 
-    if(terminal.value.includes("isworking")){
-      terminal.value = (terminal.value).toUpperCase() + '\nyes\n';
+    if(calculator.value.includes("isworking")){
+      calculator.value = (calculator.value).toUpperCase() + '\nyes\n';
     }
 
-    if(terminal.value.includes("uniaoss")){
-      terminal.value = (terminal.value).toUpperCase() + '\na bond that will never be broken.\n';
+    if(calculator.value.includes("uniaoss")){
+      calculator.value = (calculator.value).toUpperCase() + '\na bond that will never be broken.\n';
     }
 
-    if(terminal.value.includes("igorcareca")){
+    if(calculator.value.includes("igorcareca")){
       const desktop = document.getElementById('owner-user');
       desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
       desktop.style.backgroundSize = 'contain';
-      terminal.value = (terminal.value).toUpperCase() + '\nRunning IGORCARECA.png...\n';
+      calculator.value = (calculator.value).toUpperCase() + '\nRunning IGORCARECA.png...\n';
     }
 
-    if(terminal.value.includes("-r")){
+    if(calculator.value.includes("-r")){
       const desktop = document.getElementById('owner-user');
       desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nRunning default.png...\n';
+      calculator.value = (calculator.value).toUpperCase() + '\nRunning default.png...\n';
     }
 
-    if(terminal.value.includes("comp.update")){
+    if(calculator.value.includes("comp.update")){
       var date = new Date();
       var compyear = date.getFullYear();
       var compmonths = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -678,11 +678,273 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       var comp = compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes;
       build = build + 1;
 
-      terminal.value = (terminal.value).toUpperCase() + '\nThe current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '.\n';
+      calculator.value = (calculator.value).toUpperCase() + '\nThe current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '.\n';
       document.getElementById('desktop-beta-info').innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp;
     }
 
-    terminal.value = (terminal.value) + '> ';
+    calculator.value = (calculator.value) + '> ';
  }
 }
+
+// calculator APP
+var calculatorrestoreheight;
+var calculatorrestorewidth;
+var calculatorrestoretop;
+var calculatorrestoreleft;
+var calculatorwindowopen = false;
+
+function opencalculatorapp(app = document.getElementById('calculator-window'), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')){
+  var calculator = document.getElementById('calculator-window-calculator');
+  
+  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
+  
+  var miniapp = document.createElement('button');
+  var miniappclass = document.createAttribute('class');
+  var miniappid = document.createAttribute('id');
+  var miniapponclick = document.createAttribute('onclick');
+  var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
+  var miniappidname = miniappid.value = 'desktop-taskbar-calculator-app-button';
+  var miniapponclickfunction = miniapponclick.value = 'minimizecalculatorapp()';
+  
+  taskbarminimizedapps.appendChild(miniapp);
+  miniapp.miniappclassname;
+  miniapp.setAttributeNode(miniappclass);
+  miniapp.miniappidname;
+  miniapp.setAttributeNode(miniappid);
+  miniapp.miniapponclickfunction;
+  miniapp.setAttributeNode(miniapponclick);
+  
+  app.style.display = "block";
+  app.style.animation = 'openwindow 0.25s';
+  menumain = document.getElementById('desktop-menu-main')
+  menusettings = document.getElementById('desktop-menu-settings')
+
+  if(menumain.style.display = "block"){
+      menumain.style.display = "none";
+      menusettings.style.display = "none";
+  }
+
+  app.style.width = '300px';
+	app.style.height = '420px';
+  app.style.top = '120px';
+	app.style.left = '120px';
+  app.style.resize = "both";
+  app.style.borderRadius = "4px";
+  app.style.zIndex = z++;
+  calculator.focus();
+
+  calculatorrestoreheight = app.style.height;
+  calculatorrestorewidth = app.style.width;
+  calculatorrestoretop = app.style.top;
+  calculatorrestoreleft = app.style.left;
+  calculatorwindowopen = true;
+}
+
+function calculatorappfocus(app = document.getElementById('calculator-window')){
+  z++;
+  app.style.zIndex = z;
+  app.focus();
+}
+
+function closecalculatorapp(app = document.getElementById('calculator-window'), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')){
+  app.style.animation = 'closewindow 0.25s';
+  app.style.animationDuration = '0.25s';
+  setTimeout(() => {
+    app.style.display = "none";
+    miniapp.parentNode.removeChild(miniapp);
+    calculatorwindowopen = false;
+  }, 250);
+}
+
+function resizecalculatorapp(app = document.getElementById("calculator-window")){
+  if (app.style.width === '100%') {
+		app.style.width = calculatorrestorewidth;
+		app.style.height = calculatorrestoreheight;
+    app.style.left = calculatorrestoreleft;
+    app.style.top = calculatorrestoretop;
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+    app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
+	} else {
+    calculatorrestoreheight = app.style.height;
+    calculatorrestorewidth = app.style.width; 
+    calculatorrestoretop = app.style.top;
+    calculatorrestoreleft = app.style.left;
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 40px)';
+		app.style.top = "40px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.animation = 'maximizewindow 0.25s';
+	}
+}
+
+function minimizecalculatorapp(app = document.getElementById("calculator-window"), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')) {
+  if (calculatorwindowopen = true) {
+    if(app.style.display === 'block'){
+      app.style.animation = 'minimizewindow 0.25s';
+      app.style.animationDuration = '0.25s';
+      setTimeout(() => {
+        app.style.display = 'none';
+      }, 250);
+    }
+    else {
+      app.style.display = 'block';
+      calculatorappfocus()
+      app.style.animation = 'callwindow 0.25s';
+    }
+  }
+  else {
+    opencalculatorapp()
+  }
+}
+
+function sidecalculatorapp(app = document.getElementById("calculator-window")){
+  var appleft = parseInt(app.style.left, 10);
+  var appwidth = parseInt(app.style.width, 10);
+  
+  if (appleft < 0) {
+    app.style.left = '0px';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
+  }
+
+  if (appleft > (window.innerWidth - appwidth)) {
+    app.style.left = '50%';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
+  }
+}
+
+function snapmincalculatorapp(app = document.getElementById("calculator-window")){
+  var appwidth = parseInt(calculatorrestorewidth, 10);
+  var posleft = window.event.clientX - (appwidth * 0.5);
+  var posleftcss = posleft + 'px';
+  var postop = window.event.clientY + 'px';
+
+  if (app.style.height === 'calc(100% - 40px)') {
+		app.style.width = calculatorrestorewidth;
+		app.style.height = calculatorrestoreheight;
+    app.style.left = posleftcss;
+    app.style.top = '40px';
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+	}
+}
+
+function snapcalculatorapp(app = document.getElementById("calculator-window")){
+  var apptop = parseInt(app.style.top, 10);
+  var appleft = parseInt(app.style.left, 10);
+  var appwidth = parseInt(app.style.width, 10);
+
+  if (apptop < 0) {
+    if (app.style.width === 'calc(100% - 40px)') {
+      app.style.width = calculatorrestorewidth;
+      app.style.height = calculatorrestoreheight;
+      app.style.resize = "both";
+      app.style.borderRadius = "4px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		  }, 150)
+    } else {
+      app.style.width = '100%';
+      app.style.height = 'calc(100% - 40px)';
+      app.style.top = "40px";
+      app.style.left = "0px";
+      app.style.resize = "none";
+      app.style.borderRadius = "0px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		  }, 150)
+    }
+  }
+
+  if (appleft < 0) {
+    sidecalculatorapp()
+    // document.getElementById("calculator-window-header-title").innerHTML = 'Detected';
+  }
+
+  if(appleft > (window.innerWidth - appwidth)){
+    sidecalculatorapp()
+  }
+}
+
+function savecalculatorrestorepos(app = document.getElementById('calculator-window')){
+  calculatorrestoreheight = app.style.height;
+  calculatorrestorewidth = app.style.width; 
+  calculatorrestoretop = app.style.top;
+  calculatorrestoreleft = app.style.left;
+}
+
+window.addEventListener("load", function(){
+dragElement(document.getElementById("calculator-window"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("calculator-window-header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById("calculator-window-header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    snapmincalculatorapp();
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+    snapcalculatorapp();
+  }
+}
+
+});
 
