@@ -940,3 +940,16 @@ body {
     font-size: 40px;
     text-align: right;
 }
+
+#agenda-window-content {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#agenda-window-content-input-text1 {
+    top: 0px;
+    left: 6px;
+    width: calc(100% - 24px);
+    height: 48px;
+    font-size: 40px;
+    text-align: right;
+}
