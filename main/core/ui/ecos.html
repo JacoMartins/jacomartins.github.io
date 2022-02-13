@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
-    <link rel="icon" type="image/x-icon" src="/favicon.png">
+    <link rel="icon" type="image/png" href="/favicon.png">
     <script type="text/javascript" src="desktop-ui.js"></script>
     <title>Eclipse UI</title>
 </head>
@@ -146,30 +146,36 @@
             </div>
 
             <div id="calculator-window-content" class="window-content">
+
                 <input class="system-input-transparent-text" type="text" id="calculator-window-content-input-text1">
+                
                 <div id="calculator-window-container">
                     
-
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="9">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="8">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="7">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="/">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="7">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="5">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="6">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="X">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="6">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="5">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="4">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="-">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="3">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="2">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="1">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="+">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="-">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="0">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value=",">
-                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="=">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button-small" value="%">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button-small" value="CE" onclick="calculatordelete(-2)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button-small" value="C" onclick="calculatorclear()">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button-small" value="Delete" onclick="calculatordelete(-1)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="%" onclick="calculatorinsert('* 0.')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="()" onclick="calculatorinsertorg()"> 
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="2²" onclick="calculatorinsert('**')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="/" onclick="calculatorinsert('/')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="7" onclick="calculatorinsert(7)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="8" onclick="calculatorinsert(8)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="9" onclick="calculatorinsert(9)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="X" onclick="calculatorinsert('*')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="4" onclick="calculatorinsert(4)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="5" onclick="calculatorinsert(5)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="6" onclick="calculatorinsert(6)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="-" onclick="calculatorinsert('-')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="1" onclick="calculatorinsert(1)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="2" onclick="calculatorinsert(2)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="3" onclick="calculatorinsert(3)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="+" onclick="calculatorinsert('+')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button-small" value="+/-" onclick="calculatorinsert('* (-1)'), calculatorequal()">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="0" onclick="calculatorinsert(0)">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="," onclick="calculatorinsert('.')">
+                    <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="=" onclick="calculatorequal()">
+                    
                 </div>
             </div>
 

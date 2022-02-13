@@ -658,6 +658,42 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       terminal.value = (terminal.value).toUpperCase() + '\nRunning default.png...\n';
     }
 
+    if(terminal.value.includes("wpp1")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/wpp1.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp1.png...\n';
+    }
+
+    if(terminal.value.includes("wpp2")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/wpp2.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp2.png...\n';
+    }
+
+    if(terminal.value.includes("wpp3")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/wpp3.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp3.png...\n';
+    }
+
+    if(terminal.value.includes("wpp4")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/wpp4.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp4.png...\n';
+    }
+
+    if(terminal.value.includes("wpp5")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/wpp5.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp5.png...\n';
+    }
+
+    if(terminal.value.includes("wpp6")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/wpp6.jpg')";
+      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp6.png...\n';
+    }
+
     if(terminal.value.includes("comp.update")){
       var date = new Date();
       var compyear = date.getFullYear();
@@ -893,8 +929,52 @@ function savecalculatorrestorepos(app = document.getElementById('calculator-wind
   calculatorrestoreleft = app.style.left;
 }
 
+function calculatorinsert(x, input = document.getElementById("calculator-window-content-input-text1")) {
+  input.value = input.value + x; 
+}
+
+var calculatorpar = false;
+
+function calculatorinsertorg(input = document.getElementById("calculator-window-content-input-text1")) {
+  if (input.value.includes('(') && calculatorpar === true){
+    input.value = input.value + ')';
+    calculatorpar = false;
+  } else if (calculatorpar === false) {
+    if (calculatorpar === false) {
+      input.value = input.value + '(';
+      calculatorpar = true;
+    } else {
+      input.value = input.value + ')';
+      calculatorpar = false;
+    }
+  }
+}
+
+function calculatordelete(x, input = document.getElementById("calculator-window-content-input-text1")) {
+  input.value = input.value.slice(0, x); 
+}
+
+function calculatorclear(input = document.getElementById("calculator-window-content-input-text1")) {
+  input.value = input.value.substr(0, -1); 
+}
+
+function calculatorequal(x, input = document.getElementById("calculator-window-content-input-text1")) {
+  input.value = eval(input.value); 
+}
+
+
+window.onload = function(){
+  document.getElementById("calculator-window-content-input-text1").addEventListener("keydown", function (){
+    if(event.keyCode == 13){
+      calculatorequal();
+    }
+  });
+}
+
+
 window.addEventListener("load", function(){
 dragElement(document.getElementById("calculator-window"));
+
 
 function dragElement(elmnt) {
   var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;

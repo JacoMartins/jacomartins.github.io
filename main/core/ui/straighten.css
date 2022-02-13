@@ -960,7 +960,7 @@ body {
     margin: 6px;
     display: grid;
     grid-auto-flow: row;
-    grid-template-rows: 72px calc(100% - 104px);
+    grid-template-rows: 72px calc(100% - 108px);
     grid-template-columns: calc(100% - 24px);
     row-gap: 4px;
     --text-input-size: 48px;
@@ -970,7 +970,7 @@ body {
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: 25% 25% 25% 25%;
-    grid-template-rows: 20% 20% 20% 20% 20%;
+    grid-template-rows: 10% 18% 18% 18% 18% 18%;
     column-gap: 4px;
     row-gap: 4px;
 }
@@ -997,6 +997,16 @@ body {
     width: 100%;
     padding: 0px;
     font-size: 24px;
+}
+
+#calculator-window-content-input-button-small {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+    font-size: 12px;
 }
 
 #desktop-taskbar-calculator-app-button {
