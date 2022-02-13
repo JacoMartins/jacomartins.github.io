@@ -1,5 +1,5 @@
 // Main
-let build = 16;
+let build = 22;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
