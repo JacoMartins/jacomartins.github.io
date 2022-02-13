@@ -128,7 +128,12 @@
             </div>
 
             <div id="terminal-window-content" class="window-content">
-                <textarea class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()"></textarea>
+                
+                <div class="terminal-window-content-line">
+                    <span class="terminal-window-content-prompt" id="terminal-window-content-prompt" style="color: yellow;">$  </span>
+                    <input type="text" class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()">
+                </div>
+
             </div>
 
         </div>

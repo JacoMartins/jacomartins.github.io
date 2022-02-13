@@ -847,12 +847,46 @@ body {
 #terminal-window {
     height: 420px;
     width: 680px;
-    overflow: hidden;    
+    overflow: hidden; 
+}
+
+#terminal-window-content {
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    overflow: visible;
+}
+
+.terminal-window-content-line {
+    position: relative;
+    display: flex;
+    order: 1;
+}
+
+.terminal-window-content-text {
+    position: relative;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    color: lightgray;
+    font-family: Lucida Console;
+    user-select: text;
+}
+
+.terminal-window-content-prompt {
+    position: relative;
+    display: inline-block;
+    color: lightgray;
+    font-family: Lucida Console;
 }
 
 .terminalinput {
-    height: 100%;
+    position: relative;
+    display: inline;
     width: 100%;
+    flex-shrink: 1;
     color: lightgray;
     background-color: rgba(0, 0, 0, 0.50);
     font-family: Lucida Console;
@@ -861,6 +895,7 @@ body {
     border: 0px;
     outline: 0px;
     display: table;
+    padding: 0px;
     overflow: none;
 }
 

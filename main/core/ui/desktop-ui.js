@@ -1,8 +1,9 @@
 // Main
-let build = 22;
+let build = 16;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
+let username = 'adm';
 let userpw = 'pix';
 var date = new Date();
 
@@ -397,7 +398,6 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
-  terminal.value = 'Eclipse Cloud Operating System (ECOS) Codename Sunset, Version ' + version +', Build '+ build + ', '+ today + '\n\n> ';
   app.style.zIndex = z++;
   terminal.focus();
 
@@ -614,7 +614,12 @@ function dragElement(elmnt) {
 
 });
 
-function terminal(terminal = document.getElementById("terminal-window-terminal")){
+function terminal(terminal = document.getElementById("terminal-window-terminal"), appcontent = document.getElementById("terminal-window-content"), terminalprompt = document.getElementById("terminal-window-content-prompt")){
+  var createtext = document.createElement('div');
+  var createtextclass = document.createAttribute('class');
+  var createtextclassvalue = createtextclass.value = 'terminal-window-content-text';
+  
+
   if(event.keyCode == 13){
     if(terminal.value.includes("exit")){
       terminal.value = (terminal.value).toUpperCase() + '\n[EXIT] Exitting terminal...\n';
@@ -622,7 +627,7 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
     }
 
     if(terminal.value.includes("info")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] ' + version +', Build '+ build + ', '+ today + '\n';
+      // terminal.value = (terminal.value).toUpperCase() + '\n[INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] ' + version +', Build '+ build + ', '+ today + '\n';
     }
 
     if(terminal.value.includes("help")){
@@ -652,9 +657,17 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       terminal.value = (terminal.value).toUpperCase() + '\nRunning IGORCARECA.png...\n';
     }
 
+    if(terminal.value.includes("ioripeito")){
+      const desktop = document.getElementById('owner-user');
+      desktop.style.backgroundImage = "url('../../res/images/background/peitudoiori.jpeg')";
+      desktop.style.backgroundSize = 'contain';
+      terminal.value = (terminal.value).toUpperCase() + '\nRunning peitudoiori.jpg...\n';
+    }
+
     if(terminal.value.includes("-r")){
       const desktop = document.getElementById('owner-user');
       desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
+      desktop.style.backgroundSize = 'cover';
       terminal.value = (terminal.value).toUpperCase() + '\nRunning default.png...\n';
     }
 
@@ -712,8 +725,11 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       terminal.value = (terminal.value).toUpperCase() + '\nThe current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '.\n';
       document.getElementById('desktop-beta-info').innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp;
     }
-
-    terminal.value = (terminal.value) + '> ';
+    appcontent.appendChild(createtext);
+    createtext.createtextclassvalue;
+    createtext.setAttributeNode(createtextclass);
+    createtext.innerHTML = (terminalprompt.innerText) + (terminal.value);
+    terminal.value = '';
  }
 }
 
