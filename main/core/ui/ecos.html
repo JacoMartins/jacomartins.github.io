@@ -21,11 +21,12 @@
             <div class="progress"></div>
         </div>
     </div>
-    <div id="logon-screen" style="display: none;">
+    <div id="logon-screen" style="display: block;">
         <input class="system-input-text" type="password" placeholder="Password" id="logon-screen-input-text" onkeydown="loginauth()">
-        <a class="bootscreen-text-default" id="bootscreen-text-default-main">Type pix to unlock.</a>
+        <a class="bootscreen-text-default" id="logon-screen-username">Type pix to unlock.</a>
+        <div id="logon-blur"></div>
     </div>
-    <div id="owner-user" class="desktop" style="display: inline-block;">
+    <div id="owner-user" class="desktop" style="display: none;">
         
         <div class="desktop-taskbar">
             
@@ -129,9 +130,11 @@
 
             <div id="terminal-window-content" class="window-content">
                 
-                <div class="terminal-window-content-line">
-                    <span class="terminal-window-content-prompt" id="terminal-window-content-prompt" style="color: yellow;">$  </span>
-                    <input type="text" class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()">
+                <div id="terminal-window-container">
+                    <div class="terminal-window-content-line">
+                        <span class="terminal-window-content-prompt" id="terminal-window-content-prompt" style="color: yellow;">$  </span>
+                        <input type="text" class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()">
+                    </div>
                 </div>
 
             </div>

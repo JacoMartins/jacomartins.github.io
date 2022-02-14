@@ -1,8 +1,10 @@
 // Main
-let build = 16;
+let build = 22;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
+let systemname = 'Eclipse Cloud Operating System (ECOS)';
+let versionname = 'Beta';
 let username = 'adm';
 let userpw = 'pix';
 var date = new Date();
@@ -53,10 +55,21 @@ window.addEventListener('load', function(){
 })
 
 // Login
-function loginauth(user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text')){
+
+window.addEventListener('load', function loadusername(){
+  var logonusernametext = document.getElementById("logon-screen-username");
+  var logininput = document.getElementById('logon-screen-input-text');
+
+  logonusernametext.innerText = username;
+  logininput.focus();
+
+})
+
+function loginauth(user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text'), loginwindow = document.getElementById('logon-screen')){
   if(event.keyCode == 13){
     if(logininput.value == userpw){
-      user.style.display = 'table';
+      user.style.display = 'block';
+      loginwindow.style.display = 'none';
       logininput.setAttribute('placeholder', 'Password');
     } else {
       logininput.setAttribute('placeholder', 'Wrong password.');
@@ -144,6 +157,10 @@ function opendemoapp(app = document.getElementById('demo-window')){
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
+
+  if (window.innerHeight > window.innerWidth){
+    resizedemoapp();
+  }
 
   restoreheight = app.style.height;
   restorewidth = app.style.width;
@@ -361,7 +378,7 @@ var terminalrestoretop;
 var terminalrestoreleft;
 var terminalwindowopen = false;
 
-function openterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
+function openterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button'), appcontainer = document.getElementById('terminal-window-container')){
   var terminal = document.getElementById('terminal-window-terminal');
   
   var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
@@ -373,6 +390,7 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
   var miniappidname = miniappid.value = 'desktop-taskbar-terminal-app-button';
   var miniapponclickfunction = miniapponclick.value = 'minimizeterminalapp()';
+  var terminalprompt = document.getElementById('terminal-window-content-prompt');
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -399,6 +417,22 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   app.style.resize = "both";
   app.style.borderRadius = "4px";
   app.style.zIndex = z++;
+
+  if (window.innerHeight > window.innerWidth){
+    resizeterminalapp();
+  }
+
+  var returncommand = document.createElement('div');
+  var returncommandclass = document.createAttribute('class');
+  var returncommandclassvalue = returncommandclass.value = 'terminal-window-content-text';
+  setTimeout(() => {
+    appcontainer.appendChild(returncommand);
+    returncommand.returncommandclassvalue;
+    returncommand.setAttributeNode(returncommandclass);
+    returncommand.innerHTML = '<span style="color: yellow;"></span>';
+  }, 000);
+
+  terminalprompt.innerText = username + '$:';
   terminal.focus();
 
   terminalrestoreheight = app.style.height;
@@ -414,9 +448,13 @@ function terminalappfocus(app = document.getElementById('terminal-window')){
 }
 
 function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
+  var textelements = document.getElementsByClassName('terminal-window-content-text');
+  var appcontainer = document.getElementById('terminal-window-container');
+  
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
+    while(textelements.length > 0) appcontainer.removeChild(textelements[0]);
     app.style.display = "none";
     miniapp.parentNode.removeChild(miniapp);
     terminalwindowopen = false;
@@ -614,100 +652,296 @@ function dragElement(elmnt) {
 
 });
 
-function terminal(terminal = document.getElementById("terminal-window-terminal"), appcontent = document.getElementById("terminal-window-content"), terminalprompt = document.getElementById("terminal-window-content-prompt")){
+var lastcommand;
+
+function terminal(terminal = document.getElementById("terminal-window-terminal"), appcontainer = document.getElementById("terminal-window-container"), terminalprompt = document.getElementById("terminal-window-content-prompt")){
   var createtext = document.createElement('div');
   var createtextclass = document.createAttribute('class');
   var createtextclassvalue = createtextclass.value = 'terminal-window-content-text';
+  var textelements = document.getElementsByClassName('terminal-window-content-text');
+
+  var returncommand = document.createElement('div');
+  var returncommandclass = document.createAttribute('class');
+  var returncommandclassvalue = returncommandclass.value = 'terminal-window-content-text';
+
   
 
   if(event.keyCode == 13){
+
+    lastcommand = terminal.value;
+
     if(terminal.value.includes("exit")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[EXIT] Exitting terminal...\n';
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nExitting terminal...\n';
+      }, 000);
        closeterminalapp()
     }
 
     if(terminal.value.includes("info")){
-      // terminal.value = (terminal.value).toUpperCase() + '\n[INFO] Eclipse Cloud Operating System (ECOS), Codename Sunset\n[VERSION] ' + version +', Build '+ build + ', '+ today + '\n';
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\n- System Info: \n[System Name] ' + systemname + '\n[Version Name] ' + versionname + '\n[Build] '+ build + '\n[Compilation] ' + today;
+      }, 000);
     }
 
     if(terminal.value.includes("help")){
-      terminal.value = (terminal.value).toUpperCase() + '\n[HELP] Available commands: INFO, CLEAR, EXIT, ISWORKING, COMP.UPDATE. Please type all commands in lowercase.\n';
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\n- Available commands: \ninfo: This comand shows the main system information\n\nclear: Wipes terminal text\n\nexit: Closes terminal application\n\nterminal: Shows terminal status. Sintax: terminal [command]\n\nchange: Customizes the selected element in the operating system. Syntax: change [-w, -uname].\n\ncomp update: Updates the operating system current compilation data\n\nPlease type all commands in lowercase.\n';
+      }, 000);
     }
 
     if(terminal.value.includes("andre")){
-      terminal.value = (terminal.value).toUpperCase() + '\nSer matemáticamente perfeito.\n';
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nMelhor prof\n';
+      }, 000);
     }
 
     if(terminal.value.includes("clear")){
       terminal.value = '';
+      while(textelements.length > -1) appcontainer.removeChild(textelements[0]);
     }
 
-    if(terminal.value.includes("isworking")){
-      terminal.value = (terminal.value).toUpperCase() + '\nyes\n';
+    if(terminal.value.includes("terminal")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: red;">Wrong Sintax</span>, please use "terminal [command]".';
+      }, 000);
     }
 
-    if(terminal.value.includes("uniaoss")){
-      terminal.value = (terminal.value).toUpperCase() + '\na bond that will never be broken.\n';
+    if(terminal.value.includes("terminal") && terminal.value.includes("isworking")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: lightgreen;">Yes</span>.';
+      }, 000);
     }
 
-    if(terminal.value.includes("igorcareca")){
+    if(terminal.value.includes("abnt")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML =  '<span style="color: lightblue; font-size: 128px; font-family: Inter Med;">' + lastcommand.slice(4) + '</span>';
+      }, 000);
+    }
+
+    if(terminal.value.includes("write")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText =  lastcommand.slice(5);
+      }, 000);
+    }
+
+    if(terminal.value.includes("gutem")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML =  'pelo q vc sabe uma ova! Como vc tem coragem de queimar o cara pelos boatos dos outros??? pelas msg q eu li aqui, vc ta descontando nele a dor q vc sofreu antes! os seus argumentos e msg são tudo coisa de criança, é ridiculo d++++, eu conheço esse mlk a mt tempo e ele é uma pessoa incrivel, tu conhece a um ano, se é que conhece, e acha q pode julgar e dar a sua opinião baseado em FOFOCA. você não entende q isso é um assunto serio, q pode acabar com a vida dele na escola, uma difamação q tem MTTTTR mentira no meio e vc espalha esses boatos pelo simples fato de vc se sentir confortável fazendo isso so pq ja aconteceu algo parecido com vc? acha q isso te da o direito de se intrometer no problema de outras pessoas so pra piorar tudo. isso não é coisa que se faça, se vc ta esculhambando ele por puro odio e não está interessado em entender a verdade fique quieto e não se meta, o guto não precisa das suas opiniões tóxicas mexendo no psicólogico dele, aliás, ngm precisa da sua opinião aqui, até pq vc não está interessado em ajudar a resolver isso, vc so quer acabar com a reputação de um mlk q vc nem conhece direito e eu não vou deixar vc nem ngm fazer isso, e se os amigos dele forem amigos de vdd não vão deixar tmb. Reveja seus atos e pare de falar nesse caso que não te pertence.';
+      }, 000);
+    }
+
+    if(terminal.value.includes("change -w")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
-      desktop.style.backgroundSize = 'contain';
-      terminal.value = (terminal.value).toUpperCase() + '\nRunning IGORCARECA.png...\n';
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to' + lastcommand.slice(9) + '...';
+        desktop.style.backgroundImage = "url(" + lastcommand.slice(9) + ")";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
     }
 
-    if(terminal.value.includes("ioripeito")){
+    if(terminal.value.includes("change -uname")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting username to ' + lastcommand.slice(13) + '...';
+        username = lastcommand.slice(13);
+      }, 000);
+    }
+
+    if(terminal.value.includes("change -userpw")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting your password to ' + lastcommand.slice(14) + '...';
+        userpw = lastcommand.slice(14);
+      }, 000);
+    }
+
+    if(terminal.value.includes("system lock")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/peitudoiori.jpeg')";
-      desktop.style.backgroundSize = 'contain';
-      terminal.value = (terminal.value).toUpperCase() + '\nRunning peitudoiori.jpg...\n';
+      const loginwindow = document.getElementById('logon-screen');
+      const logininput = document.getElementById('logon-screen-input-text');
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Done';
+        desktop.style.display = 'none';
+        loginwindow.style.display = 'block';
+        logininput.focus();
+      }, 000);
     }
 
-    if(terminal.value.includes("-r")){
+    if(terminal.value.includes("system off")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
-      desktop.style.backgroundSize = 'cover';
-      terminal.value = (terminal.value).toUpperCase() + '\nRunning default.png...\n';
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Done';
+      }, 000);
     }
-
-    if(terminal.value.includes("wpp1")){
+    
+    if(terminal.value.includes("-w igorcareca")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/wpp1.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp1.png...\n';
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/igor careca.png...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
+        desktop.style.backgroundSize = 'contain';
+      }, 000);
     }
 
-    if(terminal.value.includes("wpp2")){
+    if(terminal.value.includes("-w ioripeito")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/wpp2.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp2.png...\n';
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/peitudoiori.jpeg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/peitudoiori.jpeg')";
+        desktop.style.backgroundSize = 'contain';
+      }, 000);
     }
 
-    if(terminal.value.includes("wpp3")){
+    if(terminal.value.includes("-w default")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/wpp3.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp3.png...\n';
+
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/default.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
     }
 
-    if(terminal.value.includes("wpp4")){
+    if(terminal.value.includes("-w default1")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/wpp4.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp4.png...\n';
+
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp1.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/wpp1.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
     }
 
-    if(terminal.value.includes("wpp5")){
+    if(terminal.value.includes("-w default2")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/wpp5.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp5.png...\n';
+
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp2.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/wpp2.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
     }
 
-    if(terminal.value.includes("wpp6")){
+    if(terminal.value.includes("-w default3")){
       const desktop = document.getElementById('owner-user');
-      desktop.style.backgroundImage = "url('../../res/images/background/wpp6.jpg')";
-      terminal.value = (terminal.value).toUpperCase() + '\nSet Wpp6.png...\n';
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp3.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/wpp3.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
     }
 
-    if(terminal.value.includes("comp.update")){
+    if(terminal.value.includes("-w default4")){
+      const desktop = document.getElementById('owner-user');
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp4.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/wpp4.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
+    }
+
+    if(terminal.value.includes("-w default5")){
+      const desktop = document.getElementById('owner-user');
+
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp5.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/wpp5.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
+    }
+
+    if(terminal.value.includes("-w default6")){
+      const desktop = document.getElementById('owner-user');
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp6.jpg...';
+        desktop.style.backgroundColor = 'black';
+        desktop.style.backgroundImage = "url('../../res/images/background/wpp6.jpg')";
+        desktop.style.backgroundSize = 'cover';
+      }, 000);
+    }
+
+    if(terminal.value.includes("comp update")){
       var date = new Date();
       var compyear = date.getFullYear();
       var compmonths = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12'];
@@ -722,16 +956,28 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       var comp = compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes;
       build = build + 1;
 
-      terminal.value = (terminal.value).toUpperCase() + '\nThe current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '.\n';
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: lightgreen;">The current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '</span>';
+      }, 000);
       document.getElementById('desktop-beta-info').innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp;
     }
-    appcontent.appendChild(createtext);
+
+    appcontainer.appendChild(createtext);
     createtext.createtextclassvalue;
     createtext.setAttributeNode(createtextclass);
-    createtext.innerHTML = (terminalprompt.innerText) + (terminal.value);
+    createtext.innerHTML = '<span style="color: yellow;">' + (terminalprompt.innerText) + '</span> ' + (terminal.value);
     terminal.value = '';
  }
+
+ if(event.keyCode == 38) {
+  terminal.value = lastcommand;
+  }
+
 }
+
 
 // calculator APP
 var calculatorrestoreheight;
@@ -778,6 +1024,10 @@ function opencalculatorapp(app = document.getElementById('calculator-window'), m
   app.style.resize = "both";
   app.style.borderRadius = "4px";
   app.style.zIndex = z++;
+  
+  if (window.innerHeight > window.innerWidth){
+    resizecalculatorapp();
+  }
 
   calculatorrestoreheight = app.style.height;
   calculatorrestorewidth = app.style.width;
