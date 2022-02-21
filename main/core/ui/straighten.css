@@ -973,8 +973,9 @@ body {
 
 #settings-window-content {
     height: calc(100% - 37px);
-    width: 100%;
+    width: calc(100% - 192px);
     top: 37px;
+    right: 0px;
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
     border-bottom-left-radius: 4px;
