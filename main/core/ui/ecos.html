@@ -28,7 +28,7 @@
     </div>
     <div id="owner-user" class="desktop" style="display: none;">
         
-        <div class="desktop-taskbar">
+        <div id="desktop-taskbar" class="desktop-taskbar">
             
             <button class="desktop-taskbar-button" id="desktop-taskbar-button-menu" onclick="menutrigger()"></button>
             
@@ -110,7 +110,8 @@
                 <input class="system-input-text" type="text" id="demo-window-content-input-text1">
                 <input class="system-input-button" type="button" id="demo-window-content-input-button1" value="Button">
                 <label class="system-input-checkbox-label" for="demo-window-content-input-checkbox1">CheckBox
-                <input class="system-input-checkbox" type="checkbox" name="demo-window-content-input-checkbox1" id="demo-window-content-input-checkbox1" checked="checked">
+                    <input class="system-input-checkbox" type="checkbox" name="demo-window-content-input-checkbox1" id="demo-window-content-input-checkbox1" checked="checked">
+                    <span class="system-input-checkbox-checkmark"></span>
                 </label>
             </div>
 
@@ -185,6 +186,25 @@
                     <input class="system-input-button-transparent" type="button" id="calculator-window-content-input-button" value="=" onclick="calculatorequal()">
                     
                 </div>
+            </div>
+
+        </div>
+
+        <div id="beta-window" class="window" style="display: none;" onmousedown="betaappfocus()"> 
+
+            <div id="beta-window-header" class="window-header">
+                
+                <button id="beta-window-close-button" class="window-header-close-button" onclick="closebetaapp()"></button>
+                <button id="beta-window-resize-button" class="window-header-resize-button" onclick="resizebetaapp()"></button>
+                <button id="beta-window-minimize-button" class="window-header-minimize-button" onclick="minimizebetaapp()"></button>
+                
+                <a class="window-header-title" id="beta-window-header-title">Welcome, user!</a>
+
+            </div>
+
+            <div id="beta-window-content" class="window-content">
+                <a class="text-default" id="beta-window-content-p">Paragraph</a>
+                <input class="system-input-button" type="button" id="beta-window-content-input-button1" onclick="closebetaapp()" value="Button">
             </div>
 
         </div>

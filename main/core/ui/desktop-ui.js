@@ -1,15 +1,22 @@
 // Main
-let build = 22;
+let build = 28;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
 let systemname = 'Eclipse Cloud Operating System (ECOS)';
 let versionname = 'Beta';
-let username = 'adm';
-let userpw = 'pix';
 var date = new Date();
 
+if (localStorage.getItem('username') == undefined){
+  localStorage.setItem('username', 'System');
+}
 
+if (localStorage.getItem('userpw') == undefined) {
+  localStorage.setItem('userpw', '')
+}
+
+var username = localStorage.getItem('username');
+var userpw = localStorage.getItem('userpw');
 
 setInterval(function time() {
   var date = new Date();
@@ -54,23 +61,69 @@ window.addEventListener('load', function(){
   bootscreen.className += '.done';
 })
 
+window.addEventListener('keyup', event => {
+  if(event.keyCode == 84 && event.ctrlKey && event.altKey){
+    openterminalapp();
+  }
+
+  if(event.keyCode == 77 && event.ctrlKey){
+    menutrigger();
+  }
+})
+
 // Login
 
 window.addEventListener('load', function loadusername(){
   var logonusernametext = document.getElementById("logon-screen-username");
   var logininput = document.getElementById('logon-screen-input-text');
+  var user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text'), loginwindow = document.getElementById('logon-screen');
 
   logonusernametext.innerText = username;
   logininput.focus();
+
+  if(userpw = ''){
+    user.style.display = 'block';
+    loginwindow.style.display = 'none';
+    logininput.setAttribute('placeholder', 'Password');
+  } else {
+    loginwindow.style.display = 'block';
+    user.style.display = 'none';
+  }
 
 })
 
 function loginauth(user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text'), loginwindow = document.getElementById('logon-screen')){
   if(event.keyCode == 13){
-    if(logininput.value == userpw){
+    if(logininput.value == localStorage.getItem('userpw')){
       user.style.display = 'block';
       loginwindow.style.display = 'none';
       logininput.setAttribute('placeholder', 'Password');
+
+      //var msgid = 0;
+
+      //var createwindow = document.createElement('div');
+      //var addwindowidatr = document.createAttribute('id');
+      //var addwindowclassatr = document.createAttribute('class');
+      //var idname = addwindowidatr.value = 'window' + (msgid + 1);
+      //var classname = addwindowclassatr.value = 'window';
+      
+      //user.appendChild(createwindow);
+      //createwindow.classname;
+      //createwindow.setAttributeNode(addwindowclassatr);
+      //createwindow.idname;
+      //createwindow.setAttributeNode(addwindowidatr);
+      
+      //var windowid = document.getElementById('window' + (msgid + 1));
+      //windowid.innerHTML = '<div id="' + 'window' + (msgid + 1) + '-window-header" class="window-header"><button id="' + 'window' + (msgid + 1) + '-window-close-button" class="window-header-close-button"></button><button id="' + 'window' + (msgid + 1) + '-window-resize-button" class="window-header-resize-button"></button><button id="' + 'window' + (msgid + 1) + '-window-minimize-button" class="window-header-minimize-button"></button><a class="window-header-title" id="' + 'window' + (msgid + 1) + '-window-header-title">window test</a></div><div id="' + 'window' + (msgid + 1) + '-window-content" class="window-content"><h1 class="text-header1" id="' + 'window' + (msgid + 1) + '-window-content-header1">H1</h1><h2 class="text-header2" id="' + 'window' + (msgid + 1) + '-window-content-header2">H2</h2><a class="text-default" id="' + 'window' + (msgid + 1) + '-window-content-p">Paragraph</a><input class="system-input-text" type="text" id="' + 'window' + (msgid + 1) + '-window-content-input-text1"><input class="system-input-button" type="button" id="' + 'window' + (msgid + 1) + '-window-content-input-button1" value="Button"><label class="system-input-checkbox-label" for="' + 'window' + (msgid + 1) + '-window-content-input-checkbox1">CheckBox<input class="system-input-checkbox" type="checkbox" name="' + 'window' + (msgid + 1) + '-window-content-input-checkbox1" id="' + 'window' + (msgid + 1) + '-window-content-input-checkbox1" checked="checked"><span class="system-input-checkbox-checkmark"></span></label></div>';
+      //windowid.createAttribute('onclick').value = '';
+      //windowid.setAttributeNode();
+
+
+      // ' + 'window' + (msgid + 1) + '
+
+      openbetaapp();
+      document.getElementById('beta-window-header-title').innerText = 'Welcome, ' + username;
+
     } else {
       logininput.setAttribute('placeholder', 'Wrong password.');
     }
@@ -141,7 +194,11 @@ function opendemoapp(app = document.getElementById('demo-window')){
   
   app.style.display = "block";
   app.style.animation = 'openwindow 0.25s';
-  app.style.zIndex = z++;
+  z++;
+  app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
   miniapp.style.display = "inline-block";
   menumain = document.getElementById('desktop-menu-main')
   menusettings = document.getElementById('desktop-menu-settings')
@@ -171,6 +228,9 @@ function opendemoapp(app = document.getElementById('demo-window')){
 function demoappfocus(app = document.getElementById('demo-window')){
   z++;
   app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 }
 
 function closedemoapp(app = document.getElementById('demo-window'), miniapp = document.getElementById('desktop-taskbar-demo-app-button')){
@@ -283,11 +343,10 @@ function snapmindemoapp(app = document.getElementById("demo-window")){
 }
 
 function snapdemoapp(app = document.getElementById("demo-window")){
-  var apptop = parseInt(app.style.top, 10);
-  var appleft = parseInt(app.style.left, 10);
-  var appwidth = parseInt(app.style.width, 10);
+  var clienttop = window.event.clientY;
+  var clientleft = window.event.clientX;
 
-  if (apptop < 0) {
+  if (clienttop <= 0) {
     if (app.style.width === 'calc(100% - 40px)') {
       app.style.width = restorewidth;
       app.style.height = restoreheight;
@@ -307,12 +366,12 @@ function snapdemoapp(app = document.getElementById("demo-window")){
     }
   }
 
-  if (appleft < 0) {
+  if (clientleft <= 0) {
     sidedemoapp()
     // document.getElementById("demo-window-header-title").innerHTML = 'Detected';
   }
 
-  if(appleft > (window.innerWidth - appwidth)){
+  if(clientleft >= window.innerWidth){
     sidedemoapp()
   }
 }
@@ -416,7 +475,11 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
-  app.style.zIndex = z++;
+  z++;
+  app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 
   if (window.innerHeight > window.innerWidth){
     resizeterminalapp();
@@ -445,6 +508,9 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
 function terminalappfocus(app = document.getElementById('terminal-window')){
   z++;
   app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 }
 
 function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
@@ -479,10 +545,6 @@ function resizeterminalapp(app = document.getElementById("terminal-window")){
     terminalrestorewidth = app.style.width; 
     terminalrestoretop = app.style.top;
     terminalrestoreleft = app.style.left;
-    app.style.transition = "0.15s";
-    setTimeout(function() {
-			app.style.transition = "none";
-		}, 150)
 		app.style.width = '100%';
 		app.style.height = 'calc(100% - 40px)';
 		app.style.top = "40px";
@@ -490,6 +552,10 @@ function resizeterminalapp(app = document.getElementById("terminal-window")){
     app.style.resize = "none";
     app.style.borderRadius = "0px";
     app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			app.style.transition = "none";
+		}, 150)
 	}
 }
 
@@ -560,11 +626,10 @@ function snapminterminalapp(app = document.getElementById("terminal-window")){
 }
 
 function snapterminalapp(app = document.getElementById("terminal-window")){
-  var apptop = parseInt(app.style.top, 10);
-  var appleft = parseInt(app.style.left, 10);
-  var appwidth = parseInt(app.style.width, 10);
+  var clienttop = window.event.clientY;
+  var clientleft = window.event.clientX;
 
-  if (apptop < 0) {
+  if (clienttop <= 0) {
     if (app.style.width === 'calc(100% - 40px)') {
       app.style.width = terminalrestorewidth;
       app.style.height = terminalrestoreheight;
@@ -588,12 +653,12 @@ function snapterminalapp(app = document.getElementById("terminal-window")){
     }
   }
 
-  if (appleft < 0) {
+  if (clientleft <= 0) {
     sideterminalapp()
     // document.getElementById("terminal-window-header-title").innerHTML = 'Detected';
   }
 
-  if(appleft > (window.innerWidth - appwidth)){
+  if(clientleft >= window.innerWidth){
     sideterminalapp()
   }
 }
@@ -707,6 +772,15 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       }, 000);
     }
 
+    if(terminal.value.includes("antonio")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nAntonio deu certo\n';
+      }, 000);
+    }
+
     if(terminal.value.includes("clear")){
       terminal.value = '';
       while(textelements.length > -1) appcontainer.removeChild(textelements[0]);
@@ -770,13 +844,28 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
       }, 000);
     }
 
+    if(terminal.value.includes("change -lsw")){
+      const logonbg = document.getElementById('logon-screen');
+      
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = 'Setting wallpaper to' + lastcommand.slice(11) + '...';
+        logonbg.style.backgroundImage = "url(" + lastcommand.slice(11) + ")";
+        logonbg.style.backgroundSize = 'cover';
+      }, 000);
+    }
+
     if(terminal.value.includes("change -uname")){
       setTimeout(() => {
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerHTML = 'Setting username to ' + lastcommand.slice(13) + '...';
-        username = lastcommand.slice(13);
+        localStorage.setItem('username', lastcommand.slice(13));
+        document.getElementById('logon-screen-username').innerHTML = lastcommand.slice(13);
+        document.getElementById('terminal-window-content-prompt').innerText = lastcommand.slice(13) + '$:';
       }, 000);
     }
 
@@ -785,8 +874,9 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = 'Setting your password to ' + lastcommand.slice(14) + '...';
-        userpw = lastcommand.slice(14);
+        returncommand.innerHTML = 'Setting your password to ' + lastcommand.slice(15) + '...';
+        localStorage.setItem('userpw', lastcommand.slice(15));
+        userpwinput = lastcommand.slice(15);
       }, 000);
     }
 
@@ -1023,7 +1113,11 @@ function opencalculatorapp(app = document.getElementById('calculator-window'), m
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
-  app.style.zIndex = z++;
+  z++;
+  app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
   
   if (window.innerHeight > window.innerWidth){
     resizecalculatorapp();
@@ -1039,6 +1133,9 @@ function opencalculatorapp(app = document.getElementById('calculator-window'), m
 function calculatorappfocus(app = document.getElementById('calculator-window')){
   z++;
   app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 }
 
 function closecalculatorapp(app = document.getElementById('calculator-window'), miniapp = document.getElementById('desktop-taskbar-calculator-app-button')){
@@ -1150,11 +1247,10 @@ function snapmincalculatorapp(app = document.getElementById("calculator-window")
 }
 
 function snapcalculatorapp(app = document.getElementById("calculator-window")){
-  var apptop = parseInt(app.style.top, 10);
-  var appleft = parseInt(app.style.left, 10);
-  var appwidth = parseInt(app.style.width, 10);
+  var clienttop = window.event.clientY;
+  var clientleft = window.event.clientX;
 
-  if (apptop < 0) {
+  if (clienttop <= 0) {
     if (app.style.width === 'calc(100% - 40px)') {
       app.style.width = calculatorrestorewidth;
       app.style.height = calculatorrestoreheight;
@@ -1178,12 +1274,12 @@ function snapcalculatorapp(app = document.getElementById("calculator-window")){
     }
   }
 
-  if (appleft < 0) {
+  if (clientleft <= 0) {
     sidecalculatorapp()
     // document.getElementById("calculator-window-header-title").innerHTML = 'Detected';
   }
 
-  if(appleft > (window.innerWidth - appwidth)){
+  if(clientleft >= window.innerWidth){
     sidecalculatorapp()
   }
 }
@@ -1286,3 +1382,283 @@ function dragElement(elmnt) {
 
 });
 
+// beta APP
+var betarestoreheight;
+var betarestorewidth;
+var betarestoretop;
+var betarestoreleft;
+let betawindowopen = false;
+
+function openbetaapp(app = document.getElementById('beta-window')){
+  betawindowopen = true;
+  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
+  
+  var miniapp = document.createElement('button');
+  var miniappclass = document.createAttribute('class');
+  var miniappid = document.createAttribute('id');
+  var miniapponclick = document.createAttribute('onclick');
+  var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
+  var miniappidname = miniappid.value = 'desktop-taskbar-beta-app-button';
+  var miniapponclickfunction = miniapponclick.value = 'minimizebetaapp()';
+
+  var betaparagraph1 = document.getElementById('beta-window-content-p');
+  var betasubmitbutton = document.getElementById('beta-window-content-input-button1');
+  
+  taskbarminimizedapps.appendChild(miniapp);
+  miniapp.miniappclassname;
+  miniapp.setAttributeNode(miniappclass);
+  miniapp.miniappidname;
+  miniapp.setAttributeNode(miniappid);
+  miniapp.miniapponclickfunction;
+  miniapp.setAttributeNode(miniapponclick);
+  
+  app.style.display = "block";
+  app.style.animation = 'openwindow 0.25s';
+  z++;
+  app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
+  miniapp.style.display = "inline-block";
+  menumain = document.getElementById('desktop-menu-main')
+  menusettings = document.getElementById('desktop-menu-settings')
+
+  if(menumain.style.display = "block"){
+      menumain.style.display = "none";
+      menusettings.style.display = "none";
+  }
+
+  app.style.width = '500px';
+	app.style.height = '340px';
+  app.style.top = 'calc(50% - ' + (parseInt(app.style.height, 10) * 0.5) + 'px)';
+	app.style.left = 'calc(50% - ' + (parseInt(app.style.width, 10) * 0.5) + 'px)';
+  app.style.resize = "none";
+  app.style.borderRadius = "4px";
+  document.getElementById('beta-window-header').removeChild(document.getElementById('beta-window-resize-button'));
+
+  document.getElementById('beta-window-minimize-button').style.left = '31px';
+  betaparagraph1.style.top ='25px';
+  betaparagraph1.style.left ='25px';
+  betaparagraph1.style.height = 'calc(100% - 80px)';
+  betaparagraph1.style.width = 'calc(100% - 50px)';
+
+  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome to the ECOS project! In this build we made the logon system functional, even if it is still not safe enough. Our next step is the settings application, where you will can customize the entire system. </span><br></br><br>• Corrections: </br><br>- Fixed terminal;</br><br>- Fixed login system (can only be set up in terminal).</br>';
+
+  betasubmitbutton.style.bottom = '20px';
+  betasubmitbutton.style.right = '20px';
+  betasubmitbutton.value = 'OK';
+
+  if (window.innerHeight > window.innerWidth){
+    resizebetaapp();
+  }
+
+  betarestoreheight = app.style.height;
+  betarestorewidth = app.style.width;
+  betarestoretop = app.style.top;
+  betarestoreleft = app.style.left;
+}
+
+function betaappfocus(app = document.getElementById('beta-window')){
+  z++;
+  app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
+}
+
+function closebetaapp(app = document.getElementById('beta-window'), miniapp = document.getElementById('desktop-taskbar-beta-app-button')){
+  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
+  
+  app.style.animation = 'closewindow 0.25s';
+  app.style.animationDuration = '0.25s';
+  setTimeout(() => {
+    app.style.display = "none";
+    miniapp.parentNode.removeChild(miniapp);
+    betawindowopen = false;
+  }, 250);
+}
+
+function resizebetaapp(app = document.getElementById("beta-window")){
+  if (app.style.width === '100%') {
+		app.style.width = betarestorewidth;
+		app.style.height = betarestoreheight;
+    app.style.left = betarestoreleft;
+    app.style.top = betarestoretop;
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+    app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+	} else {
+    betarestoreheight = app.style.height;
+    betarestorewidth = app.style.width; 
+    betarestoretop = app.style.top;
+    betarestoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 40px)';
+		app.style.top = "40px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+	}
+}
+
+function minimizebetaapp(app = document.getElementById("beta-window"), miniapp = document.getElementById('desktop-taskbar-beta-app-button')) {
+  if (betawindowopen = true) {
+    if(app.style.display === 'block'){
+      app.style.animation = 'minimizewindow 0.25s';
+      app.style.animationDuration = '0.25s';
+      setTimeout(() => {
+        app.style.display = 'none';
+      }, 250);
+    }
+    else {
+      app.style.display = 'block';
+      app.style.animation = 'callwindow 0.25s';
+    }
+  }
+  else {
+    openbetaapp()
+  }
+}
+
+function sidebetaapp(app = document.getElementById("beta-window")){
+  var appleft = parseInt(app.style.left, 10);
+  var appwidth = parseInt(app.style.width, 10);
+  
+  if (appleft < 0) {
+    app.style.left = '0px';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+  }
+
+  if (appleft > (window.innerWidth - appwidth)) {
+    app.style.left = '50%';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+  }
+}
+
+function snapminbetaapp(app = document.getElementById("beta-window")){
+  var appwidth = parseInt(betarestorewidth, 10);
+  var posleft = window.event.clientX - (appwidth * 0.5);
+  var posleftcss = posleft + 'px';
+  var postop = window.event.clientY + 'px';
+
+  if (app.style.height === 'calc(100% - 40px)') {
+		app.style.width = betarestorewidth;
+		app.style.height = betarestoreheight;
+    app.style.left = posleftcss;
+    app.style.top = '40px';
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+	}
+}
+
+function snapbetaapp(app = document.getElementById("beta-window")){
+  var clienttop = window.event.clientY;
+  var clientleft = window.event.clientX;
+
+  if (clienttop <= 0) {
+    if (app.style.width === 'calc(100% - 40px)') {
+      app.style.width = betarestorewidth;
+      app.style.height = betarestoreheight;
+      app.style.resize = "both";
+      app.style.borderRadius = "4px";
+    } else {
+      app.style.width = '100%';
+      app.style.height = 'calc(100% - 40px)';
+      app.style.top = "40px";
+      app.style.left = "0px";
+      app.style.resize = "none";
+      app.style.borderRadius = "0px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+    }
+  }
+
+  if (clientleft <= 0) {
+    sidebetaapp()
+    // document.getElementById("beta-window-header-title").innerHTML = 'Detected';
+  }
+
+  if(clientleft >= window.innerWidth){
+    sidebetaapp()
+  }
+}
+
+function savebetarestorepos(app = document.getElementById('beta-window')){
+  betarestoreheight = app.style.height;
+  betarestorewidth = app.style.width; 
+  betarestoretop = app.style.top;
+  betarestoreleft = app.style.left;
+}
+
+window.addEventListener("load", function(){
+dragElement(document.getElementById("beta-window"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("beta-window-header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById("beta-window-header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    snapminbetaapp();
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+    snapbetaapp();
+  }
+}
+
+});
