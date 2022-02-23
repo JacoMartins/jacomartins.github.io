@@ -283,6 +283,7 @@ body {
     backdrop-filter: blur(30px);
     -webkit-backdrop-filter: blur(30px);
     z-index: 998;
+    overflow: auto;
 }
 
 @keyframes openmenu {
@@ -333,6 +334,7 @@ body {
     height: 116px;
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 3px;
+    overflow: auto;
 }
 
 .desktop-menu-category-info {
@@ -841,6 +843,27 @@ body {
     padding: 6px;
     border-radius: 2px;
     display: inline-block;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.16);
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.16);  
 }
 
 /* Demo Application */
@@ -1390,8 +1413,10 @@ body {
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     overflow: scroll;
+    justify-content: space-evenly;
 }
 
 #desktop-menu-categories-essential {
@@ -1423,8 +1448,8 @@ body {
 .desktop-menu-button-first {
     position: relative;
     margin: 1px;
-    height: calc(calc(100% / 3) - 2px);
-    aspect-ratio: 1 / 1;
+    height: 100px;
+    width: 100px;
     background-color: rgba(255, 255, 255, 0);
     background-image: url(../../res/images/icons/imageres/app.png);
     background-size: 48px 48px;
@@ -1446,8 +1471,8 @@ body {
 .desktop-menu-button {
     position: relative;
     margin: 1px;
-    height: calc(calc(100% / 3) - 2px);
-    width: calc(calc(100% / 3) - 2px);
+    height: 100px;
+    width: 100px;
     background-color: rgba(255, 255, 255, 0);
     background-image: url(../../res/images/icons/imageres/app.png);
     background-size: 48px 48px;
@@ -1468,8 +1493,8 @@ body {
 .desktop-menu-button-last {
     position: relative;
     margin: 1px;
-    height: calc(calc(100% / 3) - 2px);
-    width: calc(calc(100% / 3) - 2px);
+    height: 100px;
+    width: 100px;
     background-color: rgba(255, 255, 255, 0);
     background-image: url(../../res/images/icons/imageres/app.png);
     background-size: 48px 48px;
@@ -1929,7 +1954,28 @@ body {
     content: "";
     position: absolute;
     display: none;
-  }
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 6px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.16);
+}
+   
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 3px;
+}
+  
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.16);  
+}
 
 /* Demo Application */
 
