@@ -54,8 +54,8 @@
 
                 <div class="desktop-menu-category-menu">
                     <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="opencalculatorapp()">Calculator</button>
-                    <button class="desktop-menu-button-first" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
-                    <button class="desktop-menu-button-last" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
                 </div>
             
             </div>
@@ -86,7 +86,7 @@
             </div>
 
             <div id="settings-window-sidebar">
-                
+                <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Customization">
             </div>
 
             <div id="settings-window-content">
@@ -133,9 +133,9 @@
 
             </div>
 
-            <div id="terminal-window-content" class="window-content">
+            <div id="terminal-window-content" class="window-content" onclick="promptfocus()">
                 
-                <div id="terminal-window-container">
+                <div id="terminal-window-container" onclick="promptfocus()">
                     <div class="terminal-window-content-line">
                         <span class="terminal-window-content-prompt" id="terminal-window-content-prompt" style="color: yellow;">$  </span>
                         <input type="text" class="terminalinput" spellcheck="false" id="terminal-window-terminal" onkeyup="terminal()">

@@ -19,18 +19,33 @@ var username = localStorage.getItem('username');
 var userpw = localStorage.getItem('userpw');
 
 setInterval(function time() {
-  var date = new Date();
-  var DateMonths = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
-  var DateDays = 0;
-  var DateHours = 0;
-  var DateMinutes = 0;
-  var DateSeconds = 0;
-  if (date.getDate() < 10) {DateDays = '0' + date.getDate();} else {DateDays = date.getDate();}
-  if (date.getHours() < 10) {DateHours = '0' + date.getHours();} else {DateHours = date.getHours();}
-  if (date.getMinutes() < 10) {DateMinutes = '0' + date.getMinutes();} else {DateMinutes = date.getMinutes();}
-  if (date.getSeconds() < 10) {DateSeconds = '0' + date.getSeconds();} else {DateSeconds = date.getSeconds();}
-
-  document.getElementById('desktop-taskbar-clock').innerHTML = '<span style="opacity: 0.6; margin-right: 4px;">' + DateHours + ':' + DateMinutes + '</span>' + '  ' + DateMonths[date.getMonth()] + ', ' + DateDays + ', ' + date.getFullYear();
+  if(window.innerHeight > window.innerWidth){
+    var date = new Date();
+    var DateMonths = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    var DateDays = 0;
+    var DateHours = 0;
+    var DateMinutes = 0;
+    var DateSeconds = 0;
+    if (date.getDate() < 10) {DateDays = '0' + date.getDate();} else {DateDays = date.getDate();}
+    if (date.getHours() < 10) {DateHours = '0' + date.getHours();} else {DateHours = date.getHours();}
+    if (date.getMinutes() < 10) {DateMinutes = '0' + date.getMinutes();} else {DateMinutes = date.getMinutes();}
+    if (date.getSeconds() < 10) {DateSeconds = '0' + date.getSeconds();} else {DateSeconds = date.getSeconds();}
+  
+    document.getElementById('desktop-taskbar-clock').innerHTML = '<span style="opacity: 0.6; margin-right: 4px;">' + DateHours + ':' + DateMinutes + '</span>' + '  ' + DateMonths[date.getMonth()].substr(0, 3) + ', ' + DateDays + ', ' + date.getFullYear().toString().substr(2,4);  
+  } else {
+    var date = new Date();
+    var DateMonths = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december'];
+    var DateDays = 0;
+    var DateHours = 0;
+    var DateMinutes = 0;
+    var DateSeconds = 0;
+    if (date.getDate() < 10) {DateDays = '0' + date.getDate();} else {DateDays = date.getDate();}
+    if (date.getHours() < 10) {DateHours = '0' + date.getHours();} else {DateHours = date.getHours();}
+    if (date.getMinutes() < 10) {DateMinutes = '0' + date.getMinutes();} else {DateMinutes = date.getMinutes();}
+    if (date.getSeconds() < 10) {DateSeconds = '0' + date.getSeconds();} else {DateSeconds = date.getSeconds();}
+  
+    document.getElementById('desktop-taskbar-clock').innerHTML = '<span style="opacity: 0.6; margin-right: 4px;">' + DateHours + ':' + DateMinutes + '</span>' + '  ' + DateMonths[date.getMonth()] + ', ' + DateDays + ', ' + date.getFullYear();  
+  }
 }, 1000);
 
 let today = (date.getMonth() + 1) + '/' + date.getDate() + '/' + date.getFullYear();
@@ -137,7 +152,7 @@ var z = 0;
 
 function menutrigger(menumain = document.getElementById('desktop-menu-main'), menusettings = document.getElementById('desktop-menu-settings')){
     if(menumain.style.display === "none"){
-        menumain.style.display = "block";
+        menumain.style.display = "grid";
         menumain.style.animation = 'openmenu 0.15s ease-out';
         menusettings.style.display = "none";
     } else {
@@ -151,7 +166,7 @@ function menutrigger(menumain = document.getElementById('desktop-menu-main'), me
 function settingstrigger(menusettings = document.getElementById('desktop-menu-settings'), menumain = document.getElementById('desktop-menu-main')){
   if(menusettings.style.display === "none"){
       menusettings.style.animation = 'openmenu 0.15s ease-out';
-      menusettings.style.display = "block";
+      menusettings.style.display = "grid";
       menumain.style.display = "none";
   } else {
       menusettings.style.animation = 'closemenu 0.15s ease-out';
@@ -183,6 +198,8 @@ function opendemoapp(app = document.getElementById('demo-window')){
   var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
   var miniappidname = miniappid.value = 'desktop-taskbar-demo-app-button';
   var miniapponclickfunction = miniapponclick.value = 'minimizedemoapp()';
+  var resizebutton = document.getElementById("demo-window-resize-button");
+  var minimizebutton = document.getElementById("demo-window-minimize-button");
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -214,9 +231,26 @@ function opendemoapp(app = document.getElementById('demo-window')){
 	app.style.left = '120px';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
+  resizebutton.style.display = 'block';
+  minimizebutton.style.left = '51px';
 
   if (window.innerHeight > window.innerWidth){
-    resizedemoapp();
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 50px)';
+		app.style.top = "0px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    resizebutton.style.display = 'none';
+    minimizebutton.style.left = '31px';
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
 
   restoreheight = app.style.height;
@@ -371,7 +405,7 @@ function snapdemoapp(app = document.getElementById("demo-window")){
     // document.getElementById("demo-window-header-title").innerHTML = 'Detected';
   }
 
-  if(clientleft >= window.innerWidth){
+  if(clientleft >= (window.innerWidth - 1)){
     sidedemoapp()
   }
 }
@@ -450,6 +484,8 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   var miniappidname = miniappid.value = 'desktop-taskbar-terminal-app-button';
   var miniapponclickfunction = miniapponclick.value = 'minimizeterminalapp()';
   var terminalprompt = document.getElementById('terminal-window-content-prompt');
+  var resizebutton = document.getElementById("terminal-window-resize-button");
+  var minimizebutton = document.getElementById("terminal-window-minimize-button");
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -480,9 +516,26 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   document.getElementById('desktop-taskbar').style.zIndex = z + 999;
   document.getElementById('desktop-menu-main').style.zIndex = z + 998;
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
+  resizebutton.style.display = 'block';
+  minimizebutton.style.left = '51px';
 
   if (window.innerHeight > window.innerWidth){
-    resizeterminalapp();
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 50px)';
+		app.style.top = "0px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    resizebutton.style.display = 'none';
+    minimizebutton.style.left = '31px';
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
 
   var returncommand = document.createElement('div');
@@ -511,6 +564,10 @@ function terminalappfocus(app = document.getElementById('terminal-window')){
   document.getElementById('desktop-taskbar').style.zIndex = z + 999;
   document.getElementById('desktop-menu-main').style.zIndex = z + 998;
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
+}
+
+function promptfocus(prompt = document.getElementById("terminal-window-terminal")){
+  prompt.focus();
 }
 
 function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
@@ -658,7 +715,7 @@ function snapterminalapp(app = document.getElementById("terminal-window")){
     // document.getElementById("terminal-window-header-title").innerHTML = 'Detected';
   }
 
-  if(clientleft >= window.innerWidth){
+  if(clientleft >= (window.innerWidth - 1)){
     sideterminalapp()
   }
 }
@@ -1088,6 +1145,8 @@ function opencalculatorapp(app = document.getElementById('calculator-window'), m
   var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
   var miniappidname = miniappid.value = 'desktop-taskbar-calculator-app-button';
   var miniapponclickfunction = miniapponclick.value = 'minimizecalculatorapp()';
+  var resizebutton = document.getElementById("calculator-window-resize-button");
+  var minimizebutton = document.getElementById("calculator-window-minimize-button");
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -1118,9 +1177,26 @@ function opencalculatorapp(app = document.getElementById('calculator-window'), m
   document.getElementById('desktop-taskbar').style.zIndex = z + 999;
   document.getElementById('desktop-menu-main').style.zIndex = z + 998;
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
-  
+  resizebutton.style.display = 'block';
+  minimizebutton.style.left = '51px';
+
   if (window.innerHeight > window.innerWidth){
-    resizecalculatorapp();
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 50px)';
+		app.style.top = "0px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    resizebutton.style.display = 'none';
+    minimizebutton.style.left = '31px';
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
 
   calculatorrestoreheight = app.style.height;
@@ -1279,7 +1355,7 @@ function snapcalculatorapp(app = document.getElementById("calculator-window")){
     // document.getElementById("calculator-window-header-title").innerHTML = 'Detected';
   }
 
-  if(clientleft >= window.innerWidth){
+  if(clientleft >= (window.innerWidth - 1)){
     sidecalculatorapp()
   }
 }
@@ -1400,6 +1476,8 @@ function openbetaapp(app = document.getElementById('beta-window')){
   var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
   var miniappidname = miniappid.value = 'desktop-taskbar-beta-app-button';
   var miniapponclickfunction = miniapponclick.value = 'minimizebetaapp()';
+  var resizebutton = document.getElementById("beta-window-resize-button");
+  var minimizebutton = document.getElementById("beta-window-minimize-button");
 
   var betaparagraph1 = document.getElementById('beta-window-content-p');
   var betasubmitbutton = document.getElementById('beta-window-content-input-button1');
@@ -1449,7 +1527,22 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betasubmitbutton.value = 'OK';
 
   if (window.innerHeight > window.innerWidth){
-    resizebetaapp();
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 50px)';
+		app.style.top = "0px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    resizebutton.style.display = 'none';
+    minimizebutton.style.left = '31px';
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
 
   betarestoreheight = app.style.height;
@@ -1604,7 +1697,7 @@ function snapbetaapp(app = document.getElementById("beta-window")){
     // document.getElementById("beta-window-header-title").innerHTML = 'Detected';
   }
 
-  if(clientleft >= window.innerWidth){
+  if(clientleft >= (window.innerWidth - 1)){
     sidebetaapp()
   }
 }
@@ -1681,6 +1774,8 @@ function opensettingsapp(app = document.getElementById('settings-window')){
   var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
   var miniappidname = miniappid.value = 'desktop-taskbar-settings-app-button';
   var miniapponclickfunction = miniapponclick.value = 'minimizesettingsapp()';
+  var resizebutton = document.getElementById("settings-window-resize-button");
+  var minimizebutton = document.getElementById("settings-window-minimize-button");
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -1712,11 +1807,27 @@ function opensettingsapp(app = document.getElementById('settings-window')){
 	app.style.left = 'calc(50% - ' + (parseInt(app.style.width, 10) / 2) + 'px)';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
+  resizebutton.style.display = 'block';
+  minimizebutton.style.left = '51px';
 
   if (window.innerHeight > window.innerWidth){
-    resizesettingsapp();
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 50px)';
+		app.style.top = "0px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    resizebutton.style.display = 'none';
+    minimizebutton.style.left = '31px';
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
   }
-
   settingsrestoreheight = app.style.height;
   settingsrestorewidth = app.style.width;
   settingsrestoretop = app.style.top;
@@ -1869,7 +1980,7 @@ function snapsettingsapp(app = document.getElementById("settings-window")){
     // document.getElementById("settings-window-header-title").innerHTML = 'Detected';
   }
 
-  if(clientleft >= window.innerWidth){
+  if(clientleft >= (window.innerWidth - 1)){
     sidesettingsapp()
   }
 }

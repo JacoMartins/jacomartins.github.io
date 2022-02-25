@@ -780,6 +780,37 @@ body {
     box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0.15);
 }
 
+.system-input-sidebar-button {
+    position: relative;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.0);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 8%;
+    text-align: left;
+    font-size: 15px;
+    font-family: Inter Med;
+}
+
+.system-input-sidebar-button:hover {
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.05);
+}
+
+.system-input-sidebar-button:active {
+    transition: 0.15s;
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.05);
+    opacity: 0.8;
+    transform: scale(98%, 98%);
+}
+
 .system-input-button-transparent {
     position: absolute;
     border-radius: 3px;
@@ -991,6 +1022,13 @@ body {
     height: 37px;
     width: 100%;
     top: 0px;
+    position: absolute;
+}
+
+#settings-window-sidebar {
+    height: calc(100% - 37px);
+    width: 200px;
+    top: 37px;
     position: absolute;
 }
 
@@ -1261,9 +1299,9 @@ body {
 .desktop-taskbar {
     position: absolute;
     width: 100%;
-    height: 40px;
+    height: 50px;
     left: 0px;
-    top: 0px;
+    top: calc(100% - 50px);
     background-color: rgb(0, 0 , 0, 0.5);
     backdrop-filter: blur(30px);
     z-index: 999;
@@ -1272,8 +1310,8 @@ body {
 .desktop-taskbar-button {
     position: absolute;
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     border-radius: 4px;
     border: 1px solid rgb(0, 0, 0, 0.35);
     outline: 0px;
@@ -1286,8 +1324,8 @@ body {
 .desktop-taskbar-app-button {
     position: relative;
     color: white;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     margin-left: 3px;
     border-radius: 4px;
     border: 0px solid rgb(0, 0, 0, 0.35);
@@ -1322,7 +1360,7 @@ body {
 
 #desktop-taskbar-button-settings {
     top: 5px; 
-    left: 41px; 
+    left: 51px; 
     background-image: url(../../res/images/icons/imageres/settings-small.png);
 }
 
@@ -1330,17 +1368,17 @@ body {
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
     top: 0px;
-    left: 76px;
+    left: 86px;
     height: calc(100% - 10px);
     padding: 5px;
-    width: calc(100% - 251px);
+    width: calc(100% - 261px);
     border-left: dotted 2px rgba(0, 0, 0, 0.25);
 }
 
 .desktop-taskbar-text {
     position: absolute;
     color: white;
-    top: 10px;
+    top: 15px;
     right: 12px;
     font-family: 'Inter Med';
     font-size: 15px;
@@ -1352,9 +1390,9 @@ body {
 .desktop-menu {
     position: absolute;
     color: white;
-    width: calc(100% - 14px);
-    height: calc(100% - 44px);
-    border-radius: 4px;
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+    border-radius: 0px;
     border: 1px solid rgb(0, 0, 0, 0.35);
     outline: 0px;
     background-color: rgba(0, 0, 0, 0.5);
@@ -1366,7 +1404,7 @@ body {
 
 @keyframes openmenu {
     from {
-        top: 0px;
+        top: 50px;
     }
     to{
     }
@@ -1406,10 +1444,10 @@ body {
 
 .desktop-menu-category-menu {
     position: relative;
-    top: 31px;
+    top: 40px;
     left: 0px;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 9px);
     background-color: rgba(0, 0, 0, 0.25);
     border-radius: 3px;
     display: flex;
@@ -1429,14 +1467,14 @@ body {
 
 .desktop-menu-category-info {
     position: absolute; 
-    top: 9px; 
-    left: 6px; 
+    top: 12px; 
+    left: 10px; 
     width: 85%;
 }
 
 #desktop-menu-main {
-    top: 46px;
-    left: 6px;
+    top: 0px;
+    left: 0px;
 }
 
 .desktop-menu-categories {
@@ -1452,19 +1490,17 @@ body {
     width: 100px;
     background-color: rgba(255, 255, 255, 0);
     background-image: url(../../res/images/icons/imageres/app.png);
-    background-size: 48px 48px;
+    background-size: 36px 36px;
     background-repeat: no-repeat;
     background-position: center;
     color: white;
-    font-family: Inter Med;
-    font-size: 0px;
-    text-align: left;
-    padding-left: 33px;
-    padding-top: 10px;
-    padding-bottom: 12px;
+    font-family: Inter Regular;
+    font-size: 12px;
+    text-align: center;
+    padding-left: 6px;
+    padding-top: 70px;
     border: 0px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
+    border-radius: 0px;
     outline: 0px;
 }
 
@@ -1475,16 +1511,15 @@ body {
     width: 100px;
     background-color: rgba(255, 255, 255, 0);
     background-image: url(../../res/images/icons/imageres/app.png);
-    background-size: 48px 48px;
+    background-size: 36px 36px;
     background-repeat: no-repeat;
     background-position: center;
     color: white;
-    font-family: Inter Med;
-    font-size: 0px;
-    text-align: left;
-    padding-left: 33px;
-    padding-top: 10px;
-    padding-bottom: 12px;
+    font-family: Inter Regular;
+    font-size: 12px;
+    text-align: center;
+    padding-left: 6px;
+    padding-top: 70px;
     border: 0px;
     border-radius: 0px;
     outline: 0px;
@@ -1497,19 +1532,17 @@ body {
     width: 100px;
     background-color: rgba(255, 255, 255, 0);
     background-image: url(../../res/images/icons/imageres/app.png);
-    background-size: 48px 48px;
+    background-size: 36px 36px;
     background-repeat: no-repeat;
     background-position: center;
     color: white;
-    font-family: Inter Med;
-    font-size: 0px;
-    text-align: left;
-    padding-left: 33px;
-    padding-top: 10px;
-    padding-bottom: 12px;
+    font-family: Inter Regular;
+    font-size: 12px;
+    text-align: center;
+    padding-left: 6px;
+    padding-top: 70px;
     border: 0px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-radius: 0px;
     outline: 0px;
 }
 
@@ -1529,8 +1562,8 @@ body {
 /* Desktop (Settings Menu)*/
 
 #desktop-menu-settings {
-    top: 46px;
-    left: 6px;
+    top: 0px;
+    left: 0px;
 }
 
 .desktop-menu-settings-content {
@@ -1673,8 +1706,8 @@ body {
 	-webkit-filter: brightness(1);
     filter: brightness(1);
     opacity: 0.75;
-	width: 16px;
-	height: 16px;
+	width: 20px;
+	height: 20px;
 
 }
 
@@ -2040,7 +2073,7 @@ body {
     padding: 0px;
     color: lightgray;
     font-family: Terminal;
-    font-size: 14px;
+    font-size: 18px;
     user-select: text;
 }
 
@@ -2049,7 +2082,7 @@ body {
     display: inline-block;
     color: lightgray;
     font-family: Terminal;
-    font-size: 14px;
+    font-size: 18px;
 }
 
 .terminalinput {
@@ -2060,7 +2093,7 @@ body {
     color: lightgray;
     background-color: rgba(0, 0, 0, 0.50);
     font-family: Terminal;
-    font-size: 14px;
+    font-size: 18px;
     overflow: hidden;
     border: 0px;
     outline: 0px;
@@ -2202,7 +2235,7 @@ body {
     height: 100%;
     width: 100%;
     padding: 0px;
-    font-size: 24px;
+    font-size: 40px;
 }
 
 #calculator-window-content-input-button-small {
@@ -2212,7 +2245,7 @@ body {
     height: 100%;
     width: 100%;
     padding: 0px;
-    font-size: 12px;
+    font-size: 16px;
 }
 
 #desktop-taskbar-calculator-app-button {
