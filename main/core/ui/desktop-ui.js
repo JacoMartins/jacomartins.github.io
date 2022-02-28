@@ -322,6 +322,7 @@ function minimizedemoapp(app = document.getElementById("demo-window"), miniapp =
     else {
       app.style.display = 'block';
       app.style.animation = 'callwindow 0.25s';
+      demoappfocus()
     }
   }
   else {
@@ -628,6 +629,7 @@ function minimizeterminalapp(app = document.getElementById("terminal-window"), m
     else {
       app.style.display = 'block';
       app.style.animation = 'callwindow 0.25s';
+      terminalappfocus()
     }
   }
   else {
@@ -1268,6 +1270,7 @@ function minimizecalculatorapp(app = document.getElementById("calculator-window"
     else {
       app.style.display = 'block';
       app.style.animation = 'callwindow 0.25s';
+      calculatorappfocus()
     }
   }
   else {
@@ -1614,6 +1617,7 @@ function minimizebetaapp(app = document.getElementById("beta-window"), miniapp =
     else {
       app.style.display = 'block';
       app.style.animation = 'callwindow 0.25s';
+      betaappfocus()
     }
   }
   else {
@@ -1801,14 +1805,14 @@ function opensettingsapp(app = document.getElementById('settings-window')){
       menusettings.style.display = "none";
   }
 
-  app.style.width = '640px';
-	app.style.height = '320px';
+  app.style.width = '778px';
+	app.style.height = '294px';
   app.style.top = 'calc(50% - ' + (parseInt(app.style.height, 10) / 2) + 'px)';
 	app.style.left = 'calc(50% - ' + (parseInt(app.style.width, 10) / 2) + 'px)';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
-  resizebutton.style.display = 'block';
-  minimizebutton.style.left = '51px';
+  resizebutton.style.display = 'none';
+  minimizebutton.style.left = '31px';
 
   if (window.innerHeight > window.innerWidth){
     restoreheight = app.style.height;
@@ -1897,6 +1901,7 @@ function minimizesettingsapp(app = document.getElementById("settings-window"), m
     else {
       app.style.display = 'block';
       app.style.animation = 'callwindow 0.25s';
+      settingsappfocus()
     }
   }
   else {

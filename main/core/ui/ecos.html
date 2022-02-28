@@ -74,7 +74,7 @@
         
         <p class="desktop-beta-info" id="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Beta 1, Build 15 Compilation: 040220222012</p>
 
-        <div id="settings-window" class="window" style="display: none;"> 
+        <div id="settings-window" class="window" style="display: none;" onmousedown="settingsappfocus()"> 
 
             <div id="settings-window-header" class="window-header">
                 
@@ -82,15 +82,25 @@
                 <button id="settings-window-resize-button" class="window-header-resize-button" onclick="resizesettingsapp()"></button>
                 <button id="settings-window-minimize-button" class="window-header-minimize-button" onclick="minimizesettingsapp()"></button>
                 
-                <a class="window-header-title">Settings</a>
+                <a class="window-header-title" id="settings-window-header-title">Settings</a>
             </div>
 
-            <div id="settings-window-sidebar">
-                <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Customization">
+            <div class="window-sidebar" id="settings-window-sidebar">
+                <input class="system-input-sidebar-transparent-text" type="text" id="settings-window-sidebar-input-search" placeholder="Search on settings">
+                <div class="window-sidebar-button-panel">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="User Account">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Appearance">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Applications">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Language">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Searching System">
+                </div>
             </div>
 
             <div id="settings-window-content">
-                
+                <div id="settings-window-categories-users">
+                    <h1 class="text-header1" id="settings-window-categories-users-header">User Account</h1>
+                    
+                </div>
             </div>
 
         </div>
@@ -113,9 +123,10 @@
                 <a class="text-default" id="demo-window-content-p">Paragraph</a>
                 <input class="system-input-text" type="text" id="demo-window-content-input-text1">
                 <input class="system-input-button" type="button" id="demo-window-content-input-button1" value="Button">
-                <label class="system-input-checkbox-label" for="demo-window-content-input-checkbox1">CheckBox
-                    <input class="system-input-checkbox" type="checkbox" name="demo-window-content-input-checkbox1" id="demo-window-content-input-checkbox1" checked="checked">
-                    <span class="system-input-checkbox-checkmark"></span>
+                <label class="system-input-checkbox" for="demo-window-content-input-checkbox1-input">
+                    <input class="system-input-checkbox-input" type="checkbox" name="demo-window-content-input-checkbox1-input" id="demo-window-content-input-checkbox1-input" checked="checked">
+                    <div class="system-input-checkbox-box"></div>
+                    Checkbox
                 </label>
             </div>
 

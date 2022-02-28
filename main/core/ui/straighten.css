@@ -548,7 +548,7 @@ body {
 
 .window-header-title {
     position: absolute;
-	font-family: Inter Med;
+	font-family: Inter Regular;
 	font-size: 16px;
 	text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 	text-align: center;
@@ -631,11 +631,37 @@ body {
     border-bottom-right-radius: 4px;
 }
 
-.text-header1 {
+.window-sidebar {
+    height: calc(100% - 43px);
+    width: 232px;
+    top: 37px;
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    margin: 6px;
+}
+
+.window-sidebar-button-panel {
+    position: relative;
+    padding: 6px;
+    padding-bottom: 0px;
+    margin-top: 6px;
+    width: calc(100% - 32px);
+    height: calc(100% - 46px);
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 4px;
+    overflow: auto;
+}
+
+.text-header1 {
+    position: relative;
     color: rgba(255, 255, 255, 0.85);
-    font-family: Inter Bold;
-    font-size: 32px;
+    font-family: Inter SemiBold;
+    font-size: 33px;
+    font-weight: normal;
+    letter-spacing: -1px;
     line-height: 0px;
     user-select: all;
 }
@@ -706,7 +732,7 @@ body {
 }
 
 .system-input-transparent-text {
-    position: absolute;
+    position: relative;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
@@ -717,12 +743,11 @@ body {
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
-    font-family: Inter Med;
+    font-family: Inter Regular;
     opacity: 0.6;
 }
 
 .system-input-transparent-text:hover {
-    position: absolute;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
@@ -733,12 +758,10 @@ body {
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
-    font-family: Inter Med;
     opacity: 0.8;
 }
 
 .system-input-transparent-text:focus {
-    position: absolute;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
@@ -749,7 +772,6 @@ body {
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
-    font-family: Inter Med;
     opacity: 1;
 }
 
@@ -780,14 +802,59 @@ body {
     box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0.15);
 }
 
+.system-input-sidebar-transparent-text {
+    position: relative;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    width: calc(100% - 30px);
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-family: Inter Regular;
+    opacity: 0.6;
+}
+
+.system-input-sidebar-transparent-text:hover {
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.system-input-sidebar-transparent-text:focus {
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    opacity: 1;
+}
+
 .system-input-sidebar-button {
     position: relative;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0);
-    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.0);
+    background-color: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.05);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 8px;
     padding-bottom: 8px;
@@ -795,18 +862,19 @@ body {
     padding-right: 8%;
     text-align: left;
     font-size: 15px;
-    font-family: Inter Med;
+    margin-bottom: 6px;
+    font-family: Inter Regular;
 }
 
 .system-input-sidebar-button:hover {
-    background-color: rgb(255, 255, 255, 0.05);
-    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.05);
 }
 
 .system-input-sidebar-button:active {
     transition: 0.15s;
-    background-color: rgb(255, 255, 255, 0.05);
-    box-shadow: inset 0px 1.5px 0px rgba(255, 255, 255, 0.05);
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.05);
     opacity: 0.8;
     transform: scale(98%, 98%);
 }
@@ -856,24 +924,17 @@ body {
     animation: system-input-button-focus 1s infinite;
 }
 
-.system-input-checkbox-label {
+.system-input-checkbox {
     position: absolute;
-    color: rgba(255, 255, 255, 0.85);
-    font-family: Inter Regular;
-    top: 204px;
+    top: 205px;
     left: 16px;
-    font-size: 15px;
+    display: inline-flex;
+    align-items: center;
+    color: white;
 }
 
-.system-input-checkbox {
-    -webkit-appearance: none;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.14);
-    border: solid 2px rgb(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.85);
-    padding: 6px;
-    border-radius: 2px;
-    display: inline-block;
+.system-input-checkbox-input {
+    display: none;
 }
 
 /* width */
@@ -1025,22 +1086,24 @@ body {
     position: absolute;
 }
 
-#settings-window-sidebar {
-    height: calc(100% - 37px);
-    width: 200px;
-    top: 37px;
-    position: absolute;
-}
-
 #settings-window-content {
-    height: calc(100% - 37px);
-    width: calc(100% - 192px);
-    top: 37px;
+    height: calc(100% - 1px);
+    width: calc(100% - 224px);
+    top: 1px;
     right: 0px;
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
     border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+#settings-window-header-title {
+    left: 87px;
+}
+
+#settings-window-categories-users-header{
+    padding-top: 13px;
+    padding-left: 25px;
 }
 
 /* DEMO WINDOW */
@@ -1678,7 +1741,7 @@ body {
 
 .window-header-title {
     position: absolute;
-	font-family: Inter Med;
+	font-family: Inter Regular;
 	font-size: 16px;
 	text-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
 	text-align: center;
@@ -1759,6 +1822,13 @@ body {
     background-color: rgba(0, 0, 0, 1);
     border-bottom-left-radius: 4px;
     border-bottom-right-radius: 4px;
+}
+
+.window-sidebar-button-panel {
+    position: absolute;
+    width: calc(100% - 12px);
+    height: calc(100% - 35px);
+    background-color: rgba(255, 255, 255, 0.25);
 }
 
 .text-header1 {
