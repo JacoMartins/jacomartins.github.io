@@ -82,7 +82,7 @@
                 <button id="settings-window-resize-button" class="window-header-resize-button" onclick="resizesettingsapp()"></button>
                 <button id="settings-window-minimize-button" class="window-header-minimize-button" onclick="minimizesettingsapp()"></button>
                 
-                <a class="window-header-title" id="settings-window-header-title">Settings</a>
+                <a class="window-header-title" id="settings-window-header-title">Settings (Beta)</a>
             </div>
 
             <div class="window-sidebar" id="settings-window-sidebar">
@@ -97,10 +97,51 @@
             </div>
 
             <div id="settings-window-content">
-                <div id="settings-window-categories-users">
+
+                <div id="settings-window-categories-users" style="display: block;">
+                    
                     <h1 class="text-header1" id="settings-window-categories-users-header">User Account</h1>
                     
+                    <div class="system-input-multibutton">
+
+                        <input class="system-input-multibutton-button-input" checked type="radio" name="settings-window-categories-users-multibutton" id="settings-window-categories-users-multibutton-button1">
+                        <button class="system-input-multibutton-button">Users
+                            <label for="settings-window-categories-users-multibutton-button1" style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;"></label>
+                        </button>
+                    
+                    </div>
+                    
+                    <input class="system-input-text" type="text" id="settings-window-categories-users-input-uname">
+
+                    <input class="system-input-text" type="password" id="settings-window-categories-users-input-userpw">                    
+                    
+                    <input class="system-input-button" type="button" id="settings-window-categories-users-input-buttonchguname" value="Change your user data" onclick="changeusersettingsapp()">
+
                 </div>
+
+                <div id="settings-window-categories-appearance" style="display: none;">
+                    <h1 class="text-header1" id="settings-window-categories-users-header">Appearance</h1>
+                    <div class="system-input-multibutton">
+                        <input class="system-input-multibutton-button-input" type="radio" name="settings-window-categories-appearance-multibutton" id="settings-window-categories-appearance-multibutton-button1">
+                        <button class="system-input-multibutton-button">Style
+                            <label for="settings-window-categories-appearance-multibutton-button1" style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;"></label>
+                        </button>
+
+                        <input class="system-input-multibutton-button-input" type="radio" name="settings-window-categories-appearance-multibutton" id="settings-window-categories-appearance-multibutton-button2">
+                        <button class="system-input-multibutton-button" for="settings-window-categories-appearance-multibutton-button2">Color
+                            <label for="settings-window-categories-appearance-multibutton-button2" style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;"></label>
+                        </button>
+
+                        <input class="system-input-multibutton-button-input" type="radio" name="settings-window-categories-appearance-multibutton" id="settings-window-categories-appearance-multibutton-button3">
+                        <button class="system-input-multibutton-button" for="settings-window-categories-appearance-multibutton-button3">Wallpaper
+                            <label for="settings-window-categories-appearance-multibutton-button3" style="position:absolute; width: 100%; height: 100%; top: 0px; left: 0px;"></label>
+                        </button>
+
+                        <h2 class="text-header2" id="settings-window-categories-appearance-header2"></h2>
+                    
+                    </div>
+                </div>
+
             </div>
 
         </div>

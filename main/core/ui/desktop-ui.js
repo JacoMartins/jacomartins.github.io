@@ -1,5 +1,5 @@
 // Main
-let build = 28;
+let build = 32;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -91,9 +91,14 @@ window.addEventListener('keyup', event => {
 window.addEventListener('load', function loadusername(){
   var logonusernametext = document.getElementById("logon-screen-username");
   var logininput = document.getElementById('logon-screen-input-text');
+  var settingsunameinput = document.getElementById("settings-window-categories-users-input-uname");
+  var settingsuserpwinput = document.getElementById("settings-window-categories-users-input-userpw");
   var user = document.getElementById('owner-user'), logininput = document.getElementById('logon-screen-input-text'), loginwindow = document.getElementById('logon-screen');
 
   logonusernametext.innerText = username;
+  settingsunameinput.value = username;
+  settingsuserpwinput.value = userpw;
+
   logininput.focus();
 
   if(userpw = ''){
@@ -1510,7 +1515,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   }
 
   app.style.width = '500px';
-	app.style.height = '340px';
+	app.style.height = '320px';
   app.style.top = 'calc(50% - ' + (parseInt(app.style.height, 10) * 0.5) + 'px)';
 	app.style.left = 'calc(50% - ' + (parseInt(app.style.width, 10) * 0.5) + 'px)';
   app.style.resize = "none";
@@ -1523,11 +1528,15 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome to the ECOS project! In this build we made the logon system functional, even if it is still not safe enough. Our next step is the settings application, where you will can customize the entire system. </span><br></br><br>• Corrections: </br><br>- Fixed terminal;</br><br>- Fixed login system (can only be set up in terminal).</br>';
+  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome to the ECOS project! In this build we started the settings app development, the design is already done. We most code it in the next few days!!!! </span><br></br><br>• Corrections: </br><br>- Fixed mobile screen flexibility;</br><br>- Fixed window focus order on minimizing.</br>';
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
   betasubmitbutton.value = 'OK';
+  
+  setTimeout(() => {
+    betasubmitbutton.focus();
+  }, 350);
 
   if (window.innerHeight > window.innerWidth){
     restoreheight = app.style.height;
@@ -2043,3 +2052,11 @@ function dragElement(elmnt) {
 }
 
 });
+
+function changeusersettingsapp(unameinput = document.getElementById('settings-window-categories-users-input-uname'), userpwinput = document.getElementById('settings-window-categories-users-input-userpw')){
+    localStorage.setItem('username', unameinput.value);
+    document.getElementById('logon-screen-username').innerHTML = unameinput.value;
+    document.getElementById('terminal-window-content-prompt').innerText = unameinput.value + '$:';
+
+    localStorage.setItem('userpw', userpwinput.value);
+}

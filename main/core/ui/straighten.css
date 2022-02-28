@@ -688,8 +688,8 @@ body {
     border-radius: 3px;
     border: 0px;
     outline: 0px;
-    background-color: rgba(26, 26, 26, 1);
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44);
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 4.5px;
     padding-bottom: 4.5px;
@@ -704,8 +704,8 @@ body {
     border-radius: 3px;
     border: 0px;
     outline: 0px;
-    background-color: rgba(26, 26, 26, 1);
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44);
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 4.5px;
     padding-bottom: 4.5px;
@@ -720,10 +720,8 @@ body {
     border-radius: 3px;
     border: 0px;
     outline: 0px;
-    background-color: rgba(26, 26, 26, 1);
-    /* box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44); */
-    color: rgba(255, 255, 255, 0.85);
-    padding-top: 4.5px;
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.15);    padding-top: 4.5px;
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
@@ -931,10 +929,81 @@ body {
     display: inline-flex;
     align-items: center;
     color: white;
+    font-family: Inter Regular;
+    font-size: 15px;
 }
 
 .system-input-checkbox-input {
     display: none;
+}
+
+.system-input-checkbox-input:checked + .system-input-checkbox-box {
+    background-image: url('../../res/images/icons/imageres/checked_small.png');
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 1px 0px;
+
+}
+
+.system-input-checkbox-box {
+    position: relative;
+    height: 14px;
+    width: 14px;
+    border: solid 1px rgba(28, 28, 28, 1);
+    background-color: rgb(0, 0, 0);
+    border-radius: 3px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-right: 6px;
+    flex-shrink: 0;
+    transition: 0.15s;
+}
+
+.system-input-checkbox-box::after {
+    color: rgba(0, 0, 0, 0);
+}
+
+.system-input-multibutton-button-input {
+    display: none;
+}
+
+.system-input-multibutton-button-input:checked + .system-input-multibutton-button {
+    background-color: rgb(22, 64, 104);;
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.15);
+    border-radius: 2px;
+}
+
+.system-input-multibutton{
+    position: relative;
+    top: 14px;
+    left: calc(50% - calc(50% - 22px));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    width: calc(100% - 44px);
+    border: solid 1px rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
+}
+
+.system-input-multibutton-button {
+    position: relative;
+    border-radius: 0px;
+    border: 0px;
+    outline: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.0);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8%;
+    padding-right: 8%;
+    font-size: 15px;
+    font-family: Inter Regular;
+    transition: background-color 0.15s;
 }
 
 /* width */
@@ -1098,12 +1167,38 @@ body {
 }
 
 #settings-window-header-title {
-    left: 87px;
+    left: 113px;
+    text-align: left;
 }
 
 #settings-window-categories-users-header{
     padding-top: 13px;
     padding-left: 25px;
+}
+
+#settings-window-categories-users-input-uname {
+    position: relative;
+    left: 22px;
+    top: 22px;
+    padding-left: 2px;
+    font-family: Inter Regular;
+    font-size: 22px;
+}
+
+#settings-window-categories-users-input-userpw {
+    position: relative;
+    left: 22px;
+    top: 26px;
+    padding-left: 2px;
+    font-family: Inter Regular;
+    font-size: 22px;
+}
+
+#settings-window-categories-users-input-buttonchguname {
+    position: absolute;
+    left: 22px;
+    top: 196px;
+    font-family: Inter Regular;
 }
 
 /* DEMO WINDOW */
@@ -1431,10 +1526,10 @@ body {
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
     top: 0px;
-    left: 86px;
+    left: 99px;
     height: calc(100% - 10px);
     padding: 5px;
-    width: calc(100% - 261px);
+    width: calc(100% - 274px);
     border-left: dotted 2px rgba(0, 0, 0, 0.25);
 }
 
@@ -1834,8 +1929,9 @@ body {
 .text-header1 {
     position: absolute;
     color: rgba(255, 255, 255, 0.85);
-    font-family: Inter Bold;
+    font-family: Inter SemiBold;
     font-size: 32px;
+    letter-spacing: -1px;
     line-height: 0px;
     user-select: all;
 }
@@ -1862,8 +1958,8 @@ body {
     border-radius: 3px;
     border: 0px;
     outline: 0px;
-    background-color: rgba(26, 26, 26, 1);
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44);
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 4.5px;
     padding-bottom: 4.5px;
@@ -1878,8 +1974,8 @@ body {
     border-radius: 3px;
     border: 0px;
     outline: 0px;
-    background-color: rgba(26, 26, 26, 1);
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44);
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.15);
     color: rgba(255, 255, 255, 0.85);
     padding-top: 4.5px;
     padding-bottom: 4.5px;
@@ -1894,10 +1990,8 @@ body {
     border-radius: 3px;
     border: 0px;
     outline: 0px;
-    background-color: rgba(26, 26, 26, 1);
-    box-shadow: inset 0px -2px 0px rgba(0, 0, 0, 0.44);
-    color: rgba(255, 255, 255, 0.85);
-    padding-top: 4.5px;
+    background-color: rgb(255, 255, 255, 0.05);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.15);    padding-top: 4.5px;
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
@@ -1906,7 +2000,7 @@ body {
 }
 
 .system-input-transparent-text {
-    position: absolute;
+    position: relative;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
@@ -1917,12 +2011,11 @@ body {
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
-    font-family: Inter Med;
+    font-family: Inter Regular;
     opacity: 0.6;
 }
 
 .system-input-transparent-text:hover {
-    position: absolute;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
@@ -1933,12 +2026,10 @@ body {
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
-    font-family: Inter Med;
     opacity: 0.8;
 }
 
 .system-input-transparent-text:focus {
-    position: absolute;
     border-radius: 3px;
     border: 0px;
     outline: 0px;
@@ -1949,7 +2040,6 @@ body {
     padding-bottom: 4.5px;
     padding-left: 8px;
     font-size: 15px;
-    font-family: Inter Med;
     opacity: 1;
 }
 
@@ -1978,6 +2068,83 @@ body {
     background-color: rgba(24, 24, 24, 1);
     opacity: 0.8;
     box-shadow: inset 0px 0px 0px rgba(255, 255, 255, 0.15);
+}
+
+.system-input-sidebar-transparent-text {
+    position: relative;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    width: calc(100% - 30px);
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    font-family: Inter Regular;
+    opacity: 0.6;
+}
+
+.system-input-sidebar-transparent-text:hover {
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    opacity: 0.8;
+}
+
+.system-input-sidebar-transparent-text:focus {
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(255, 255, 255, 0.035);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 4.5px;
+    padding-bottom: 4.5px;
+    padding-left: 8px;
+    font-size: 15px;
+    opacity: 1;
+}
+
+.system-input-sidebar-button {
+    position: relative;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.02);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 12px;
+    padding-right: 8%;
+    text-align: left;
+    font-size: 15px;
+    margin-bottom: 6px;
+    font-family: Inter Regular;
+}
+
+.system-input-sidebar-button:hover {
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.05);
+}
+
+.system-input-sidebar-button:active {
+    transition: 0.15s;
+    background-color: rgba(255, 255, 255, 0.03);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.05);
+    opacity: 0.8;
+    transform: scale(98%, 98%);
 }
 
 .system-input-button-transparent {
@@ -2025,38 +2192,88 @@ body {
     animation: system-input-button-focus 1s infinite;
 }
 
-.system-input-checkbox-label {
-    position: relative;
-    color: rgba(255, 255, 255, 0.85);
-    font-family: Inter Regular;
-    top: 204px;
+.system-input-checkbox {
+    position: absolute;
+    top: 205px;
     left: 16px;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    font-family: Inter Regular;
     font-size: 15px;
 }
 
-.system-input-checkbox {
-    -webkit-appearance: none;
-    position: absolute;
-    background-color: rgba(255, 255, 255, 0.14);
-    border: solid 2px rgb(255, 255, 255, 0.14);
-    color: rgba(255, 255, 255, 0.85);
-    padding: 6px;
+.system-input-checkbox-input {
+    display: none;
+}
+
+.system-input-checkbox-input:checked + .system-input-checkbox-box {
+    background-image: url('../../res/images/icons/imageres/checked_small.png');
+    background-size: 12px 12px;
+    background-repeat: no-repeat;
+    background-position: 1px 0px;
+
+}
+
+.system-input-checkbox-box {
+    position: relative;
+    height: 14px;
+    width: 14px;
+    border: solid 1px rgba(28, 28, 28, 1);
+    background-color: rgb(0, 0, 0);
+    border-radius: 3px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-right: 6px;
+    flex-shrink: 0;
+    transition: 0.15s;
+}
+
+.system-input-checkbox-box::after {
+    color: rgba(0, 0, 0, 0);
+}
+
+.system-input-multibutton-button-input {
+    display: none;
+}
+
+.system-input-multibutton-button-input:checked + .system-input-multibutton-button {
+    background-color: rgb(22, 64, 104);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.15);
     border-radius: 2px;
 }
 
-.system-input-checkbox-checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
+.system-input-multibutton{
+    position: relative;
+    top: 63px;
+    left: calc(50% - calc(50% - 22px));
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    width: calc(100% - 44px);
+    border: solid 1px rgba(255, 255, 255, 0.15);
+    border-radius: 3px;
 }
 
-.system-input-checkbox-checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
+.system-input-multibutton-button {
+    position: relative;
+    border-radius: 0px;
+    border: 0px;
+    outline: 0px;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.0);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 8%;
+    padding-right: 8%;
+    font-size: 15px;
+    font-family: Inter Regular;
+    transition: background-color 0.15s;
 }
 
 /* width */
@@ -2212,10 +2429,50 @@ body {
     height: calc(100% - 37px);
     width: 100%;
     top: 37px;
+    right: 0px;
     position: absolute;
     background-color: rgba(0, 0, 0, 1);
     border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+#settings-window-header-title {
+    left: 113px;
+    text-align: left;
+}
+
+#settings-window-sidebar {
+    display: none;
+}
+
+#settings-window-categories-users-header{
+    padding-top: 13px;
+    padding-left: 25px;
+}
+
+#settings-window-categories-users-input-uname {
+    position: relative;
+    left: 22px;
+    top: 78px;
+    padding-left: 2px;
+    font-family: Inter Regular;
+    font-size: 22px;
+}
+
+#settings-window-categories-users-input-userpw {
+    position: relative;
+    left: 22px;
+    top: 84px;
+    padding-left: 2px;
+    font-family: Inter Regular;
+    font-size: 22px;
+}
+
+#settings-window-categories-users-input-buttonchguname {
+    position: absolute;
+    left: 22px;
+    top: 196px;
+    font-family: Inter Regular;
 }
 
 /* DEMO WINDOW */
