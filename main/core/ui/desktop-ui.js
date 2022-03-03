@@ -21,7 +21,7 @@ if (localStorage.getItem('rebootT') == undefined) {
 }
 
 if (localStorage.getItem('boot') == undefined) {
-  localStorage.setItem('boot', '../boot/bootmgr.html')
+  localStorage.setItem('boot', '../ui/ecos.html')
 }
 
 var username = localStorage.getItem('username');
