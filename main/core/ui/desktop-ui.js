@@ -21,7 +21,7 @@ if (localStorage.getItem('rebootT') == undefined) {
 }
 
 if (localStorage.getItem('boot') == undefined) {
-  localStorage.setItem('boot', '../ui/ecos.html')
+  localStorage.setItem('boot', '../boot/bootmgr.html')
 }
 
 var username = localStorage.getItem('username');
@@ -1912,6 +1912,8 @@ function opensettingsapp(app = document.getElementById('settings-window')){
   var miniapponclickfunction = miniapponclick.value = 'minimizesettingsapp()';
   var resizebutton = document.getElementById("settings-window-resize-button");
   var minimizebutton = document.getElementById("settings-window-minimize-button");
+  var sidebar = document.getElementById("settings-window-sidebar");
+  var content = document.getElementById("settings-window-content");
   
   taskbarminimizedapps.appendChild(miniapp);
   miniapp.miniappclassname;
@@ -1943,6 +1945,9 @@ function opensettingsapp(app = document.getElementById('settings-window')){
 	app.style.left = 'calc(50% - ' + (parseInt(app.style.width, 10) / 2) + 'px)';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
+  sidebar.style.display = 'block';
+  sidebar.style.width = '232px';
+  content.style.display = 'block';
   resizebutton.style.display = 'none';
   minimizebutton.style.left = '31px';
 
@@ -1958,6 +1963,11 @@ function opensettingsapp(app = document.getElementById('settings-window')){
     app.style.resize = "none";
     app.style.borderRadius = "0px";
     app.style.transition = "0.15s";
+    sidebar.style.display = 'block';
+    sidebar.style.width = 'calc(100% + 6px)';
+    content.style.display = 'none';
+
+    
     resizebutton.style.display = 'none';
     minimizebutton.style.left = '31px';
     setTimeout(function() {
