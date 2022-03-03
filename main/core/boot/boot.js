@@ -9,7 +9,7 @@ var userpw = localStorage.getItem('userpw');
 var date = new Date();
 
 if (localStorage.getItem('boot') == undefined) {
-   localStorage.setItem('boot', '../boot/bootmgr.html')
+   localStorage.setItem('boot', '../ui/ecos.html')
 }
 
 if (localStorage.getItem('rebootT') == undefined) {
@@ -134,7 +134,7 @@ window.addEventListener('keyup', event => {
              returncommand.innerHTML = 'Setting boot location to' + input.value.slice(17) + '...';
            }, 000);
            localStorage.setItem('boot', input.value.slice(17));
-           location.assign('../ui/ecos.html');
+           location.assign('../ui/bootmgr.html');
 
            if(input.value.includes("location boot -l -t")){
               
