@@ -9,7 +9,7 @@ var userpw = localStorage.getItem('userpw');
 var date = new Date();
 
 if (localStorage.getItem('boot') == undefined) {
-   localStorage.setItem('boot', '../boot/bootmgr.html')
+   localStorage.setItem('boot', '../ui/ecos.html')
 }
 
 if (localStorage.getItem('rebootT') == undefined) {
