@@ -134,7 +134,7 @@ window.addEventListener('keyup', event => {
              returncommand.innerHTML = 'Setting boot location to' + input.value.slice(17) + '...';
            }, 000);
            localStorage.setItem('boot', input.value.slice(17));
-           location.assign('../boot/bootmgr.html');
+           location.assign('../ui/ecos.html');
 
            if(input.value.includes("location boot -l -t")){
               
