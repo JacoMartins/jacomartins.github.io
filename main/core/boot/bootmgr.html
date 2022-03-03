@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="3;URL='../ui/ecos.html'">
     <link rel="stylesheet" type="text/css" href="../../res/css/terminal/command.css">
     <link rel="icon" type="image/png" href="/favicon.png">
     <title>Eclipse Boot Manager</title>
@@ -12,6 +11,14 @@
     <script src="boot.js"></script>
 </head>
 <body>
-    <textarea id="kernel-terminal" class="kernel-terminal" readonly></textarea>
+    <div id="kernel-terminal-content">
+        <div id="kernel-terminal-container">
+            <div class="kernel-terminal-line">
+                <span class="kernel-terminal-prompt" id="kernel-terminal-prompt" style="color: yellow;">$  </span>
+                <input type="text" class="terminalinput" readonly spellcheck="false" id="kernel-terminal-input">
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+

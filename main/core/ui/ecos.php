@@ -1,3 +1,7 @@
+<?php
+    include_once '../data.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,6 +18,7 @@
 </head>
 
 <body>
+    $conn;
     <div class="bootscreen" id="bootscreen">
         <a class="bootscreen-text-default" id="bootscreen-text-default-main"></a>
         <a class="bootscreen-text-h1">project eclipse</a>

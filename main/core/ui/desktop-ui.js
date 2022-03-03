@@ -5,6 +5,7 @@ let betastage = 1;
 let version = '1.0.0';
 let systemname = 'Eclipse Cloud Operating System (ECOS)';
 let versionname = 'Beta';
+let permlevel = 0;
 var date = new Date();
 
 if (localStorage.getItem('username') == undefined){
@@ -13,6 +14,14 @@ if (localStorage.getItem('username') == undefined){
 
 if (localStorage.getItem('userpw') == undefined) {
   localStorage.setItem('userpw', '')
+}
+
+if (localStorage.getItem('rebootT') == undefined) {
+  localStorage.setItem('rebootT', '0')
+}
+
+if (localStorage.getItem('boot') == undefined) {
+  localStorage.setItem('boot', '../boot/bootmgr.html')
 }
 
 var username = localStorage.getItem('username');
@@ -551,7 +560,7 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
     appcontainer.appendChild(returncommand);
     returncommand.returncommandclassvalue;
     returncommand.setAttributeNode(returncommandclass);
-    returncommand.innerHTML = '<span style="color: yellow;"></span>';
+    returncommand.innerHTML = "<span style='color: lightgray;'>Welcome to eclipse's terminal, type <span style='color: salmon;'>help</span> to see available commands.</span><br></br>";
   }, 000);
 
   terminalprompt.innerText = username + '$:';
@@ -782,8 +791,13 @@ function dragElement(elmnt) {
 });
 
 var lastcommand;
+var sudo = false;
 
-function terminal(terminal = document.getElementById("terminal-window-terminal"), appcontainer = document.getElementById("terminal-window-container"), terminalprompt = document.getElementById("terminal-window-content-prompt")){
+function terminal(){
+  const terminal = document.getElementById("terminal-window-terminal");
+  const appcontainer = document.getElementById("terminal-window-container");
+  const terminalprompt = document.getElementById("terminal-window-content-prompt");
+
   var createtext = document.createElement('div');
   var createtextclass = document.createAttribute('class');
   var createtextclassvalue = createtextclass.value = 'terminal-window-content-text';
@@ -793,7 +807,14 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
   var returncommandclass = document.createAttribute('class');
   var returncommandclassvalue = returncommandclass.value = 'terminal-window-content-text';
 
-  
+  if(terminal.value.includes("<br>")){
+    setTimeout(() => {
+      appcontainer.appendChild(returncommand);
+      returncommand.returncommandclassvalue;
+      returncommand.setAttributeNode(returncommandclass);
+      returncommand.innerText = '\n';
+    }, 000);
+  }
 
   if(event.keyCode == 13){
 
@@ -807,6 +828,44 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
         returncommand.innerText = '\nExitting terminal...\n';
       }, 000);
        closeterminalapp()
+    }
+
+    if(terminal.value.includes("sudo")){
+      setTimeout(() => {
+        //appcontainer.appendChild(returncommand);
+        //returncommand.returncommandclassvalue;
+        //returncommand.setAttributeNode(returncommandclass);
+        //returncommand
+        terminalprompt.innerHTML = '<span style="color: lightgreen;">Password for ' + username + ':</span>';
+        sudo = true;
+      }, 000);
+    }
+
+    while(sudo === true){
+      if(terminal.value == userpw){
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
+        sudo = false;
+        terminalprompt.innerText = username + '$:';
+      } else {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: salmon;">Permission not granted.</span>';
+        sudo = false;
+        terminalprompt.innerText = username + '$:';
+      }
+    }
+
+    if(terminal.value.includes("<br>")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\n';
+      }, 000);
     }
 
     if(terminal.value.includes("info")){
@@ -857,6 +916,70 @@ function terminal(terminal = document.getElementById("terminal-window-terminal")
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerHTML = '<span style="color: red;">Wrong Sintax</span>, please use "terminal [command]".';
       }, 000);
+    }
+    
+    if(terminal.value.includes("location")){
+
+      if(terminal.value.includes("location boot -l ")){
+        setTimeout(() => {
+          appcontainer.appendChild(returncommand);
+          returncommand.returncommandclassvalue;
+          returncommand.setAttributeNode(returncommandclass);
+          returncommand.innerHTML = 'Setting boot location to' + terminal.value.slice(17) + '...';
+        }, 000);
+        localStorage.setItem('boot', terminal.value.slice(17));
+        location.assign('../boot/bootmgr.html');
+
+        if(terminal.value.includes("location boot -l -t")){
+          if(terminal.value.includes("location boot -l -t 0")){
+            setTimeout(() => {
+              appcontainer.appendChild(returncommand);
+              returncommand.returncommandclassvalue;
+              returncommand.setAttributeNode(returncommandclass);
+              returncommand.innerHTML = 'Setting boot location to' + terminal.value.slice(22) + '...';
+            }, 000);
+            localStorage.setItem('boot', terminal.value.slice(22));
+            localStorage.setItem('rebootT', '0');
+            location.assign('../boot/bootmgr.html');
+          }
+  
+          if(terminal.value.includes("location boot -l -t 1")){
+            setTimeout(() => {
+              appcontainer.appendChild(returncommand);
+              returncommand.returncommandclassvalue;
+              returncommand.setAttributeNode(returncommandclass);
+              returncommand.innerHTML = 'Setting boot location to' + terminal.value.slice(22) + '...';
+            }, 000);
+            localStorage.setItem('boot', terminal.value.slice(22));
+            localStorage.setItem('rebootT', '1');
+            location.assign('../boot/bootmgr.html');
+          }
+        }
+      }
+
+      if(terminal.value.includes("location reboot")){
+
+        setTimeout(() => {
+          appcontainer.appendChild(returncommand);
+          returncommand.returncommandclassvalue;
+          returncommand.setAttributeNode(returncommandclass);
+          returncommand.innerHTML = 'Rebooting operating system...';
+          location.assign('../boot/bootmgr.html');
+        }, 000);
+  
+        if(terminal.value.includes("location reboot -t ")){
+          setTimeout(() => {
+            appcontainer.appendChild(returncommand);
+            returncommand.returncommandclassvalue;
+            returncommand.setAttributeNode(returncommandclass);
+            returncommand.innerHTML = 'Rebooting operating system...';
+          }, 000);
+          localStorage.setItem('rebootT', terminal.value.slice(19));
+          location.assign('../boot/bootmgr.html');
+        }
+  
+      }
+
     }
 
     if(terminal.value.includes("terminal") && terminal.value.includes("isworking")){

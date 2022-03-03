@@ -1100,6 +1100,7 @@ body {
     color: lightgray;
     font-family: Terminal;
     font-size: 14px;
+    white-space: nowrap;
 }
 
 .terminalinput {
