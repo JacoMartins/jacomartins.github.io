@@ -2193,3 +2193,23 @@ function changeusersettingsapp(unameinput = document.getElementById('settings-wi
 
     localStorage.setItem('userpw', userpwinput.value);
 }
+
+function settingscategoriesusers(name){
+  let allcategories = ['users', 'appearance', 'apps', 'language', 'info'];
+  var category = 'settings-window-categories-';
+
+  if(name = 'users'){
+    for(n = 1; n < allcategories.length; n++){
+      document.getElementById(category + allcategories[n]).style.display = 'none';
+    }
+  }
+
+  if(name = 'appearance'){
+    for(n = 2; n < allcategories.length; n++){
+      document.getElementById(category + allcategories[n]).style.display = 'none';
+    }
+  }
+
+  document.getElementById(category + name).style.display = 'block';
+  
+}
