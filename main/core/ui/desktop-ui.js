@@ -2200,13 +2200,13 @@ function settingscategoriesusers(name){
 
   if(name = 'users'){
     for(n = 1; n < allcategories.length; n++){
-      document.getElementById(category + allcategories[n]).style.display = 'none';
+      document.getElementById(category + allcategories[1]).style.display = 'none';
     }
   }
 
   if(name = 'appearance'){
     for(n = 2; n < allcategories.length; n++){
-      document.getElementById(category + allcategories[n]).style.display = 'none';
+      document.getElementById(category + allcategories[2]).style.display = 'none';
     }
   }
 
