@@ -57,6 +57,7 @@
                     <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="opencalculatorapp()">Calculator</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-notepad-app" onclick="opennotepadapp()">Notepad</button>
                 </div>
             
             </div>
@@ -89,11 +90,11 @@
             <div class="window-sidebar" id="settings-window-sidebar">
                 <input class="system-input-sidebar-transparent-text" type="text" id="settings-window-sidebar-input-search" placeholder="Search on settings">
                 <div class="window-sidebar-button-panel">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="User Account" onclick="settingscategoriesusers('users')">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Appearance" onclick="settingscategoriesusers('appearance')">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="User Account">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Appearance">
                     <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Applications">
                     <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Language">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="System Information">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Searching System">
                 </div>
             </div>
 
@@ -262,6 +263,25 @@
             <div id="beta-window-content" class="window-content">
                 <a class="text-default" id="beta-window-content-p">Paragraph</a>
                 <input class="system-input-button" type="button" id="beta-window-content-input-button1" onclick="closebetaapp()" value="Button">
+            </div>
+
+        </div>
+
+        <div id="notepad-window" class="window" style="display: none;" onmousedown="notepadappfocus()"> 
+
+            <div id="notepad-window-header" class="window-header">
+                
+                <button id="notepad-window-close-button" class="window-header-close-button" onclick="closenotepadapp()"></button>
+                <button id="notepad-window-resize-button" class="window-header-resize-button" onclick="resizenotepadapp()"></button>
+                <button id="notepad-window-minimize-button" class="window-header-minimize-button" onclick="minimizenotepadapp()"></button>
+                
+                <a class="window-header-title" id="notepad-window-header-title">Notepad</a>
+
+            </div>
+
+            <div id="notepad-window-content" class="window-content">
+                <button class="system-options-input-button">File</button>
+                <textarea name="notepad-window-content-text-editor" id="notepad-window-content-text-editor" class="system-text-editor"></textarea>
             </div>
 
         </div>

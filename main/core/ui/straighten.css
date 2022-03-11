@@ -1002,6 +1002,50 @@ body {
     transition: background-color 0.15s;
 }
 
+.system-text-editor {
+    position: absolute;
+    height: calc(100% - 25px);
+    width: 100%;
+    resize: none;
+    background-color: rgb(10, 10, 10);
+    color: lightgray;
+    outline: 0px;
+    border: 0px;
+    font-family: Inter Regular;
+    font-size: 16px;
+    top: 25px;
+}
+
+.system-options-input-button {
+    position: absolute;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(26, 26, 26, 0);
+    color: rgba(255, 255, 255, 0.85);
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-size: 15px;
+    font-family: Inter Regular;
+}
+
+.system-options-input-button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-family: Inter Regular;
+}
+
+.system-options-input-button:active {
+    transition: 0.35s;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-family: Inter Med;
+}
+
 /* width */
 ::-webkit-scrollbar {
     width: 6px;
@@ -1309,6 +1353,11 @@ body {
 #desktop-taskbar-beta-app-button {
     background-image: url(../../res/images/icons/imageres/ecoslogo.png);
 }
+
+/* Notepad Application */
+
+
+
 
 /* Mobile */
 
