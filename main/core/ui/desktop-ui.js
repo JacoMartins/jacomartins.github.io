@@ -570,6 +570,7 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   }, 000);
 
   terminalprompt.innerText = username + '$:';
+  terminalprompt.style.color = 'yellow';
   terminal.focus();
 
   terminalrestoreheight = app.style.height;
@@ -577,6 +578,8 @@ function openterminalapp(app = document.getElementById('terminal-window'), minia
   terminalrestoretop = app.style.top;
   terminalrestoreleft = app.style.left;
   terminalwindowopen = true;
+  evaul = false;
+  sudo = false;
 }
 
 function terminalappfocus(app = document.getElementById('terminal-window')){
@@ -798,6 +801,7 @@ function dragElement(elmnt) {
 
 var lastcommand;
 var sudo = false;
+var evaul = false;
 
 function terminal(){
   const terminal = document.getElementById("terminal-window-terminal");
@@ -822,7 +826,7 @@ function terminal(){
     }, 000);
   }
 
-  if(event.keyCode == 13){
+  if(event.keyCode == 13 && evaul === false){
 
     lastcommand = terminal.value;
 
@@ -921,6 +925,19 @@ function terminal(){
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerHTML = '<span style="color: red;">Wrong Sintax</span>, please use "terminal [command]".';
+      }, 000);
+    }
+
+    if(terminal.value.includes("js-console")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        evaul = true;
+        terminalprompt.innerText = 'js-console' + '$:';
+        terminalprompt.style.color = 'orange';
+        terminal.focus();
+        returncommand.innerHTML = '<span style="color: orange;">Opening JS Terminal...</span>';
       }, 000);
     }
     
@@ -1255,12 +1272,32 @@ function terminal(){
     terminal.value = '';
  }
 
+ if(event.keyCode == 13 && evaul === true){
+  lastcommand = terminal.value;
+  
+  appcontainer.appendChild(createtext);
+  createtext.createtextclassvalue;
+  createtext.setAttributeNode(createtextclass);
+  createtext.innerHTML = '<span style="color: orange;">' + 'js-console$:' + '</span> ' + (terminal.value) + '<br>' + eval(terminal.value);
+  terminal.value = '';
+  eval(terminal.value);
+ }
+
  if(event.keyCode == 38) {
   terminal.value = lastcommand;
   }
-
 }
 
+function write(text){
+  return text;
+}
+
+var dimarray;
+
+function dim(con){
+  dimarray.push(con);
+  return dimarray.lenght;
+}
 
 // calculator APP
 var calculatorrestoreheight;
@@ -2243,8 +2280,8 @@ function opennotepadapp(app = document.getElementById('notepad-window')){
 
   app.style.width = '1000px';
 	app.style.height = '500px';
-  app.style.top = '120px';
-	app.style.left = '120px';
+  app.style.top = 'calc(50% - calc(500px / 2))';
+	app.style.left = 'calc(50% - calc(1000px / 2))';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
   resizebutton.style.display = 'block';

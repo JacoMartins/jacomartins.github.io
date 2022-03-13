@@ -1036,14 +1036,24 @@ body {
     color: rgba(255, 255, 255, 0.85);
     font-size: 15px;
     font-family: Inter Regular;
+    transition: 0.35s;
+}
+
+@keyframes system-options-input-button-click {
+    0% {
+        
+    }
+
+    100% {
+    }
 }
 
 .system-options-input-button:active {
-    transition: 0.35s;
+    animation: system-options-input-button-click 0.15s forwards;
     background-color: rgba(255, 255, 255, 0.1);
     color: rgba(255, 255, 255, 0.85);
     font-size: 15px;
-    font-family: Inter Med;
+    font-family: Inter SemiBold;
 }
 
 /* width */
