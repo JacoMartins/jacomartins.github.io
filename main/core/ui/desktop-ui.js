@@ -1273,10 +1273,11 @@ function terminal(){
   appcontainer.appendChild(createtext);
   createtext.createtextclassvalue;
   createtext.setAttributeNode(createtextclass);
-  createtext.innerHTML = '<span style="color: orange;">' + '[sudo] Password for ' + username + '</span> ' + (terminal.value);
+  createtext.innerHTML = '<span style="color: lightgray;">' + '[sudo] Password for ' + username + '</span> ' + (terminal.value);
   terminal.value = '';
 	 
   while(sudo === true){
+	terminal.type = 'password';
       if(terminal.value == userpw){
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
@@ -1285,7 +1286,8 @@ function terminal(){
         sudo = false;
         terminalprompt.innerText = username + '$:';
       } else {
-	for(tries = 5; tries > 0; tries--){
+	var tries = 5;
+	while(tries > 0){
 		appcontainer.appendChild(returncommand);
         	returncommand.returncommandclassvalue;
         	returncommand.setAttributeNode(returncommandclass);
