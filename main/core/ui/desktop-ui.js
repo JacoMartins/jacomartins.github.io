@@ -826,7 +826,7 @@ function terminal(){
     }, 000);
   }
 
-  if(event.keyCode == 13 && evaul === false){
+  if(event.keyCode == 13 && evaul === false && sudo === false){
 
     lastcommand = terminal.value;
 
@@ -847,26 +847,10 @@ function terminal(){
         //returncommand.setAttributeNode(returncommandclass);
         //returncommand
         terminalprompt.innerHTML = '<span style="color: lightgreen;">Password for ' + username + ':</span>';
-        sudo = true;
+        
+	evaul = false;
+	sudo = true;
       }, 000);
-    }
-
-    while(sudo === true){
-      if(terminal.value == userpw){
-        appcontainer.appendChild(returncommand);
-        returncommand.returncommandclassvalue;
-        returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
-        sudo = false;
-        terminalprompt.innerText = username + '$:';
-      } else {
-        appcontainer.appendChild(returncommand);
-        returncommand.returncommandclassvalue;
-        returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = '<span style="color: salmon;">Permission not granted.</span>';
-        sudo = false;
-        terminalprompt.innerText = username + '$:';
-      }
     }
 
     if(terminal.value.includes("<br>")){
@@ -1281,6 +1265,36 @@ function terminal(){
   createtext.innerHTML = '<span style="color: orange;">' + 'js-console$:' + '</span> ' + (terminal.value) + '<br>' + eval(terminal.value);
   terminal.value = '';
   eval(terminal.value);
+ }
+	
+ if(event.keyCode == 13 && sudo === true){
+  lastcommand = terminal.value;
+  
+  appcontainer.appendChild(createtext);
+  createtext.createtextclassvalue;
+  createtext.setAttributeNode(createtextclass);
+  createtext.innerHTML = '<span style="color: orange;">' + '[sudo] Password for ' + username + '</span> ' + (terminal.value);
+  terminal.value = '';
+	 
+  while(sudo === true){
+      if(terminal.value == userpw){
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
+        sudo = false;
+        terminalprompt.innerText = username + '$:';
+      } else {
+	for(tries = 5; tries > 0; tries--){
+		appcontainer.appendChild(returncommand);
+        	returncommand.returncommandclassvalue;
+        	returncommand.setAttributeNode(returncommandclass);
+        	returncommand.innerHTML = '<span style="color: salmon;">Password is wrong, please try again.</span>';
+        	sudo = false;
+        	terminalprompt.innerText = username + '$:';
+	}
+      }
+    }
  }
 
  if(event.keyCode == 38) {
