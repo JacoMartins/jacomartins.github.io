@@ -84,17 +84,19 @@
                 <button id="settings-window-resize-button" class="window-header-resize-button" onclick="resizesettingsapp()"></button>
                 <button id="settings-window-minimize-button" class="window-header-minimize-button" onclick="minimizesettingsapp()"></button>
                 
+                <button id="settings-window-content-input-button-back" class="system-input-sidebar-button backarrow" onclick="settingsbackbtn()"></button>
+
                 <a class="window-header-title" id="settings-window-header-title">Settings (Beta)</a>
             </div>
 
             <div class="window-sidebar" id="settings-window-sidebar">
                 <input class="system-input-sidebar-transparent-text" type="text" id="settings-window-sidebar-input-search" placeholder="Search on settings">
                 <div class="window-sidebar-button-panel">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="User Account">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Appearance">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Applications">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Language">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Searching System">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-users" value="User Account" onclick="settingsappcategory('users')">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-appearance" value="Appearance" onclick="settingsappcategory('appearance')">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-apps" value="Applications">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-language" value="Language">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-info" value="System Information">
                 </div>
             </div>
 

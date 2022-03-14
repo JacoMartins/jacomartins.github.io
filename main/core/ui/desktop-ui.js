@@ -1,5 +1,5 @@
 // Main
-let build = 32;
+let build = 40;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -1292,11 +1292,11 @@ function write(text){
   return text;
 }
 
-var dimarray;
+var dimlist = [];
 
 function dim(con){
-  dimarray.push(con);
-  return dimarray.lenght;
+  dimlist.push(con);
+  return dimlist.lenght;
 }
 
 // calculator APP
@@ -1955,6 +1955,7 @@ function opensettingsapp(app = document.getElementById('settings-window')){
   var miniapponclickfunction = miniapponclick.value = 'minimizesettingsapp()';
   var resizebutton = document.getElementById("settings-window-resize-button");
   var minimizebutton = document.getElementById("settings-window-minimize-button");
+  var backbutton = document.getElementById("settings-window-content-input-button-back");
   var sidebar = document.getElementById("settings-window-sidebar");
   var content = document.getElementById("settings-window-content");
   
@@ -1992,6 +1993,7 @@ function opensettingsapp(app = document.getElementById('settings-window')){
   sidebar.style.width = '232px';
   content.style.display = 'block';
   resizebutton.style.display = 'none';
+  backbutton.style.display = 'none';
   minimizebutton.style.left = '31px';
 
   if (window.innerHeight > window.innerWidth){
@@ -2007,6 +2009,7 @@ function opensettingsapp(app = document.getElementById('settings-window')){
     app.style.borderRadius = "0px";
     app.style.transition = "0.15s";
     sidebar.style.display = 'block';
+    backbutton.style.display = 'block';
     sidebar.style.width = 'calc(100% + 6px)';
     content.style.display = 'none';
 
@@ -2228,6 +2231,63 @@ function dragElement(elmnt) {
 }
 
 });
+
+var allcategories = ['users', 'appearance'];
+
+function settingsbackbtn(){
+  var categories = 'settings-window-categories-';
+  var sidebarbtn = 'settings-window-sidebar-buttons-';
+  var appearanceradio1 = document.getElementById('settings-window-categories-appearance-multibutton-button1');
+
+  for(c = 0; c < allcategories.length; c++){
+    document.getElementById(categories + allcategories[c]).style.display = 'none';
+    document.getElementById(categories + allcategories[c]).style.animation = 'system-fadeout 0.25s';
+    document.getElementById(sidebarbtn + allcategories[c]).style.fontFamily = 'Inter Regular';
+    document.getElementById(sidebarbtn + allcategories[c]).style.backgroundColor = 'rgba(255, 255, 255, 0.02)';
+    document.getElementById(sidebarbtn + allcategories[c]).style.left = 'calc(-0px)';
+    document.getElementById(sidebarbtn + allcategories[c]).style.transition = '0.15s';
+  }
+
+  document.getElementById('settings-window-content').style.display = 'none';
+  document.getElementById('settings-window-sidebar').style.display = 'block';
+  document.getElementById('settings-window-sidebar').style.animation = 'system-fadein 0.25s';
+}
+
+function settingsappcategory(category){
+  var categories = 'settings-window-categories-';
+  var sidebarbtn = 'settings-window-sidebar-buttons-';
+  var appearanceradio1 = document.getElementById('settings-window-categories-appearance-multibutton-button1');
+
+  for(c = 0; c < allcategories.length; c++){
+    document.getElementById(categories + allcategories[c]).style.display = 'none';
+    document.getElementById(categories + allcategories[c]).style.animation = 'system-fadeout 0.25s';
+    document.getElementById(sidebarbtn + allcategories[c]).style.fontFamily = 'Inter Regular';
+    document.getElementById(sidebarbtn + allcategories[c]).style.backgroundColor = 'rgba(255, 255, 255, 0.02)';
+    document.getElementById(sidebarbtn + allcategories[c]).style.left = 'calc(-0px)';
+    document.getElementById(sidebarbtn + allcategories[c]).style.transition = '0.15s';
+  }
+
+  document.getElementById(categories + category).style.display = 'block';
+  document.getElementById(categories + category).style.animation = 'system-fadein 0.25s';
+  document.getElementById(sidebarbtn + category).style.fontFamily = 'Inter Med';
+  document.getElementById(sidebarbtn + category).style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+  document.getElementById(sidebarbtn + category).style.left = 'calc(+6px)';
+  document.getElementById(sidebarbtn + category).style.transition = '0.15s';
+
+  if(category == 'appearance') {
+    appearanceradio1.checked = 'true';
+  }
+
+  if(window.innerHeight > window.innerWidth){
+    document.getElementById('settings-window-sidebar').style.display = 'none';
+    document.getElementById('settings-window-content').style.display = 'block';
+    document.getElementById(categories + 'users').style.display = 'none';
+    document.getElementById(categories + 'appearance').style.display = 'none';
+
+    document.getElementById(categories + category).style.display = 'block';
+    document.getElementById(categories + category).style.display = 'block';
+  }
+}
 
 function changeusersettingsapp(unameinput = document.getElementById('settings-window-categories-users-input-uname'), userpwinput = document.getElementById('settings-window-categories-users-input-userpw')){
     localStorage.setItem('username', unameinput.value);

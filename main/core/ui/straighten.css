@@ -128,13 +128,16 @@ body {
     width: 100%;
     top: 0px;
     left: 0px;
-    backdrop-filter: blur(45px);
+    backdrop-filter: blur(30px);
     z-index: 2;
 }
 
 #logon-screen {
     position: absolute;
     background-image: url('../../res/images/background/wpp1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100%;
     width: 100%;
     top: 0px;
@@ -1039,12 +1042,27 @@ body {
     transition: 0.35s;
 }
 
-@keyframes system-options-input-button-click {
+@keyframes system-fadein {
     0% {
-        
+        opacity: 0.0;
+        left: calc(-15px);
     }
 
     100% {
+        opacity: 1.0;
+        left: calc(-0px);
+    }
+}
+
+@keyframes system-fadeout {
+    100% {
+        opacity: 0.0;
+        left: calc(-15px);
+    }
+
+    0% {
+        opacity: 1.0;
+        left: calc(-0px);
     }
 }
 
@@ -1075,6 +1093,20 @@ body {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(255, 255, 255, 0.16);  
+}
+
+.backarrow {
+    background-image: url('../../res/images/icons/imageres/left.png');
+    background-position: 7px 5px;
+    background-repeat: no-repeat;
+    background-size: 9px 16px;
+}
+
+.fwardarrow {
+    background-image: url('../../res/images/icons/imageres/left.png');
+    background-position: 7px 5px;
+    background-repeat: no-repeat;
+    background-size: 9px 16px;
 }
 
 /* Demo Application */
@@ -1228,18 +1260,18 @@ body {
 }
 
 #settings-window-categories-users-input-uname {
-    position: relative;
+    position: absolute;
     left: 22px;
-    top: 22px;
+    top: 110px;
     padding-left: 2px;
     font-family: Inter Regular;
     font-size: 22px;
 }
 
 #settings-window-categories-users-input-userpw {
-    position: relative;
+    position: absolute;
     left: 22px;
-    top: 26px;
+    top: 150px;
     padding-left: 2px;
     font-family: Inter Regular;
     font-size: 22px;
@@ -1250,6 +1282,11 @@ body {
     left: 22px;
     top: 196px;
     font-family: Inter Regular;
+}
+
+#settings-window-content-input-button-back {
+    position: absolute;
+
 }
 
 #desktop-taskbar-settings-app-button {
@@ -2489,7 +2526,7 @@ body {
 }
 
 #settings-window-header-title {
-    left: 113px;
+    left: 145px;
     text-align: left;
 }
 
@@ -2525,6 +2562,18 @@ body {
     left: 22px;
     top: 196px;
     font-family: Inter Regular;
+}
+
+#settings-window-content-input-button-back {
+    position: absolute;
+    top: 7px;
+    background-color: rgba(255,255,255,0.05);
+    left: 56px;
+    width: 20px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 
 /* DEMO WINDOW */
