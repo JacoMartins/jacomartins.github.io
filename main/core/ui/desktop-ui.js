@@ -826,7 +826,7 @@ function terminal(){
     }, 000);
   }
 
-  if(event.keyCode == 13 && evaul === false && sudo === false){
+  if(event.keyCode == 13 && evaul === false){
 
     lastcommand = terminal.value;
 
@@ -847,10 +847,26 @@ function terminal(){
         //returncommand.setAttributeNode(returncommandclass);
         //returncommand
         terminalprompt.innerHTML = '<span style="color: lightgreen;">Password for ' + username + ':</span>';
-        
-	evaul = false;
-	sudo = true;
+        sudo = true;
       }, 000);
+    }
+
+    while(sudo === true){
+      if(terminal.value == userpw){
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
+        sudo = false;
+        terminalprompt.innerText = username + '$:';
+      } else {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: salmon;">Permission not granted.</span>';
+        sudo = false;
+        terminalprompt.innerText = username + '$:';
+      }
     }
 
     if(terminal.value.includes("<br>")){
@@ -1266,42 +1282,6 @@ function terminal(){
   terminal.value = '';
   eval(terminal.value);
  }
-	
- if(event.keyCode == 13 && sudo === true){
-  lastcommand = terminal.value;
-  
-  appcontainer.appendChild(createtext);
-  createtext.createtextclassvalue;
-  createtext.setAttributeNode(createtextclass);
-  createtext.innerHTML = '<span style="color: lightgray;">' + '[sudo] Password for ' + username + '</span> ' + (terminal.value);
-  terminal.value = '';
-  terminal.type = 'password';
-	 
-  while(sudo === true){
-      if(terminal.value == userpw){
-        appcontainer.appendChild(returncommand);
-        returncommand.returncommandclassvalue;
-        returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
-        sudo = false;
-	terminal.type = 'text';
-        terminalprompt.innerText = username + '$:';
-      } else {
-	var tries = 5;
-	      if(tries > 0){
-	      	appcontainer.appendChild(returncommand);
-        	returncommand.returncommandclassvalue;
-        	returncommand.setAttributeNode(returncommandclass);
-        	returncommand.innerHTML = '<span style="color: salmon;">Password is wrong, please try again.</span>';
-        	sudo = false;
-		terminal.type = 'text';
-        	terminalprompt.innerText = username + '$:';
-		tries = tries - 1;
-	      }
-		
-      }
-    }
- }
 
  if(event.keyCode == 38) {
   terminal.value = lastcommand;
@@ -1714,7 +1694,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome to the ECOS project! In this build (40) we made the settings app category function, now we only need to add the funcionalities.</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings categories;</br><br>- Fixed Terminal Sudo.</br><br>- New Js-console command.</br>';
+  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome to the ECOS project! In this build we started the settings app development, the design is already done. We most code it in the next few days!!!! </span><br></br><br>• Corrections: </br><br>- Fixed mobile screen flexibility;</br><br>- Fixed window focus order on minimizing.</br>';
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
@@ -2015,6 +1995,7 @@ function opensettingsapp(app = document.getElementById('settings-window')){
   resizebutton.style.display = 'none';
   backbutton.style.display = 'none';
   minimizebutton.style.left = '31px';
+  settingsappcategory('users');
 
   if (window.innerHeight > window.innerWidth){
     restoreheight = app.style.height;
@@ -2277,6 +2258,7 @@ function settingsappcategory(category){
   var categories = 'settings-window-categories-';
   var sidebarbtn = 'settings-window-sidebar-buttons-';
   var appearanceradio1 = document.getElementById('settings-window-categories-appearance-multibutton-button1');
+  var selectedindicator = document.getElementById('system-input-sidebar-selected-indicator');
 
   for(c = 0; c < allcategories.length; c++){
     document.getElementById(categories + allcategories[c]).style.display = 'none';
@@ -2293,9 +2275,18 @@ function settingsappcategory(category){
   document.getElementById(sidebarbtn + category).style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
   document.getElementById(sidebarbtn + category).style.left = 'calc(+6px)';
   document.getElementById(sidebarbtn + category).style.transition = '0.15s';
+  
+
+  if(category == 'users') {
+    appearanceradio1.checked = 'true';
+    selectedindicator.style.top = '8px';
+    selectedindicator.style.transition = '0.15s';
+  }
 
   if(category == 'appearance') {
     appearanceradio1.checked = 'true';
+    selectedindicator.style.top = '50px';
+    selectedindicator.style.transition = '0.15s';
   }
 
   if(window.innerHeight > window.innerWidth){
