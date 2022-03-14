@@ -1275,26 +1275,30 @@ function terminal(){
   createtext.setAttributeNode(createtextclass);
   createtext.innerHTML = '<span style="color: lightgray;">' + '[sudo] Password for ' + username + '</span> ' + (terminal.value);
   terminal.value = '';
+  terminal.type = 'password';
 	 
   while(sudo === true){
-	terminal.type = 'password';
       if(terminal.value == userpw){
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
         sudo = false;
+	terminal.type = 'text';
         terminalprompt.innerText = username + '$:';
       } else {
 	var tries = 5;
-	while(tries > 0){
-		appcontainer.appendChild(returncommand);
+	      if(tries > 0){
+	      	appcontainer.appendChild(returncommand);
         	returncommand.returncommandclassvalue;
         	returncommand.setAttributeNode(returncommandclass);
         	returncommand.innerHTML = '<span style="color: salmon;">Password is wrong, please try again.</span>';
         	sudo = false;
+		terminal.type = 'text';
         	terminalprompt.innerText = username + '$:';
-	}
+		tries = tries - 1;
+	      }
+		
       }
     }
  }
