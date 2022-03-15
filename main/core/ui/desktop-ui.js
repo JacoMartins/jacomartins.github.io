@@ -1731,7 +1731,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (40) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings application categories;</br><br>- Fixed sudo command.</br>';
+  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (40) we improved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings application categories;</br><br>- Fixed sudo command.</br>';
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
