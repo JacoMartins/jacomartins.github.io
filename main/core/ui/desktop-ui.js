@@ -888,6 +888,15 @@ function terminal(){
         returncommand.innerText = '\nMelhor prof\n';
       }, 000);
     }
+	  
+    if(terminal.value.includes("daniel")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nMelhor prof\n';
+      }, 000);
+    }
 
     if(terminal.value.includes("antonio")){
       setTimeout(() => {
