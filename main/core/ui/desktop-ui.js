@@ -2273,7 +2273,7 @@ function settingsappcategory(category){
   document.getElementById(categories + category).style.animation = 'system-fadein 0.25s';
   document.getElementById(sidebarbtn + category).style.fontFamily = 'Inter Med';
   document.getElementById(sidebarbtn + category).style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
-  document.getElementById(sidebarbtn + category).style.left = 'calc(+6px)';
+  document.getElementById(sidebarbtn + category).style.left = 'calc(+0px)';
   document.getElementById(sidebarbtn + category).style.transition = '0.15s';
   
 

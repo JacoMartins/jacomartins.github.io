@@ -1262,16 +1262,18 @@ body {
 #settings-window-categories-users-input-uname {
     position: absolute;
     left: 22px;
-    top: 110px;
-    padding-left: 2px;
+    top: 150px;
+    padding-left: 8px;
+    width: 230px;
     font-family: Inter Regular;
     font-size: 22px;
+    box-shadow: none;
 }
 
 #settings-window-categories-users-input-userpw {
     position: absolute;
     left: 22px;
-    top: 150px;
+    top: 190px;
     padding-left: 2px;
     font-family: Inter Regular;
     font-size: 22px;
@@ -1280,8 +1282,10 @@ body {
 #settings-window-categories-users-input-buttonchguname {
     position: absolute;
     left: 22px;
-    top: 196px;
+    top: 236px;
     font-family: Inter Regular;
+    width: 240px;
+    height: 30px;
 }
 
 #settings-window-content-input-button-back {
@@ -1289,9 +1293,19 @@ body {
 
 }
 
-#settings-window-categories-users-header2 {
+#settings-window-categories-users-text1 {
     left: 22px;
-    top: 110px;
+    top: 125px;
+    opacity: 0.4;
+}
+
+#settings-window-categories-users-input-button-changeuserpw {
+    position: absolute;
+    left: 22px;
+    top: 202px;
+    font-family: Inter Regular;
+    width: 240px;
+    height: 30px;
 }
 
 #system-input-sidebar-selected-indicator {
@@ -1299,7 +1313,7 @@ body {
     width: 4px;
     height: 30px;
     top: 8px;
-    left: 12px;
+    left: 8px;
     border-radius: 2px;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
     background-color: rgb(22, 64, 104);
