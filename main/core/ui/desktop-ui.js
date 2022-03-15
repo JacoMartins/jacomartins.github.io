@@ -83,7 +83,7 @@ setTimeout(() => {
   const desktopbetatext = document.getElementById('desktop-beta-info');
 
   bootbetatext.innerHTML = 'beta ' + betastage + ' build ' + build;
-  desktopbetatext.innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp + '.';
+  desktopbetatext.innerHTML = 'Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp + '.';
 }, 250);
 
 window.addEventListener('load', function(){
@@ -1013,15 +1013,6 @@ function terminal(){
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerText =  lastcommand.slice(5);
-      }, 000);
-    }
-
-    if(terminal.value.includes("gutem")){
-      setTimeout(() => {
-        appcontainer.appendChild(returncommand);
-        returncommand.returncommandclassvalue;
-        returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML =  'pelo q vc sabe uma ova! Como vc tem coragem de queimar o cara pelos boatos dos outros??? pelas msg q eu li aqui, vc ta descontando nele a dor q vc sofreu antes! os seus argumentos e msg são tudo coisa de criança, é ridiculo d++++, eu conheço esse mlk a mt tempo e ele é uma pessoa incrivel, tu conhece a um ano, se é que conhece, e acha q pode julgar e dar a sua opinião baseado em FOFOCA. você não entende q isso é um assunto serio, q pode acabar com a vida dele na escola, uma difamação q tem MTTTTR mentira no meio e vc espalha esses boatos pelo simples fato de vc se sentir confortável fazendo isso so pq ja aconteceu algo parecido com vc? acha q isso te da o direito de se intrometer no problema de outras pessoas so pra piorar tudo. isso não é coisa que se faça, se vc ta esculhambando ele por puro odio e não está interessado em entender a verdade fique quieto e não se meta, o guto não precisa das suas opiniões tóxicas mexendo no psicólogico dele, aliás, ngm precisa da sua opinião aqui, até pq vc não está interessado em ajudar a resolver isso, vc so quer acabar com a reputação de um mlk q vc nem conhece direito e eu não vou deixar vc nem ngm fazer isso, e se os amigos dele forem amigos de vdd não vão deixar tmb. Reveja seus atos e pare de falar nesse caso que não te pertence.';
       }, 000);
     }
 
