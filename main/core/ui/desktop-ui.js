@@ -2289,6 +2289,8 @@ function settingsappcategory(category){
     selectedindicator.style.transition = '0.15s';
   }
 
+  selectedindicator.style.display = 'block';
+
   if(window.innerHeight > window.innerWidth){
     document.getElementById('settings-window-sidebar').style.display = 'none';
     document.getElementById('settings-window-content').style.display = 'block';
