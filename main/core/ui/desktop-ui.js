@@ -800,6 +800,7 @@ function dragElement(elmnt) {
 });
 
 var lastcommand;
+var prelastcommand;
 var sudo = false;
 var evaul = false;
 
@@ -826,8 +827,9 @@ function terminal(){
     }, 000);
   }
 
-  if(event.keyCode == 13 && evaul === false){
+  if(event.keyCode == 13 && evaul === false && sudo === false){
 
+    prelastcommand = lastcommand;
     lastcommand = terminal.value;
 
     if(terminal.value.includes("exit")){
@@ -846,27 +848,9 @@ function terminal(){
         //returncommand.returncommandclassvalue;
         //returncommand.setAttributeNode(returncommandclass);
         //returncommand
-        terminalprompt.innerHTML = '<span style="color: lightgreen;">Password for ' + username + ':</span>';
+        terminalprompt.innerHTML = '<span style="color: lightgray;">[sudo] Password for ' + username + ':</span>';
         sudo = true;
       }, 000);
-    }
-
-    while(sudo === true){
-      if(terminal.value == userpw){
-        appcontainer.appendChild(returncommand);
-        returncommand.returncommandclassvalue;
-        returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = '<span style="color: lightgreen;">Permission granted.</span>';
-        sudo = false;
-        terminalprompt.innerText = username + '$:';
-      } else {
-        appcontainer.appendChild(returncommand);
-        returncommand.returncommandclassvalue;
-        returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = '<span style="color: salmon;">Permission not granted.</span>';
-        sudo = false;
-        terminalprompt.innerText = username + '$:';
-      }
     }
 
     if(terminal.value.includes("<br>")){
@@ -892,7 +876,7 @@ function terminal(){
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerText = '\n- Available commands: \ninfo: This comand shows the main system information\n\nclear: Wipes terminal text\n\nexit: Closes terminal application\n\nterminal: Shows terminal status. Sintax: terminal [command]\n\nchange: Customizes the selected element in the operating system. Syntax: change [-w, -uname].\n\ncomp update: Updates the operating system current compilation data\n\nPlease type all commands in lowercase.\n';
+        returncommand.innerText = '\n- Available commands: \ninfo: This comand shows the main system information\n\nclear: Wipes terminal text\n\nexit: Closes terminal application\n\nterminal: Shows terminal status. Sintax: terminal [command]\n\nchange: Customizes the selected element in the operating system. Syntax: change [-w, -lsw, -uname, -userpw].\n\ncomp update: Updates the operating system current compilation data\n\njs-console: Opens a javascript command console.\n\nlocation: Change the browser location settings of the operating system. Example: [location boot -l -t 0 url].\n\nlocation boot: Change the loading file of the operating system.\n\nlocation reboot -t (0 or 1): Choose if you want to boot directly on terminal or in the file.\n\nPlease type all commands in lowercase.';
       }, 000);
     }
 
@@ -928,7 +912,7 @@ function terminal(){
       }, 000);
     }
 
-    if(terminal.value.includes("js-console")){
+    if(terminal.value.includes("js-console") && terminal.value.includes('sudo') === false){
       setTimeout(() => {
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
@@ -941,7 +925,7 @@ function terminal(){
       }, 000);
     }
     
-    if(terminal.value.includes("location")){
+    if(terminal.value.includes("location") && terminal.value.includes('sudo') === false){
 
       if(terminal.value.includes("location boot -l ")){
         setTimeout(() => {
@@ -1086,6 +1070,7 @@ function terminal(){
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerHTML = 'Setting your password to ' + lastcommand.slice(15) + '...';
         localStorage.setItem('userpw', lastcommand.slice(15));
+        userpw = localStorage.getItem('userpw');
         userpwinput = lastcommand.slice(15);
       }, 000);
     }
@@ -1273,6 +1258,7 @@ function terminal(){
  }
 
  if(event.keyCode == 13 && evaul === true){
+  prelastcommand = lastcommand;
   lastcommand = terminal.value;
   
   appcontainer.appendChild(createtext);
@@ -1283,10 +1269,49 @@ function terminal(){
   eval(terminal.value);
  }
 
+ var t = 5;
+
+ if(event.keyCode == 13 && sudo === true){
+  appcontainer.appendChild(createtext);
+  createtext.createtextclassvalue;
+  createtext.setAttributeNode(createtextclass);
+  createtext.innerHTML = '<span style="color: lightgray;">' + '[sudo] Password for ' + username +  ':</span> ' + (terminal.value);
+
+    if(terminal.value == localStorage.getItem('userpw')){
+      appcontainer.appendChild(returncommand);
+      returncommand.returncommandclassvalue;
+      returncommand.setAttributeNode(returncommandclass);
+      sudo = false;
+
+      if(lastcommand.includes('sudo')) {
+        terminal.value = lastcommand.replace('sudo', '');
+      }
+
+      terminalprompt.innerText = username + '$:';
+      window.terminal();
+    } else {
+      if(t > 0){
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerHTML = '<span style="color: lightgray;">Password is wrong, please try again.</span>';
+        t = t - 1;
+      }
+
+      if(t = 0){
+        sudo = false;
+      }
+    }
+
+    terminal.value = '';
+ }
+
  if(event.keyCode == 38) {
   terminal.value = lastcommand;
   }
 }
+
+// Terminal Functions
 
 function write(text){
   return text;
@@ -1297,6 +1322,18 @@ var dimlist = [];
 function dim(con){
   dimlist.push(con);
   return dimlist.lenght;
+}
+
+function exit(){
+  evaul = false;
+  sudo = false;
+
+  var terminal = document.getElementById('terminal-window-terminal');
+  var terminalprompt = document.getElementById('terminal-window-content-prompt');
+
+  terminalprompt.innerText = username + '$:';
+  terminalprompt.style.color = 'yellow';
+  terminal.focus();
 }
 
 // calculator APP
@@ -1694,7 +1731,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome to the ECOS project! In this build we started the settings app development, the design is already done. We most code it in the next few days!!!! </span><br></br><br>• Corrections: </br><br>- Fixed mobile screen flexibility;</br><br>- Fixed window focus order on minimizing.</br>';
+  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (40) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings application categories;</br><br>- Fixed sudo command.</br>';
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
