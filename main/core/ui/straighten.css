@@ -2571,18 +2571,20 @@ body {
 }
 
 #settings-window-categories-users-input-uname {
-    position: relative;
+    position: absolute;
     left: 22px;
-    top: 78px;
-    padding-left: 2px;
+    top: 150px;
+    padding-left: 8px;
+    width: 230px;
     font-family: Inter Regular;
     font-size: 22px;
+    box-shadow: none;
 }
 
 #settings-window-categories-users-input-userpw {
-    position: relative;
+    position: absolute;
     left: 22px;
-    top: 84px;
+    top: 190px;
     padding-left: 2px;
     font-family: Inter Regular;
     font-size: 22px;
@@ -2591,8 +2593,10 @@ body {
 #settings-window-categories-users-input-buttonchguname {
     position: absolute;
     left: 22px;
-    top: 196px;
+    top: 236px;
     font-family: Inter Regular;
+    width: 240px;
+    height: 30px;
 }
 
 #settings-window-content-input-button-back {
@@ -2605,6 +2609,21 @@ body {
     padding-bottom: 12px;
     padding-left: 12px;
     padding-right: 12px;
+}
+
+#settings-window-categories-users-text1 {
+    left: 22px;
+    top: 125px;
+    opacity: 0.4;
+}
+
+#settings-window-categories-users-input-button-changeuserpw {
+    position: absolute;
+    left: 22px;
+    top: 202px;
+    font-family: Inter Regular;
+    width: 240px;
+    height: 30px;
 }
 
 /* DEMO WINDOW */

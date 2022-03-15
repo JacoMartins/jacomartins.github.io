@@ -112,7 +112,7 @@ window.addEventListener('load', function loadusername(){
 
   logonusernametext.innerText = username;
   settingsunameinput.value = username;
-  settingsuserpwinput.value = userpw;
+  //settingsuserpwinput.value = userpw;
 
   logininput.focus();
 
@@ -2297,6 +2297,7 @@ function settingsappcategory(category){
 
     document.getElementById(categories + category).style.display = 'block';
     document.getElementById(categories + category).style.display = 'block';
+    selectedindicator.style.display = 'none';
   }
 }
 
@@ -2305,7 +2306,7 @@ function changeusersettingsapp(unameinput = document.getElementById('settings-wi
     document.getElementById('logon-screen-username').innerHTML = unameinput.value;
     document.getElementById('terminal-window-content-prompt').innerText = unameinput.value + '$:';
 
-    localStorage.setItem('userpw', userpwinput.value);
+    //localStorage.setItem('userpw', userpwinput.value);
 }
 
 // Notepad
