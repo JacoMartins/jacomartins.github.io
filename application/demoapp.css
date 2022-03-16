@@ -1,0 +1,28 @@
+/* Demo Application */
+
+#demo-window-content-header1 {
+    top: 15px;
+    left: 20px;
+}
+
+#demo-window-content-header2 {
+    top: 56px;
+    left: 20px;
+}
+
+#demo-window-content-p {
+    top: 90px;
+    left: 20px;
+}
+
+#demo-window-content-input-text1 {
+    top: 120px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    width: calc(100% - 48px);
+}
+
+#demo-window-content-input-button1 {
+    top: 163px;
+    left: 20px;
+}
