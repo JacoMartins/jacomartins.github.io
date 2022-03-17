@@ -2740,13 +2740,13 @@ function msgboxappfocus(app = document.getElementById('msgbox-window')){
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 }
 
-function closemsgboxapp(app = document.getElementById(`msgbox${msgid}-window`)){  
+function closemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){  
   var desktop = document.getElementById('owner-desktop');
   
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
-    desktop.parentNode.removeChild(document.getElementById(`msgbox${msgid}-window`));
+    desktop.parentNode.removeChild(document.getElementById(`msgbox${msgid - 1}-window`));
     msgid = msgid - 1;
   }, 250);
 }
