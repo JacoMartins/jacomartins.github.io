@@ -2741,7 +2741,7 @@ function msgboxappfocus(app = document.getElementById('msgbox-window')){
 }
 
 function closemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){  
-  var desktop = document.getElementById('owner-desktop');
+  var desktop = document.getElementById('owner-user');
   
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
