@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
-    <link rel="stylesheet" type="text/css" href="../../../application/demoapp.css">
     <link rel="icon" type="image/png" href="/favicon.png">
     <script type="text/javascript" src="desktop-ui.js"></script>
     <script type="text/php" src="../data.php"></script>
@@ -23,21 +22,13 @@
             <div class="progress"></div>
         </div>
     </div>
-
-    <!--&LoginScreen-->
-
     <div id="logon-screen" style="display: block;">
         <input class="system-input-text" type="password" placeholder="Password" id="logon-screen-input-text" onkeydown="loginauth()">
         <a class="bootscreen-text-default" id="logon-screen-username">Type pix to unlock.</a>
         <div id="logon-blur"></div>
     </div>
-
-    <!--&UserDesktop-->
-
     <div id="owner-user" class="desktop" style="display: none;">
         
-        <!--&Taskbar-->
-
         <div id="desktop-taskbar" class="desktop-taskbar">
             
             <button class="desktop-taskbar-button" id="desktop-taskbar-button-menu" onclick="menutrigger()"></button>
@@ -52,8 +43,6 @@
             </div>
 
         </div>
-
-        <!--&MainMenuBox-->
         
         <div id="desktop-menu-main" class="desktop-menu" style="display: none;">
             
@@ -75,8 +64,6 @@
         
         </div>
 
-        <!--&SettingsMenuBox-->
-
         <div id="desktop-menu-settings" class="desktop-menu" style="display: none;">
             
             <div class="desktop-menu-settings-content">
@@ -86,16 +73,10 @@
             </div>
 
         </div>
-
-        <!--&DesktopText-->
         
         <p class="desktop-beta-info" id="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Beta 1, Build 15 Compilation: 040220222012</p>
-        
-        <!--&SettingsApplication-->
 
         <div id="settings-window" class="window" style="display: none;" onmousedown="settingsappfocus()"> 
-
-            <!--&SettingsAppHeader-->
 
             <div id="settings-window-header" class="window-header" ondblclick="resizesettingsapp()">
                 
@@ -107,8 +88,6 @@
 
                 <a class="window-header-title" id="settings-window-header-title">Settings (Beta)</a>
             </div>
-
-            <!--&SettingsAppSidebar-->
 
             <div class="window-sidebar" id="settings-window-sidebar">
                 <input class="system-input-sidebar-transparent-text" type="text" id="settings-window-sidebar-input-search" placeholder="Search on settings">
@@ -122,11 +101,7 @@
                 </div>
             </div>
 
-            <!--&SettingsAppContent-->
-
             <div id="settings-window-content">
-
-                <!--&UserCategory-->
 
                 <div id="settings-window-categories-users" style="display: block;">
                     
@@ -150,8 +125,6 @@
                     <input class="system-input-button" type="button" id="settings-window-categories-users-input-buttonchguname" value="Change your user data" onclick="changeusersettingsapp()">
 
                 </div>
-
-                <!--&AppearanceCategory-->
 
                 <div id="settings-window-categories-appearance" style="display: none;">
                     <h1 class="text-header1" id="settings-window-categories-users-header">Appearance</h1>
@@ -180,11 +153,7 @@
 
         </div>
 
-        <!--&DemonstrationApp-->
-
         <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()"> 
-
-            <!--&DemonstrationAppHeader-->
 
             <div id="demo-window-header" class="window-header" ondblclick="resizedemoapp()">
                 
@@ -195,8 +164,6 @@
                 <a class="window-header-title" id="demo-window-header-title">OS Demo</a>
 
             </div>
-
-            <!--&DemonstrationAppContent-->
 
             <div id="demo-window-content" class="window-content">
                 <h1 class="text-header1" id="demo-window-content-header1">H1</h1>
@@ -213,11 +180,7 @@
 
         </div>
 
-        <!--&TerminalApp-->
-
         <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()"> 
-
-            <!--&TerminalAppHeader-->
 
             <div id="terminal-window-header" class="window-header" ondblclick="resizeterminalapp()">
                 
@@ -229,12 +192,8 @@
 
             </div>
 
-            <!--&TerminalAppContent-->
-
             <div id="terminal-window-content" class="window-content" onclick="promptfocus()">
                 
-                <!--&TerminalAppContainer-->
-
                 <div id="terminal-window-container" onclick="promptfocus()">
                     <div class="terminal-window-content-line">
                         <span class="terminal-window-content-prompt" id="terminal-window-content-prompt" style="color: yellow;">$  </span>
@@ -246,12 +205,8 @@
 
         </div>
 
-        <!--&CalculatorApp-->
-        
         <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorappfocus()"> 
 
-            <!--&CalculatorHeader-->
-            
             <div id="calculator-window-header" class="window-header" ondblclick="resizecalculatorapp()">
                 
                 <button id="calculator-window-close-button" class="window-header-close-button" onclick="closecalculatorapp()"></button>
@@ -261,8 +216,6 @@
                 <a class="window-header-title" id="calculator-window-header-title">Calculator</a>
 
             </div>
-
-            <!--&CalculatorContent-->
 
             <div id="calculator-window-content" class="window-content">
 
@@ -300,11 +253,7 @@
 
         </div>
 
-        <!--&BetaApp-->
-
         <div id="beta-window" class="window" style="display: none;" onmousedown="betaappfocus()"> 
-
-            <!--&BetaAppHeader-->
 
             <div id="beta-window-header" class="window-header" ondblclick="resizebetaapp()">
                 
@@ -316,8 +265,6 @@
 
             </div>
 
-            <!--&BetaAppContent-->
-
             <div id="beta-window-content" class="window-content">
                 <a class="text-default" id="beta-window-content-p">Paragraph</a>
                 <input class="system-input-button" type="button" id="beta-window-content-input-button1" onclick="closebetaapp()" value="Button">
@@ -325,11 +272,7 @@
 
         </div>
 
-        <!--&NotepadApp-->
-
         <div id="notepad-window" class="window" style="display: none;" onmousedown="notepadappfocus()"> 
-
-            <!--&NotepadAppHeader-->
 
             <div id="notepad-window-header" class="window-header" ondblclick="resizenotepadapp()">
                 
@@ -340,8 +283,6 @@
                 <a class="window-header-title" id="notepad-window-header-title">Notepad</a>
 
             </div>
-
-            <!--&NotepadAppContent-->
 
             <div id="notepad-window-content" class="window-content">
                 <button class="system-options-input-button">File</button>

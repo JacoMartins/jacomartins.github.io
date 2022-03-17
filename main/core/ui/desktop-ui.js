@@ -1,5 +1,5 @@
 // Main
-let build = 40;
+let build = 42;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -803,6 +803,7 @@ var lastcommand;
 var prelastcommand;
 var sudo = false;
 var evaul = false;
+var msgid = 0;
 
 function terminal(){
   const terminal = document.getElementById("terminal-window-terminal");
@@ -814,9 +815,21 @@ function terminal(){
   var createtextclassvalue = createtextclass.value = 'terminal-window-content-text';
   var textelements = document.getElementsByClassName('terminal-window-content-text');
 
+  var msgwindow = document.createElement('div');
+  var msgwindowclass = document.createAttribute('class');
+  var msgwindowappid = document.createAttribute('id');
+  var msgwindowclassname = msgwindowclass.value = 'window';
+  var msgwindowidname = msgwindowappid.value = 'msgbox' + msgid + '-window';
+
+  var resizebutton = document.getElementById("demo-window-resize-button");
+  var minimizebutton = document.getElementById("demo-window-minimize-button");
+
   var returncommand = document.createElement('div');
   var returncommandclass = document.createAttribute('class');
   var returncommandclassvalue = returncommandclass.value = 'terminal-window-content-text';
+
+  var desktop = document.getElementById('owner-user');
+
 
   if(terminal.value.includes("<br>")){
     setTimeout(() => {
@@ -850,6 +863,53 @@ function terminal(){
         //returncommand
         terminalprompt.innerHTML = '<span style="color: lightgray;">[sudo] Password for ' + username + ':</span>';
         sudo = true;
+      }, 000);
+    }
+
+    if(terminal.value.includes("msg")){
+      var msgcontent = terminal.value.slice(4);
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand
+
+        desktop.appendChild(msgwindow);
+        msgwindow.msgwindowidname;
+        msgwindow.setAttributeNode(msgwindowappid);
+        msgwindow.msgwindowclassname;
+        msgwindow.setAttributeNode(msgwindowclass);
+
+        document.getElementById(`msgbox${msgid}-window`).innerHTML = `
+        
+        <div id="msgbox${msgid}-window-header" class="window-header">
+        
+          <button id="msgbox${msgid}-window-close-button" class="window-header-close-button" onclick="closemsgboxapp()"></button>        
+          <a class="window-header-title" id="msgbox${msgid}-window-header-title"></a>
+    
+        </div>
+    
+        <div id="msgbox${msgid}-window-content" class="window-content">
+          <a class="text-default" id="msgbox${msgid}-window-content-p">Paragraph</a>
+          <button class="system-input-button" id="msgbox${msgid}-window-content-input-button1">OK</button>
+        </div>
+        
+        `;
+
+        document.getElementById(`msgbox${msgid}-window`).style.height = '134px';
+        document.getElementById(`msgbox${msgid}-window`).style.width = '352px';
+        document.getElementById(`msgbox${msgid}-window-header-title`).innerText = `Message${msgid}`;
+
+        document.getElementById(`msgbox${msgid}-window-content-p`).style.top = '15px';
+        document.getElementById(`msgbox${msgid}-window-content-p`).style.left = '15px';
+
+        document.getElementById(`msgbox${msgid}-window-content-p`).innerText = msgcontent;
+
+        document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
+        document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
+
+
+        msgid = msgid + 1;
       }, 000);
     }
 
@@ -888,8 +948,44 @@ function terminal(){
         returncommand.innerText = '\nMelhor prof\n';
       }, 000);
     }
-	  
+
     if(terminal.value.includes("daniel")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nMelhor prof\n';
+      }, 000);
+    }
+
+    if(terminal.value.includes("nirvado")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nMelhor prof\n';
+      }, 000);
+    }
+
+    if(terminal.value.includes("roberta")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nMelhor prof\n';
+      }, 000);
+    }
+
+    if(terminal.value.includes("ph")){
+      setTimeout(() => {
+        appcontainer.appendChild(returncommand);
+        returncommand.returncommandclassvalue;
+        returncommand.setAttributeNode(returncommandclass);
+        returncommand.innerText = '\nMelhor prof\n';
+      }, 000);
+    }
+
+    if(terminal.value.includes("eldasio")){
       setTimeout(() => {
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
@@ -1247,7 +1343,7 @@ function terminal(){
         returncommand.setAttributeNode(returncommandclass);
         returncommand.innerHTML = '<span style="color: lightgreen;">The current compilation date is ' + compdays + compmonths[date.getMonth()] + compyear + comphours + compminutes + '</span>';
       }, 000);
-      document.getElementById('desktop-beta-info').innerHTML = 'Confidential Build. Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp;
+      document.getElementById('desktop-beta-info').innerHTML = 'Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp;
     }
 
     appcontainer.appendChild(createtext);
@@ -1731,7 +1827,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (40) we improved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings application categories;</br><br>- Fixed sudo command.</br>';
+  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (40) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings application categories;</br><br>- Fixed sudo command.</br>';
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
@@ -2627,6 +2723,213 @@ function dragElement(elmnt) {
     document.onmouseup = null;
     document.onmousemove = null;
     snapnotepadapp();
+  }
+}
+
+});
+
+// msgbox
+
+function msgboxappfocus(app = document.getElementById('msgbox-window')){
+  z++;
+  app.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
+}
+
+function closemsgboxapp(app = document.getElementById(`msgbox${msgid}-window`)){  
+  var desktop = document.getElementById('owner-desktop');
+  
+  app.style.animation = 'closewindow 0.25s';
+  app.style.animationDuration = '0.25s';
+  setTimeout(() => {
+    desktop.parentNode.removeChild(document.querySelectorAll('msgbox')[msgid - 1]);
+    msgid = msgid - 1;
+  }, 250);
+}
+
+function resizemsgboxapp(app = document.getElementById("msgbox-window")){
+  if (app.style.width === '100%') {
+		app.style.width = restorewidth;
+		app.style.height = restoreheight;
+    app.style.left = restoreleft;
+    app.style.top = restoretop;
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+    app.style.animation = 'maximizewindow 0.25s';
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+	} else {
+    restoreheight = app.style.height;
+    restorewidth = app.style.width; 
+    restoretop = app.style.top;
+    restoreleft = app.style.left;
+		app.style.width = '100%';
+		app.style.height = 'calc(100% - 40px)';
+		app.style.top = "40px";
+		app.style.left = "0px";
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+	}
+}
+
+function minimizemsgboxapp(app = document.getElementById("msgbox-window"), miniapp = document.getElementById('desktop-taskbar-msgbox-app-button')) {
+  if (msgboxwindowopen = true) {
+    if(app.style.display === 'block'){
+      app.style.animation = 'minimizewindow 0.25s';
+      app.style.animationDuration = '0.25s';
+      setTimeout(() => {
+        app.style.display = 'none';
+      }, 250);
+    }
+    else {
+      app.style.display = 'block';
+      app.style.animation = 'callwindow 0.25s';
+      msgboxappfocus()
+    }
+  }
+  else {
+    openmsgboxapp()
+  }
+}
+
+function sidemsgboxapp(app = document.getElementById("msgbox-window")){
+  var appleft = parseInt(app.style.left, 10);
+  var appwidth = parseInt(app.style.width, 10);
+  
+  if (appleft < 0) {
+    app.style.left = '0px';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+  }
+
+  if (appleft > (window.innerWidth - appwidth)) {
+    app.style.left = '50%';
+    app.style.top = '40px';
+    app.style.height = 'calc(100% - 40px)';
+    app.style.width = '50%';
+    app.style.resize = "none";
+    app.style.borderRadius = "0px";
+    app.style.transition = "0.15s";
+    setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+  }
+}
+
+function snapminmsgboxapp(app = document.getElementById("msgbox-window")){
+  var appwidth = parseInt(restorewidth, 10);
+  var posleft = window.event.clientX - (appwidth * 0.5);
+  var posleftcss = posleft + 'px';
+  var postop = window.event.clientY + 'px';
+
+  if (app.style.height === 'calc(100% - 40px)') {
+		app.style.width = restorewidth;
+		app.style.height = restoreheight;
+    app.style.left = posleftcss;
+    app.style.top = '40px';
+    app.style.resize = "both";
+    app.style.borderRadius = "4px";
+	}
+}
+
+function snapmsgboxapp(app = document.getElementById("msgbox-window")){
+  var clienttop = window.event.clientY;
+  var clientleft = window.event.clientX;
+
+  if (clienttop <= 0) {
+    if (app.style.width === 'calc(100% - 40px)') {
+      app.style.width = restorewidth;
+      app.style.height = restoreheight;
+      app.style.resize = "both";
+      app.style.borderRadius = "4px";
+    } else {
+      app.style.width = '100%';
+      app.style.height = 'calc(100% - 40px)';
+      app.style.top = "40px";
+      app.style.left = "0px";
+      app.style.resize = "none";
+      app.style.borderRadius = "0px";
+      app.style.transition = "0.15s";
+      setTimeout(function() {
+			  app.style.transition = "none";
+		}, 150)
+    }
+  }
+
+  if (clientleft <= 0) {
+    sidemsgboxapp()
+    // document.getElementById("msgbox-window-header-title").innerHTML = 'Detected';
+  }
+
+  if(clientleft >= (window.innerWidth - 1)){
+    sidemsgboxapp()
+  }
+}
+
+function saverestorepos(app = document.getElementById('msgbox-window')){
+  restoreheight = app.style.height;
+  restorewidth = app.style.width; 
+  restoretop = app.style.top;
+  restoreleft = app.style.left;
+}
+
+window.addEventListener("load", function(){
+dragElement(document.getElementById("msgbox-window"));
+
+function dragElement(elmnt) {
+  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+  if (document.getElementById("msgbox-window-header")) {
+    /* if present, the header is where you move the DIV from:*/
+    document.getElementById("msgbox-window-header").onmousedown = dragMouseDown;
+  } else {
+    /* otherwise, move the DIV from anywhere inside the DIV:*/
+    elmnt.onmousedown = dragMouseDown;
+  }
+
+  function dragMouseDown(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // get the mouse cursor position at startup:
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    document.onmouseup = closeDragElement;
+    // call a function whenever the cursor moves:
+    document.onmousemove = elementDrag;
+  }
+
+  function elementDrag(e) {
+    e = e || window.event;
+    e.preventDefault();
+    // calculate the new cursor position:
+    pos1 = pos3 - e.clientX;
+    pos2 = pos4 - e.clientY;
+    pos3 = e.clientX;
+    pos4 = e.clientY;
+    // set the element's new position:
+    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+    snapminmsgboxapp();
+  }
+
+  function closeDragElement() {
+    document.onmouseup = null;
+    document.onmousemove = null;
+    snapmsgboxapp();
   }
 }
 
