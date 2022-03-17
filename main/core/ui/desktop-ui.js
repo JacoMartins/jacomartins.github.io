@@ -895,7 +895,9 @@ function terminal(){
         </div>
         
         `;
-
+	
+	document.getElementById(`msgbox${msgid}-window`).style.animation = 'openwindow 0.25s';
+	
         document.getElementById(`msgbox${msgid}-window`).style.height = '134px';
         document.getElementById(`msgbox${msgid}-window`).style.width = '352px';
         document.getElementById(`msgbox${msgid}-window-header-title`).innerText = `Message${msgid}`;
