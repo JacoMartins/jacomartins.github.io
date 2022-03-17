@@ -2746,7 +2746,7 @@ function closemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
-    desktop.parentNode.removeChild(document.getElementById(`msgbox${msgid}-window`));
+    desktop.removeChild(document.getElementById(`msgbox${msgid}-window`));
     msgid = msgid - 1;
   }, 250);
 }
