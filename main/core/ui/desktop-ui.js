@@ -804,7 +804,8 @@ var prelastcommand;
 var sudo = false;
 var evaul = false;
 var msgid = 0;
-var msgslct;
+var msgstore = new Array();
+var msgslct = 0;
 
 function terminal(){
   const terminal = document.getElementById("terminal-window-terminal");
@@ -819,8 +820,10 @@ function terminal(){
   var msgwindow = document.createElement('div');
   var msgwindowclass = document.createAttribute('class');
   var msgwindowappid = document.createAttribute('id');
+  var msgwindowevent = document.createAttribute('onmousedown');
   var msgwindowclassname = msgwindowclass.value = 'window';
   var msgwindowidname = msgwindowappid.value = 'msgbox' + msgid + '-window';
+  var msgwindoweventvalue = msgwindowevent.value = `msgboxappfocus(${msgid})`;
 
   var resizebutton = document.getElementById("demo-window-resize-button");
   var minimizebutton = document.getElementById("demo-window-minimize-button");
@@ -880,10 +883,12 @@ function terminal(){
         msgwindow.setAttributeNode(msgwindowappid);
         msgwindow.msgwindowclassname;
         msgwindow.setAttributeNode(msgwindowclass);
-
+        msgwindow.msgwindoweventvalue;
+        msgwindow.setAttributeNode(msgwindowevent);
+        
         document.getElementById(`msgbox${msgid}-window`).innerHTML = `
         
-        <div id="msgbox${msgid}-window-header" class="window-header" onmousedown="dragElement(document.getElementById('msgbox${msgid - 1}-window'))">
+        <div id="msgbox${msgid}-window-header" class="window-header" onmouseover="">
         
           <button id="msgbox${msgid}-window-close-button" class="window-header-close-button" onclick="closemsgboxapp()"></button>        
           <a class="window-header-title" id="msgbox${msgid}-window-header-title"></a>
@@ -896,9 +901,15 @@ function terminal(){
         </div>
         
         `;
-	
+        
+        msgslct = msgid;
+        msgstore.push(msgslct);
+
+        dragElement(document.getElementById(`msgbox${msgid}-window`));
+
+        document.getElementById(`msgbox${msgid}-window`).onmousedown = msgboxappfocus(msgid);
       	document.getElementById(`msgbox${msgid}-window`).style.animation = 'openwindow 0.25s';
-	
+
         document.getElementById(`msgbox${msgid}-window`).style.height = '134px';
         document.getElementById(`msgbox${msgid}-window`).style.width = '352px';
         document.getElementById(`msgbox${msgid}-window`).style.top = `calc(50% - ${(parseInt(document.getElementById(`msgbox${msgid}-window`).style.height) * 0.5)}px)`;
@@ -2526,7 +2537,7 @@ function opennotepadapp(app = document.getElementById('notepad-window')){
   restoretop = app.style.top;
   restoreleft = app.style.left;
 }
-
+  
 function notepadappfocus(app = document.getElementById('notepad-window')){
   z++;
   app.style.zIndex = z;
@@ -2736,22 +2747,24 @@ function dragElement(elmnt) {
 
 // msgbox
 
-function msgboxappfocus(app = document.getElementById(`msgbox${msgid - 1}-window`)){
+function msgboxappfocus(id){
+  var app = document.getElementById(`msgbox${id}-window`);
   z++;
   app.style.zIndex = z;
+  msgslct = id;
 
   document.getElementById('desktop-taskbar').style.zIndex = z + 999;
   document.getElementById('desktop-menu-main').style.zIndex = z + 998;
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 }
 
-function closemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){  
+function closemsgboxapp(app = document.getElementById(`msgbox${msgslct}-window`)){  
   var desktop = document.getElementById('owner-user');
-  
+
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
-    desktop.removeChild(document.getElementById(`msgbox${msgid - 1}-window`));
+    desktop.removeChild(document.getElementById(`msgbox${msgslct}-window`));
     msgid = msgid - 1;
   }, 250);
 }
@@ -2895,13 +2908,13 @@ function saverestorepos(app = document.getElementById(`msgbox${msgid - 1}-window
   restoreleft = app.style.left;
 }
 
-var msgboxheader = document.getElementById(`msgbox${msgid - 1}-window-header`);
+var msgboxheader = document.getElementById(`msgbox${msgslct}-window-header`);
   
   function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(`msgbox${msgid - 1}-window-header`)) {
+    if (document.getElementById(`msgbox${msgslct}-window-header`)) {
       /* if present, the header is where you move the DIV from:*/
-      document.getElementById(`msgbox${msgid - 1}-window-header`).onmousedown = dragMouseDown;
+      document.getElementById(`msgbox${msgslct}-window-header`).onmousedown = dragMouseDown;
     } else {
       /* otherwise, move the DIV from anywhere inside the DIV:*/
       elmnt.onmousedown = dragMouseDown;
