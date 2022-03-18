@@ -1,5 +1,5 @@
 // Main
-let build = 42;
+let build = 43;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -804,6 +804,7 @@ var prelastcommand;
 var sudo = false;
 var evaul = false;
 var msgid = 0;
+var msgslct;
 
 function terminal(){
   const terminal = document.getElementById("terminal-window-terminal");
@@ -882,7 +883,7 @@ function terminal(){
 
         document.getElementById(`msgbox${msgid}-window`).innerHTML = `
         
-        <div id="msgbox${msgid}-window-header" class="window-header">
+        <div id="msgbox${msgid}-window-header" class="window-header" onmousedown="dragElement(document.getElementById('msgbox${msgid - 1}-window'))">
         
           <button id="msgbox${msgid}-window-close-button" class="window-header-close-button" onclick="closemsgboxapp()"></button>        
           <a class="window-header-title" id="msgbox${msgid}-window-header-title"></a>
@@ -891,16 +892,19 @@ function terminal(){
     
         <div id="msgbox${msgid}-window-content" class="window-content">
           <a class="text-default" id="msgbox${msgid}-window-content-p">Paragraph</a>
-          <button class="system-input-button" id="msgbox${msgid}-window-content-input-button1">OK</button>
+          <button class="system-input-button" id="msgbox${msgid}-window-content-input-button1" onclick="closemsgboxapp()">OK</button>
         </div>
         
         `;
 	
-	document.getElementById(`msgbox${msgid}-window`).style.animation = 'openwindow 0.25s';
+      	document.getElementById(`msgbox${msgid}-window`).style.animation = 'openwindow 0.25s';
 	
         document.getElementById(`msgbox${msgid}-window`).style.height = '134px';
         document.getElementById(`msgbox${msgid}-window`).style.width = '352px';
+        document.getElementById(`msgbox${msgid}-window`).style.top = `calc(50% - ${(parseInt(document.getElementById(`msgbox${msgid}-window`).style.height) * 0.5)}px)`;
+        document.getElementById(`msgbox${msgid}-window`).style.left = `calc(50% - ${(parseInt(document.getElementById(`msgbox${msgid}-window`).style.width) * 0.5)}px)`;
         document.getElementById(`msgbox${msgid}-window-header-title`).innerText = `Message${msgid}`;
+        document.getElementById(`msgbox${msgid}-window`).style.zIndex = z + 1;
 
         document.getElementById(`msgbox${msgid}-window-content-p`).style.top = '15px';
         document.getElementById(`msgbox${msgid}-window-content-p`).style.left = '15px';
@@ -909,7 +913,7 @@ function terminal(){
 
         document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
         document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
-
+        document.getElementById(`msgbox${msgid}-window-content-input-button1`).focus();
 
         msgid = msgid + 1;
       }, 000);
@@ -2732,9 +2736,10 @@ function dragElement(elmnt) {
 
 // msgbox
 
-function msgboxappfocus(app = document.getElementById('msgbox-window')){
+function msgboxappfocus(app = document.getElementById(`msgbox${msgid - 1}-window`)){
   z++;
   app.style.zIndex = z;
+
   document.getElementById('desktop-taskbar').style.zIndex = z + 999;
   document.getElementById('desktop-menu-main').style.zIndex = z + 998;
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
@@ -2746,12 +2751,12 @@ function closemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
-    desktop.removeChild(document.getElementById(`msgbox${msgid}-window`));
+    desktop.removeChild(document.getElementById(`msgbox${msgid - 1}-window`));
     msgid = msgid - 1;
   }, 250);
 }
 
-function resizemsgboxapp(app = document.getElementById("msgbox-window")){
+function resizemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
   if (app.style.width === '100%') {
 		app.style.width = restorewidth;
 		app.style.height = restoreheight;
@@ -2782,7 +2787,7 @@ function resizemsgboxapp(app = document.getElementById("msgbox-window")){
 	}
 }
 
-function minimizemsgboxapp(app = document.getElementById("msgbox-window"), miniapp = document.getElementById('desktop-taskbar-msgbox-app-button')) {
+function minimizemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)) {
   if (msgboxwindowopen = true) {
     if(app.style.display === 'block'){
       app.style.animation = 'minimizewindow 0.25s';
@@ -2802,7 +2807,7 @@ function minimizemsgboxapp(app = document.getElementById("msgbox-window"), minia
   }
 }
 
-function sidemsgboxapp(app = document.getElementById("msgbox-window")){
+function sidemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
   var appleft = parseInt(app.style.left, 10);
   var appwidth = parseInt(app.style.width, 10);
   
@@ -2833,7 +2838,7 @@ function sidemsgboxapp(app = document.getElementById("msgbox-window")){
   }
 }
 
-function snapminmsgboxapp(app = document.getElementById("msgbox-window")){
+function snapminmsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
   var appwidth = parseInt(restorewidth, 10);
   var posleft = window.event.clientX - (appwidth * 0.5);
   var posleftcss = posleft + 'px';
@@ -2849,7 +2854,7 @@ function snapminmsgboxapp(app = document.getElementById("msgbox-window")){
 	}
 }
 
-function snapmsgboxapp(app = document.getElementById("msgbox-window")){
+function snapmsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
   var clienttop = window.event.clientY;
   var clientleft = window.event.clientX;
 
@@ -2883,56 +2888,52 @@ function snapmsgboxapp(app = document.getElementById("msgbox-window")){
   }
 }
 
-function saverestorepos(app = document.getElementById('msgbox-window')){
+function saverestorepos(app = document.getElementById(`msgbox${msgid - 1}-window`)){
   restoreheight = app.style.height;
   restorewidth = app.style.width; 
   restoretop = app.style.top;
   restoreleft = app.style.left;
 }
 
-window.addEventListener("load", function(){
-dragElement(document.getElementById("msgbox-window"));
-
-function dragElement(elmnt) {
-  var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-  if (document.getElementById("msgbox-window-header")) {
-    /* if present, the header is where you move the DIV from:*/
-    document.getElementById("msgbox-window-header").onmousedown = dragMouseDown;
-  } else {
-    /* otherwise, move the DIV from anywhere inside the DIV:*/
-    elmnt.onmousedown = dragMouseDown;
+var msgboxheader = document.getElementById(`msgbox${msgid - 1}-window-header`);
+  
+  function dragElement(elmnt) {
+    var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+    if (document.getElementById(`msgbox${msgid - 1}-window-header`)) {
+      /* if present, the header is where you move the DIV from:*/
+      document.getElementById(`msgbox${msgid - 1}-window-header`).onmousedown = dragMouseDown;
+    } else {
+      /* otherwise, move the DIV from anywhere inside the DIV:*/
+      elmnt.onmousedown = dragMouseDown;
+    }
+  
+    function dragMouseDown(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // get the mouse cursor position at startup:
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      document.onmouseup = closeDragElement;
+      // call a function whenever the cursor moves:
+      document.onmousemove = elementDrag;
+    }
+  
+    function elementDrag(e) {
+      e = e || window.event;
+      e.preventDefault();
+      // calculate the new cursor position:
+      pos1 = pos3 - e.clientX;
+      pos2 = pos4 - e.clientY;
+      pos3 = e.clientX;
+      pos4 = e.clientY;
+      // set the element's new position:
+      elmnt.style.top = (elmnt.offsetTop - pos2) + `px`;
+      elmnt.style.left = (elmnt.offsetLeft - pos1) + `px`;
+    }
+  
+    function closeDragElement() {
+      document.onmouseup = null;
+      document.onmousemove = null;
+    }
   }
 
-  function dragMouseDown(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // get the mouse cursor position at startup:
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    document.onmouseup = closeDragElement;
-    // call a function whenever the cursor moves:
-    document.onmousemove = elementDrag;
-  }
-
-  function elementDrag(e) {
-    e = e || window.event;
-    e.preventDefault();
-    // calculate the new cursor position:
-    pos1 = pos3 - e.clientX;
-    pos2 = pos4 - e.clientY;
-    pos3 = e.clientX;
-    pos4 = e.clientY;
-    // set the element's new position:
-    elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
-    elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
-    snapminmsgboxapp();
-  }
-
-  function closeDragElement() {
-    document.onmouseup = null;
-    document.onmousemove = null;
-    snapmsgboxapp();
-  }
-}
-
-});
