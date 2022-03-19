@@ -1,5 +1,5 @@
 // Main
-let build = 43;
+let build = 44;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -804,7 +804,6 @@ var prelastcommand;
 var sudo = false;
 var evaul = false;
 var msgid = 0;
-var msgstore = new Array();
 var msgslct = 0;
 
 function terminal(){
@@ -890,21 +889,18 @@ function terminal(){
         
         <div id="msgbox${msgid}-window-header" class="window-header" onmouseover="">
         
-          <button id="msgbox${msgid}-window-close-button" class="window-header-close-button" onclick="closemsgboxapp()"></button>        
+          <button id="msgbox${msgid}-window-close-button" class="window-header-close-button" onclick="closemsgboxapp(${msgid})"></button>        
           <a class="window-header-title" id="msgbox${msgid}-window-header-title"></a>
     
         </div>
     
         <div id="msgbox${msgid}-window-content" class="window-content">
           <a class="text-default" id="msgbox${msgid}-window-content-p">Paragraph</a>
-          <button class="system-input-button" id="msgbox${msgid}-window-content-input-button1" onclick="closemsgboxapp()">OK</button>
+          <button class="system-input-button" id="msgbox${msgid}-window-content-input-button1" onclick="closemsgboxapp(${msgid})">OK</button>
         </div>
         
         `;
         
-        msgslct = msgid;
-        msgstore.push(msgslct);
-
         dragElement(document.getElementById(`msgbox${msgid}-window`));
 
         document.getElementById(`msgbox${msgid}-window`).onmousedown = msgboxappfocus(msgid);
@@ -953,7 +949,7 @@ function terminal(){
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerText = '\n- Available commands: \ninfo: This comand shows the main system information\n\nclear: Wipes terminal text\n\nexit: Closes terminal application\n\nterminal: Shows terminal status. Sintax: terminal [command]\n\nchange: Customizes the selected element in the operating system. Syntax: change [-w, -lsw, -uname, -userpw].\n\ncomp update: Updates the operating system current compilation data\n\njs-console: Opens a javascript command console.\n\nlocation: Change the browser location settings of the operating system. Example: [location boot -l -t 0 url].\n\nlocation boot: Change the loading file of the operating system.\n\nlocation reboot -t (0 or 1): Choose if you want to boot directly on terminal or in the file.\n\nPlease type all commands in lowercase.';
+        returncommand.innerText = '\n- Available commands: \ninfo: This comand shows the main system information\n\nclear: Wipes terminal text\n\nexit: Closes terminal application\n\nterminal: Shows terminal status. Sintax: terminal [command]\n\nchange: Customizes the selected element in the operating system. Syntax: change [-w, -lsw, -uname, -userpw].\n\ncomp update: Updates the operating system current compilation data\n\njs-console: Opens a javascript command console.\n\nlocation: Change the browser location settings of the operating system. Example: [location boot -l -t 0 url].\n\nlocation boot: Change the loading file of the operating system.\n\nlocation reboot -t (0 or 1): Choose if you want to boot directly on terminal or in the file.\n\nmsg [text]: Creates a new dialogue box with the text you wrote previously.\n\nPlease type all commands in lowercase.';
       }, 000);
     }
 
@@ -1844,7 +1840,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = '<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (40) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed mobile settings application categories;</br><br>- Fixed sudo command.</br>';
+  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed msg command.</br>`;
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
@@ -2758,14 +2754,14 @@ function msgboxappfocus(id){
   document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
 }
 
-function closemsgboxapp(app = document.getElementById(`msgbox${msgslct}-window`)){  
+function closemsgboxapp(id){  
   var desktop = document.getElementById('owner-user');
+  var app = document.getElementById(`msgbox${id}-window`);
 
   app.style.animation = 'closewindow 0.25s';
   app.style.animationDuration = '0.25s';
   setTimeout(() => {
-    desktop.removeChild(document.getElementById(`msgbox${msgslct}-window`));
-    msgid = msgid - 1;
+    desktop.removeChild(document.getElementById(`msgbox${id}-window`));
   }, 250);
 }
 
@@ -2908,13 +2904,13 @@ function saverestorepos(app = document.getElementById(`msgbox${msgid - 1}-window
   restoreleft = app.style.left;
 }
 
-var msgboxheader = document.getElementById(`msgbox${msgslct}-window-header`);
+var msgboxheader = document.getElementById(`msgbox${msgid}-window-header`);
   
   function dragElement(elmnt) {
     var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-    if (document.getElementById(`msgbox${msgslct}-window-header`)) {
+    if (document.getElementById(`msgbox${msgid}-window-header`)) {
       /* if present, the header is where you move the DIV from:*/
-      document.getElementById(`msgbox${msgslct}-window-header`).onmousedown = dragMouseDown;
+      document.getElementById(`msgbox${msgid}-window-header`).onmousedown = dragMouseDown;
     } else {
       /* otherwise, move the DIV from anywhere inside the DIV:*/
       elmnt.onmousedown = dragMouseDown;
