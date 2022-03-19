@@ -1,5 +1,5 @@
 // Main
-let build = 44;
+let build = 45;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -903,7 +903,6 @@ function terminal(){
         
         dragElement(document.getElementById(`msgbox${msgid}-window`));
 
-        document.getElementById(`msgbox${msgid}-window`).onmousedown = msgboxappfocus(msgid);
       	document.getElementById(`msgbox${msgid}-window`).style.animation = 'openwindow 0.25s';
 
         document.getElementById(`msgbox${msgid}-window`).style.height = '134px';
@@ -921,6 +920,10 @@ function terminal(){
         document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
         document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
         document.getElementById(`msgbox${msgid}-window-content-input-button1`).focus();
+
+        setTimeout(() => {
+          document.getElementById(`msgbox${msgid}-window`).onmousedown = msgboxappfocus(msgid);
+        }, 00);
 
         msgid = msgid + 1;
       }, 000);
@@ -1840,7 +1843,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed msg command.</br>`;
+  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed the msg command creation of elements and events.</br><br>- Fixed the events of the msg command created windows.</br>`;
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
@@ -2747,7 +2750,6 @@ function msgboxappfocus(id){
   var app = document.getElementById(`msgbox${id}-window`);
   z++;
   app.style.zIndex = z;
-  msgslct = id;
 
   document.getElementById('desktop-taskbar').style.zIndex = z + 999;
   document.getElementById('desktop-menu-main').style.zIndex = z + 998;
