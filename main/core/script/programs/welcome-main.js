@@ -61,7 +61,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved settings application and also made some new terminal commands!</span><br></br><br>• Corrections: </br><br>- Fixed the msg command creation of elements and events.</br><br>- Fixed the events of the msg command created windows.</br>`;
+  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved the source code and put right button click to work. We are getting there!</span><br></br><br>• Corrections: </br><br>- Fixed the msg command creation of elements and events.</br><br>- [+] Added context menu.</br>`;
 
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
