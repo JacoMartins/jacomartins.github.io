@@ -18,6 +18,8 @@ window.addEventListener('load', function loadusername(){
       user.style.backgroundImage = `url('${localStorage.getItem('userwp')}')`;
       loginwindow.style.display = 'none';
       logininput.setAttribute('placeholder', 'Password');
+      openbetaapp();
+      document.getElementById('beta-window-header-title').innerText = 'Welcome, ' + username;
     } else {
       loginwindow.style.display = 'block';
       user.style.display = 'none';
