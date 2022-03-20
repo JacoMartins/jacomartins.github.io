@@ -4,8 +4,6 @@ var lastcommand;
 var prelastcommand;
 var sudo = false;
 var evaul = false;
-var msgid = 0;
-var msgslct = 0;
 
 function terminal(){
   const terminal = document.getElementById("terminal-window-terminal");
@@ -17,13 +15,13 @@ function terminal(){
   var createtextclassvalue = createtextclass.value = 'terminal-window-content-text';
   var textelements = document.getElementsByClassName('terminal-window-content-text');
 
-  var msgwindow = document.createElement('div');
-  var msgwindowclass = document.createAttribute('class');
-  var msgwindowappid = document.createAttribute('id');
-  var msgwindowevent = document.createAttribute('onmousedown');
-  var msgwindowclassname = msgwindowclass.value = 'window';
-  var msgwindowidname = msgwindowappid.value = 'msgbox' + msgid + '-window';
-  var msgwindoweventvalue = msgwindowevent.value = `msgboxappfocus(${msgid})`;
+  var genwindow = document.createElement('div');
+  var genwindowclass = document.createAttribute('class');
+  var genwindowappid = document.createAttribute('id');
+  var genwindowevent = document.createAttribute('onmousedown');
+  var genwindowclassname = genwindowclass.value = 'window';
+  var genwindowidname = genwindowappid.value = 'generated' + genid + '-window';
+  var genwindoweventvalue = genwindowevent.value = `generatedappfocus(${genid})`;
 
   var resizebutton = document.getElementById("demo-window-resize-button");
   var minimizebutton = document.getElementById("demo-window-minimize-button");
@@ -78,55 +76,55 @@ function terminal(){
         returncommand.setAttributeNode(returncommandclass);
         returncommand
 
-        desktop.appendChild(msgwindow);
-        msgwindow.msgwindowidname;
-        msgwindow.setAttributeNode(msgwindowappid);
-        msgwindow.msgwindowclassname;
-        msgwindow.setAttributeNode(msgwindowclass);
-        msgwindow.msgwindoweventvalue;
-        msgwindow.setAttributeNode(msgwindowevent);
+        desktop.appendChild(genwindow);
+        genwindow.genwindowidname;
+        genwindow.setAttributeNode(genwindowappid);
+        genwindow.genwindowclassname;
+        genwindow.setAttributeNode(genwindowclass);
+        genwindow.genwindoweventvalue;
+        genwindow.setAttributeNode(genwindowevent);
         
-        document.getElementById(`msgbox${msgid}-window`).innerHTML = `
+        document.getElementById(`generated${genid}-window`).innerHTML = `
         
-        <div id="msgbox${msgid}-window-header" class="window-header" onmouseover="">
+        <div id="generated${genid}-window-header" class="window-header" onmouseover="">
         
-          <button id="msgbox${msgid}-window-close-button" class="window-header-close-button" onclick="closemsgboxapp(${msgid})"></button>        
-          <a class="window-header-title" id="msgbox${msgid}-window-header-title"></a>
+          <button id="generated${genid}-window-close-button" class="window-header-close-button" onclick="closegeneratedapp(${genid})"></button>        
+          <a class="window-header-title" id="generated${genid}-window-header-title"></a>
     
         </div>
     
-        <div id="msgbox${msgid}-window-content" class="window-content">
-          <a class="text-default" id="msgbox${msgid}-window-content-p">Paragraph</a>
-          <button class="system-input-button" id="msgbox${msgid}-window-content-input-button1" onclick="closemsgboxapp(${msgid})">OK</button>
+        <div id="generated${genid}-window-content" class="window-content">
+          <a class="text-default" id="generated${genid}-window-content-p">Paragraph</a>
+          <button class="system-input-button" id="generated${genid}-window-content-input-button1" onclick="closegeneratedapp(${genid})">OK</button>
         </div>
         
         `;
         
-        dragElement(document.getElementById(`msgbox${msgid}-window`));
+        dragElement(document.getElementById(`generated${genid}-window`));
 
-      	document.getElementById(`msgbox${msgid}-window`).style.animation = 'openwindow 0.25s';
+      	document.getElementById(`generated${genid}-window`).style.animation = 'openwindow 0.25s';
 
-        document.getElementById(`msgbox${msgid}-window`).style.height = '134px';
-        document.getElementById(`msgbox${msgid}-window`).style.width = '352px';
-        document.getElementById(`msgbox${msgid}-window`).style.top = `calc(50% - ${(parseInt(document.getElementById(`msgbox${msgid}-window`).style.height) * 0.5)}px)`;
-        document.getElementById(`msgbox${msgid}-window`).style.left = `calc(50% - ${(parseInt(document.getElementById(`msgbox${msgid}-window`).style.width) * 0.5)}px)`;
-        document.getElementById(`msgbox${msgid}-window-header-title`).innerText = `Message${msgid}`;
-        document.getElementById(`msgbox${msgid}-window`).style.zIndex = z + 1;
+        document.getElementById(`generated${genid}-window`).style.height = '134px';
+        document.getElementById(`generated${genid}-window`).style.width = '352px';
+        document.getElementById(`generated${genid}-window`).style.top = `calc(50% - ${(parseInt(document.getElementById(`generated${genid}-window`).style.height) * 0.5)}px)`;
+        document.getElementById(`generated${genid}-window`).style.left = `calc(50% - ${(parseInt(document.getElementById(`generated${genid}-window`).style.width) * 0.5)}px)`;
+        document.getElementById(`generated${genid}-window-header-title`).innerText = `Message${genid}`;
+        document.getElementById(`generated${genid}-window`).style.zIndex = z + 1;
 
-        document.getElementById(`msgbox${msgid}-window-content-p`).style.top = '15px';
-        document.getElementById(`msgbox${msgid}-window-content-p`).style.left = '15px';
+        document.getElementById(`generated${genid}-window-content-p`).style.top = '15px';
+        document.getElementById(`generated${genid}-window-content-p`).style.left = '15px';
 
-        document.getElementById(`msgbox${msgid}-window-content-p`).innerText = msgcontent;
+        document.getElementById(`generated${genid}-window-content-p`).innerText = msgcontent;
 
-        document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
-        document.getElementById(`msgbox${msgid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
-        document.getElementById(`msgbox${msgid}-window-content-input-button1`).focus();
+        document.getElementById(`generated${genid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
+        document.getElementById(`generated${genid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
+        document.getElementById(`generated${genid}-window-content-input-button1`).focus();
 
         setTimeout(() => {
-          document.getElementById(`msgbox${msgid}-window`).onmousedown = msgboxappfocus(msgid);
+          document.getElementById(`generated${genid}-window`).onmousedown = generatedappfocus(genid);
         }, 00);
 
-        msgid = msgid + 1;
+        genid = genid + 1;
       }, 000);
     }
 
@@ -370,10 +368,10 @@ function terminal(){
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
-        returncommand.innerHTML = 'Setting username to ' + lastcommand.slice(13) + '...';
-        localStorage.setItem('username', lastcommand.slice(13));
-        document.getElementById('logon-screen-username').innerHTML = lastcommand.slice(13);
-        document.getElementById('terminal-window-content-prompt').innerText = lastcommand.slice(13) + '$:';
+        returncommand.innerHTML = 'Setting username to ' + lastcommand.slice(14) + '...';
+        localStorage.setItem('username', lastcommand.slice(14));
+        document.getElementById('logon-screen-username').innerHTML = lastcommand.slice(14);
+        document.getElementById('terminal-window-content-prompt').innerText = lastcommand.slice(14) + '$:';
       }, 000);
     }
 
@@ -649,209 +647,3 @@ function exit(){
   terminalprompt.style.color = 'yellow';
   terminal.focus();
 }
-
-// msgbox
-
-function msgboxappfocus(id){
-    var app = document.getElementById(`msgbox${id}-window`);
-    z++;
-    app.style.zIndex = z;
-  
-    document.getElementById('desktop-taskbar').style.zIndex = z + 999;
-    document.getElementById('desktop-menu-main').style.zIndex = z + 998;
-    document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
-  }
-  
-  function closemsgboxapp(id){  
-    var desktop = document.getElementById('owner-user');
-    var app = document.getElementById(`msgbox${id}-window`);
-  
-    app.style.animation = 'closewindow 0.25s';
-    app.style.animationDuration = '0.25s';
-    setTimeout(() => {
-      desktop.removeChild(document.getElementById(`msgbox${id}-window`));
-    }, 250);
-  }
-  
-  function resizemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
-    if (app.style.width === '100%') {
-          app.style.width = restorewidth;
-          app.style.height = restoreheight;
-      app.style.left = restoreleft;
-      app.style.top = restoretop;
-      app.style.resize = "both";
-      app.style.borderRadius = "4px";
-      app.style.animation = 'maximizewindow 0.25s';
-      app.style.transition = "0.15s";
-      setTimeout(function() {
-                app.style.transition = "none";
-          }, 150)
-      } else {
-      restoreheight = app.style.height;
-      restorewidth = app.style.width; 
-      restoretop = app.style.top;
-      restoreleft = app.style.left;
-          app.style.width = '100%';
-          app.style.height = 'calc(100% - 40px)';
-          app.style.top = "40px";
-          app.style.left = "0px";
-      app.style.resize = "none";
-      app.style.borderRadius = "0px";
-      app.style.transition = "0.15s";
-      setTimeout(function() {
-                app.style.transition = "none";
-          }, 150)
-      }
-  }
-  
-  function minimizemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)) {
-    if (msgboxwindowopen = true) {
-      if(app.style.display === 'block'){
-        app.style.animation = 'minimizewindow 0.25s';
-        app.style.animationDuration = '0.25s';
-        setTimeout(() => {
-          app.style.display = 'none';
-        }, 250);
-      }
-      else {
-        app.style.display = 'block';
-        app.style.animation = 'callwindow 0.25s';
-        msgboxappfocus()
-      }
-    }
-    else {
-      openmsgboxapp()
-    }
-  }
-  
-  function sidemsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
-    var appleft = parseInt(app.style.left, 10);
-    var appwidth = parseInt(app.style.width, 10);
-    
-    if (appleft < 0) {
-      app.style.left = '0px';
-      app.style.top = '40px';
-      app.style.height = 'calc(100% - 40px)';
-      app.style.width = '50%';
-      app.style.resize = "none";
-      app.style.borderRadius = "0px";
-      app.style.transition = "0.15s";
-      setTimeout(function() {
-                app.style.transition = "none";
-          }, 150)
-    }
-  
-    if (appleft > (window.innerWidth - appwidth)) {
-      app.style.left = '50%';
-      app.style.top = '40px';
-      app.style.height = 'calc(100% - 40px)';
-      app.style.width = '50%';
-      app.style.resize = "none";
-      app.style.borderRadius = "0px";
-      app.style.transition = "0.15s";
-      setTimeout(function() {
-                app.style.transition = "none";
-          }, 150)
-    }
-  }
-  
-  function snapminmsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
-    var appwidth = parseInt(restorewidth, 10);
-    var posleft = window.event.clientX - (appwidth * 0.5);
-    var posleftcss = posleft + 'px';
-    var postop = window.event.clientY + 'px';
-  
-    if (app.style.height === 'calc(100% - 40px)') {
-          app.style.width = restorewidth;
-          app.style.height = restoreheight;
-      app.style.left = posleftcss;
-      app.style.top = '40px';
-      app.style.resize = "both";
-      app.style.borderRadius = "4px";
-      }
-  }
-  
-  function snapmsgboxapp(app = document.getElementById(`msgbox${msgid - 1}-window`)){
-    var clienttop = window.event.clientY;
-    var clientleft = window.event.clientX;
-  
-    if (clienttop <= 0) {
-      if (app.style.width === 'calc(100% - 40px)') {
-        app.style.width = restorewidth;
-        app.style.height = restoreheight;
-        app.style.resize = "both";
-        app.style.borderRadius = "4px";
-      } else {
-        app.style.width = '100%';
-        app.style.height = 'calc(100% - 40px)';
-        app.style.top = "40px";
-        app.style.left = "0px";
-        app.style.resize = "none";
-        app.style.borderRadius = "0px";
-        app.style.transition = "0.15s";
-        setTimeout(function() {
-                app.style.transition = "none";
-          }, 150)
-      }
-    }
-  
-    if (clientleft <= 0) {
-      sidemsgboxapp()
-      // document.getElementById("msgbox-window-header-title").innerHTML = 'Detected';
-    }
-  
-    if(clientleft >= (window.innerWidth - 1)){
-      sidemsgboxapp()
-    }
-  }
-  
-  function saverestorepos(app = document.getElementById(`msgbox${msgid - 1}-window`)){
-    restoreheight = app.style.height;
-    restorewidth = app.style.width; 
-    restoretop = app.style.top;
-    restoreleft = app.style.left;
-  }
-  
-  var msgboxheader = document.getElementById(`msgbox${msgid}-window-header`);
-    
-    function dragElement(elmnt) {
-      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
-      if (document.getElementById(`msgbox${msgid}-window-header`)) {
-        /* if present, the header is where you move the DIV from:*/
-        document.getElementById(`msgbox${msgid}-window-header`).onmousedown = dragMouseDown;
-      } else {
-        /* otherwise, move the DIV from anywhere inside the DIV:*/
-        elmnt.onmousedown = dragMouseDown;
-      }
-    
-      function dragMouseDown(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // get the mouse cursor position at startup:
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        document.onmouseup = closeDragElement;
-        // call a function whenever the cursor moves:
-        document.onmousemove = elementDrag;
-      }
-    
-      function elementDrag(e) {
-        e = e || window.event;
-        e.preventDefault();
-        // calculate the new cursor position:
-        pos1 = pos3 - e.clientX;
-        pos2 = pos4 - e.clientY;
-        pos3 = e.clientX;
-        pos4 = e.clientY;
-        // set the element's new position:
-        elmnt.style.top = (elmnt.offsetTop - pos2) + `px`;
-        elmnt.style.left = (elmnt.offsetLeft - pos1) + `px`;
-      }
-    
-      function closeDragElement() {
-        document.onmouseup = null;
-        document.onmousemove = null;
-      }
-    }
-  
-  

@@ -1,5 +1,5 @@
 // Main Code
-let build = 45;
+let build = 46;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -8,10 +8,13 @@ let versionname = 'Beta';
 let permlevel = 0;
 var date = new Date();
 
+if (localStorage.getItem('auth') == undefined){
+  localStorage.setItem('auth', 'true');
+}
+
 if (localStorage.getItem('username') == undefined){
   localStorage.setItem('username', 'owner');
 }
-
 
 if (localStorage.getItem('notepad') == undefined){
   localStorage.setItem('notepad', '');
@@ -104,3 +107,6 @@ window.addEventListener('keyup', event => {
     menutrigger();
   }
 })
+
+document.body.oncontextmenu = function(){return false};
+

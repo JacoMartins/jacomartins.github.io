@@ -1,3 +1,7 @@
+<?php
+    include_once '../data.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,32 +12,24 @@
     <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
     <link rel="icon" type="image/png" href="/favicon.png">
-
-    <!--Web Title-->
+    <script type="text/javascript" src="desktop-ui.js"></script>
+    <script type="text/php" src="../data.php"></script>
     <title>Eclipse UI</title>
 </head>
 
 <body>
+    $conn;
     <div class="bootscreen" id="bootscreen">
         <a class="bootscreen-text-default" id="bootscreen-text-default-main"></a>
-        <a class="bootscreen-text-h1">eclipse</a>
+        <a class="bootscreen-text-h1">project eclipse</a>
         
         <div class="progressbar">
             <div class="progress"></div>
         </div>
     </div>
     <div id="logon-screen" style="display: block;">
-
-        <form id="logon-form">
-            <div class="logon-info">
-                <div id="logon-info-logo"></div>
-                <p class="text-default" id="logon-info-text">Please insert your username and password to authenticate.</p>
-            </div>
-    
-            <input class="system-input-text" type="text" placeholder="Username" id="logon-screen-input-text" onkeydown="loginauth()">
-            <input class="system-input-text" type="password" placeholder="Password" id="logon-screen-input-password" onkeydown="loginauth()">
-            <a class="bootscreen-text-default" id="logon-screen-username"></a>
-        </form>
+        <input class="system-input-text" type="password" placeholder="Password" id="logon-screen-input-text" onkeydown="loginauth()">
+        <a class="bootscreen-text-default" id="logon-screen-username">Type pix to unlock.</a>
         <div id="logon-blur"></div>
     </div>
     <div id="owner-user" class="desktop" style="display: none;">
@@ -66,7 +62,6 @@
                     <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="opencalculatorapp()">Calculator</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-notepad-app" onclick="opennotepadapp()">Notepad</button>
                 </div>
             
             </div>
@@ -83,30 +78,27 @@
 
         </div>
         
-        <p class="desktop-beta-info" id="desktop-beta-info"></p>
+        <p class="desktop-beta-info" id="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Beta 1, Build 15 Compilation: 040220222012</p>
 
         <div id="settings-window" class="window" style="display: none;" onmousedown="settingsappfocus()"> 
 
-            <div id="settings-window-header" class="window-header" ondblclick="resizesettingsapp()">
+            <div id="settings-window-header" class="window-header">
                 
                 <button id="settings-window-close-button" class="window-header-close-button" onclick="closesettingsapp()"></button>
                 <button id="settings-window-resize-button" class="window-header-resize-button" onclick="resizesettingsapp()"></button>
                 <button id="settings-window-minimize-button" class="window-header-minimize-button" onclick="minimizesettingsapp()"></button>
                 
-                <button id="settings-window-content-input-button-back" class="system-input-sidebar-button backarrow" onclick="settingsbackbtn()"></button>
-
                 <a class="window-header-title" id="settings-window-header-title">Settings (Beta)</a>
             </div>
 
             <div class="window-sidebar" id="settings-window-sidebar">
                 <input class="system-input-sidebar-transparent-text" type="text" id="settings-window-sidebar-input-search" placeholder="Search on settings">
                 <div class="window-sidebar-button-panel">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-users" value="User Account" onclick="settingsappcategory('users')">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-appearance" value="Appearance" onclick="settingsappcategory('appearance')">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-apps" value="Applications">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-language" value="Language">
-                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-info" value="System Information">
-                    <span id="system-input-sidebar-selected-indicator"></span>
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="User Account">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Appearance">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Applications">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Language">
+                    <input class="system-input-sidebar-button" type="button" id="settings-window-sidebar-buttons-customization" value="Searching System">
                 </div>
             </div>
 
@@ -125,11 +117,9 @@
                     
                     </div>
                     
-                    <a class="text-default" id="settings-window-categories-users-text1">User Name:</a>
-
                     <input class="system-input-text" type="text" id="settings-window-categories-users-input-uname">
 
-                    <button class="system-input-button" id="settings-window-categories-users-input-button-changeuserpw" onclick="settingsappchangepw()">Change password</button>                
+                    <input class="system-input-text" type="password" id="settings-window-categories-users-input-userpw">                    
                     
                     <input class="system-input-button" type="button" id="settings-window-categories-users-input-buttonchguname" value="Change your user data" onclick="changeusersettingsapp()">
 
@@ -164,7 +154,7 @@
 
         <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()"> 
 
-            <div id="demo-window-header" class="window-header" ondblclick="resizedemoapp()">
+            <div id="demo-window-header" class="window-header">
                 
                 <button id="demo-window-close-button" class="window-header-close-button" onclick="closedemoapp()"></button>
                 <button id="demo-window-resize-button" class="window-header-resize-button" onclick="resizedemoapp()"></button>
@@ -191,7 +181,7 @@
 
         <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()"> 
 
-            <div id="terminal-window-header" class="window-header" ondblclick="resizeterminalapp()">
+            <div id="terminal-window-header" class="window-header">
                 
                 <button id="terminal-window-close-button" class="window-header-close-button" onclick="closeterminalapp()"></button>
                 <button id="terminal-window-resize-button" class="window-header-resize-button" onclick="resizeterminalapp()"></button>
@@ -216,7 +206,7 @@
 
         <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorappfocus()"> 
 
-            <div id="calculator-window-header" class="window-header" ondblclick="resizecalculatorapp()">
+            <div id="calculator-window-header" class="window-header">
                 
                 <button id="calculator-window-close-button" class="window-header-close-button" onclick="closecalculatorapp()"></button>
                 <button id="calculator-window-resize-button" class="window-header-resize-button" onclick="resizecalculatorapp()"></button>
@@ -264,7 +254,7 @@
 
         <div id="beta-window" class="window" style="display: none;" onmousedown="betaappfocus()"> 
 
-            <div id="beta-window-header" class="window-header" ondblclick="resizebetaapp()">
+            <div id="beta-window-header" class="window-header">
                 
                 <button id="beta-window-close-button" class="window-header-close-button" onclick="closebetaapp()"></button>
                 <button id="beta-window-resize-button" class="window-header-resize-button" onclick="resizebetaapp()"></button>
@@ -280,45 +270,8 @@
             </div>
 
         </div>
-
-        <div id="notepad-window" class="window" style="display: none;" onmousedown="notepadappfocus()"> 
-
-            <div id="notepad-window-header" class="window-header" ondblclick="resizenotepadapp()">
-                
-                <button id="notepad-window-close-button" class="window-header-close-button" onclick="closenotepadapp()"></button>
-                <button id="notepad-window-resize-button" class="window-header-resize-button" onclick="resizenotepadapp()"></button>
-                <button id="notepad-window-minimize-button" class="window-header-minimize-button" onclick="minimizenotepadapp()"></button>
-                
-                <a class="window-header-title" id="notepad-window-header-title">Notepad</a>
-
-            </div>
-
-            <div id="notepad-window-content" class="window-content">
-                <button class="system-options-input-button">File</button>
-                <textarea name="notepad-window-content-text-editor" id="notepad-window-content-text-editor" class="system-text-editor"></textarea>
-            </div>
-
-        </div>
         
     </div>
 </body>
-
-<!--Import main script-->
-<script type="text/javascript" src="../script/desktop.js"></script>
-<script type="text/javascript" src="../script/main.js"></script>
-<script type="text/javascript" src="../script/auth.js"></script>
-<script type="text/javascript" src="../script/menu.js"></script>
-
-<!--Import core programs-->
-<script type="text/javascript" src="../script/programs/demo-main.js"></script>
-<script type="text/javascript" src="../script/programs/terminal-main.js"></script>
-<script type="text/javascript" src="../script/programs/terminal-core.js"></script>
-<script type="text/javascript" src="../script/programs/calculator-main.js"></script>
-<script type="text/javascript" src="../script/programs/calculator-core.js"></script>
-<script type="text/javascript" src="../script/programs/settings-main.js"></script>
-<script type="text/javascript" src="../script/programs/settings-core.js"></script>
-<script type="text/javascript" src="../script/programs/settings-main.js"></script>
-<script type="text/javascript" src="../script/programs/notepad-main.js"></script>
-<script type="text/javascript" src="../script/programs/welcome-main.js"></script>
 
 </html>
