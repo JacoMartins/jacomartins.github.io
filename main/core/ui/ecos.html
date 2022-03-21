@@ -67,6 +67,8 @@
                     <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-notepad-app" onclick="opennotepadapp()">Notepad</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-htmlviewer-app" onclick="openhtmlviewerapp()">HTML Viewer</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-iframe-app" onclick="openiframeapp()">Iframe</button>
                 </div>
             
             </div>
@@ -129,9 +131,9 @@
 
                     <input class="system-input-text" type="text" id="settings-window-categories-users-input-uname">
 
-                    <button class="system-input-button" id="settings-window-categories-users-input-button-changeuserpw" onclick="settingsappchangepw()">Change password</button>                
+                    <button class="system-input-button" id="settings-window-categories-users-input-button-changeuserpw" onclick="settingsappchangepwform()">Change password</button>                
                     
-                    <input class="system-input-button" type="button" id="settings-window-categories-users-input-buttonchguname" value="Change your user data" onclick="changeusersettingsapp()">
+                    <input class="system-input-button" type="button" id="settings-window-categories-users-input-buttonchguname" value="Change your user data" onclick="settingsappchangeuname()">
 
                 </div>
 
@@ -294,8 +296,46 @@
             </div>
 
             <div id="notepad-window-content" class="window-content">
-                <button class="system-options-input-button">File</button>
+                <button id="notepad-window-content-taskbar-file" class="system-options-input-button">File</button>
                 <textarea name="notepad-window-content-text-editor" id="notepad-window-content-text-editor" class="system-text-editor"></textarea>
+            </div>
+
+        </div>
+
+        <div id="htmlviewer-window" class="window" style="display: none;" onmousedown="htmlviewerappfocus()"> 
+
+            <div id="htmlviewer-window-header" class="window-header" ondblclick="resizehtmlviewerapp()">
+                
+                <button id="htmlviewer-window-close-button" class="window-header-close-button" onclick="closehtmlviewerapp()"></button>
+                <button id="htmlviewer-window-resize-button" class="window-header-resize-button" onclick="resizehtmlviewerapp()"></button>
+                <button id="htmlviewer-window-minimize-button" class="window-header-minimize-button" onclick="minimizehtmlviewerapp()"></button>
+                
+                <a class="window-header-title" id="htmlviewer-window-header-title">Html Viewer</a>
+
+            </div>
+
+            <div id="htmlviewer-window-content" class="window-content">
+                <button id="htmlviewer-window-content-taskbar-file" class="system-options-input-button">File</button>
+                <div id="htmlviewer-window-content-htmlviewer"></div>
+            </div>
+
+        </div>
+
+        <div id="iframe-window" class="window" style="display: none;" onmousedown="iframeappfocus()"> 
+
+            <div id="iframe-window-header" class="window-header" ondblclick="resizeiframeapp()">
+                
+                <button id="iframe-window-close-button" class="window-header-close-button" onclick="closeiframeapp()"></button>
+                <button id="iframe-window-resize-button" class="window-header-resize-button" onclick="resizeiframeapp()"></button>
+                <button id="iframe-window-minimize-button" class="window-header-minimize-button" onclick="minimizeiframeapp()"></button>
+                
+                <a class="window-header-title" id="iframe-window-header-title">Iframe Provisory App</a>
+
+            </div>
+
+            <div id="iframe-window-content" class="window-content">
+                <button id="iframe-window-content-taskbar-file" class="system-options-input-button">File</button>
+                <iframe id="iframe-window-content-iframe"></iframe>
             </div>
 
         </div>
@@ -320,5 +360,7 @@
 <script type="text/javascript" src="../script/programs/settings-main.js"></script>
 <script type="text/javascript" src="../script/programs/notepad-main.js"></script>
 <script type="text/javascript" src="../script/programs/welcome-main.js"></script>
+<script type="text/javascript" src="../script/programs/html-viewer-main.js"></script>
+<script type="text/javascript" src="../script/programs/iframe-main.js"></script>
 
 </html>

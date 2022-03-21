@@ -1,5 +1,5 @@
 // Main Code
-let build = 46;
+let build = 48;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
@@ -36,6 +36,11 @@ if (localStorage.getItem('boot') == undefined) {
 if (localStorage.getItem('userwp') == undefined) {
   localStorage.setItem('userwp', '../../res/images/background/default.jpg')
 }
+
+if (localStorage.getItem('txtfilelist') == undefined) {
+  localStorage.setItem('txtfilelist', '')
+}
+
 
 var username = localStorage.getItem('username');
 var userpw = localStorage.getItem('userpw');

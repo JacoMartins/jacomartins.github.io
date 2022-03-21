@@ -48,7 +48,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   }
 
   app.style.width = '500px';
-	app.style.height = '320px';
+	app.style.height = '450px';
   app.style.top = 'calc(50% - ' + (parseInt(app.style.height, 10) * 0.5) + 'px)';
 	app.style.left = 'calc(50% - ' + (parseInt(app.style.width, 10) * 0.5) + 'px)';
   app.style.resize = "none";
@@ -61,7 +61,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved the source code and put right button click to work. We are getting there!</span><br></br><br>• Corrections: </br><br>- Fixed the msg command creation of elements and events.</br><br>- [+] Added context menu.</br>`;
+  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved the source code and put right button click to work. We are getting there!</span><br></br><br>• Corrections: </br><br>- Fixed the msg command creation of elements and events.</br><br>- [+] Added context menu.</br><br>- [+] Functional Notepad, Html Viewer and Iframe applications.</br><br>- New login screen.</br><br>- Settings Users Category finally completed. Next step is customization.</br>`;
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
   betasubmitbutton.value = 'OK';

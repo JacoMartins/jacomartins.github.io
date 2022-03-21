@@ -101,10 +101,10 @@ function settingsappchangepwform(){
 
           <a class="text-default" id="settings-changepw-subwindow-content-p">Please write a password you'll remember.</a>
 
-          <input id="settings-changepw-subwindow-content-currentuserpw-input" class="system-input-text" type="password" placeholder="Enter your current password" onkeydown="">
+          <input id="settings-changepw-subwindow-content-currentuserpw-input" class="system-input-text" type="password" placeholder="Enter your current password" onkeydown="settingsappchangepw()">
 
-          <input id="settings-changepw-subwindow-content-userpw-input" class="system-input-text" type="password" placeholder="Password" onkeydown="">
-          <input id="settings-changepw-subwindow-content-cuserpw-input" class="system-input-text" type="password" placeholder="Confirm Password" onkeydown="">
+          <input id="settings-changepw-subwindow-content-userpw-input" class="system-input-text" type="password" placeholder="Password" onkeydown="settingsappchangepw()">
+          <input id="settings-changepw-subwindow-content-cuserpw-input" class="system-input-text" type="password" placeholder="Confirm Password" onkeydown="settingsappchangepw()">
           
           <button class="system-input-button" id="settings-changepw-subwindow-content-input-button1" onclick="settingsappchangepw()">Change Password</button>
         

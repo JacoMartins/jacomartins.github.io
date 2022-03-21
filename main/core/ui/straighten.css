@@ -1066,7 +1066,7 @@ body {
     color: lightgray;
     outline: 0px;
     border: 0px;
-    font-family: Inter Regular;
+    font-family: Terminal;
     font-size: 16px;
     top: 25px;
 }
@@ -1125,6 +1125,47 @@ body {
     font-size: 15px;
     font-family: Inter SemiBold;
 }
+
+.system-file-finder {
+    width: calc(100% - 30px);
+    max-height: 64px;
+    border-radius: 3px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgb(255, 255, 255, 0.025);
+    box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.10);
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 15px;
+    font-family: Inter Regular;
+    opacity: 1;
+    margin-top: 40px;
+    margin-left: 15px;
+    overflow: auto;
+}
+
+.system-file-button {
+    width: calc(100% - 8px);
+    height: 24px;
+    margin-left: 4px;
+    border: 0px;
+    outline: 0px;
+    background-color: rgba(0, 17, 255, 0);
+    color: rgba(255, 255, 255, 0.85);
+    font-family: Inter Regular;
+    text-align: left;
+}
+
+.system-file-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.85);
+}
+
+
+.system-file-button:focus {
+    background-color: rgba(22, 64, 104, 0.4);
+    color: rgba(255, 255, 255, 0.85);
+}
+
 
 /* width */
 ::-webkit-scrollbar {
@@ -1483,10 +1524,27 @@ body {
     background-image: url(../../res/images/icons/imageres/ecoslogo.png);
 }
 
-/* Notepad Application */
+/* Html Viewer Application */
 
+#htmlviewer-window-content-htmlviewer{
+    position: absolute;
+    top: 25px;
+    left: 0px;
+    height: calc(100% - 25px);
+    width: 100%;
+    overflow: auto;
+    background-color: white;
+}
 
-
+/* Iframe Application */
+#iframe-window-content-iframe{
+    position: absolute;
+    top: 25px;
+    height: calc(100% - 25px);
+    width: 100%;
+    border: 0px;
+    outline: 0px;
+}
 
 /* Mobile */
 

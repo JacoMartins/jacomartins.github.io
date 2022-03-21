@@ -61,11 +61,50 @@ desktop.addEventListener('contextmenu', function (){
 
 window.addEventListener('click', function (){
     var contextmenu = document.getElementById(`desktop-context-menu`);
+    var notepadfilemenu = document.getElementById(`notepad-window-content-taskbar-file-menu`);
+    var htmlviewerfilemenu = document.getElementById(`htmlviewer-window-content-taskbar-file-menu`);
+    var iframefilemenu = document.getElementById(`iframe-window-content-taskbar-file-menu`);
+
     var menumain = document.getElementById('desktop-menu-main');
     var menusettings = document.getElementById('desktop-menu-settings');
 
+    var e = window.event;
+
     if(contextmenu){
         desktop.removeChild(contextmenu);
+    }
+
+    if(notepadfilemenu){
+        notepadfilemenuleft = parseInt(notepadfilemenu.style.left, 10);
+        notepadfilemenuright = (parseInt(notepadfilemenu.style.left, 10) + parseInt(notepadfilemenu.style.width, 10));
+        notepadfilemenutop = parseInt(notepadfilemenu.style.top, 10);
+        notepadfilemenubot = (parseInt(notepadfilemenu.style.top, 10) + parseInt(notepadfilemenu.style.left, 10));
+
+        if(e.clientX < notepadfilemenuleft || e.clientX > notepadfilemenuleft || e.clientY < notepadfilemenutop || e.clientY > notepadfilemenubot){
+            desktop.removeChild(notepadfilemenu);
+        }
+    }
+
+    if(htmlviewerfilemenu){
+        htmlviewerfilemenuleft = parseInt(htmlviewerfilemenu.style.left, 10);
+        htmlviewerfilemenuright = (parseInt(htmlviewerfilemenu.style.left, 10) + parseInt(htmlviewerfilemenu.style.width, 10));
+        htmlviewerfilemenutop = parseInt(htmlviewerfilemenu.style.top, 10);
+        htmlviewerfilemenubot = (parseInt(htmlviewerfilemenu.style.top, 10) + parseInt(htmlviewerfilemenu.style.left, 10));
+
+        if(e.clientX < htmlviewerfilemenuleft || e.clientX > htmlviewerfilemenuleft || e.clientY < htmlviewerfilemenutop || e.clientY > htmlviewerfilemenubot){
+            desktop.removeChild(htmlviewerfilemenu);
+        }
+    }
+
+    if(iframefilemenu){
+        iframefilemenuleft = parseInt(iframefilemenu.style.left, 10);
+        iframefilemenuright = (parseInt(iframefilemenu.style.left, 10) + parseInt(iframefilemenu.style.width, 10));
+        iframefilemenutop = parseInt(iframefilemenu.style.top, 10);
+        iframefilemenubot = (parseInt(iframefilemenu.style.top, 10) + parseInt(iframefilemenu.style.left, 10));
+
+        if(e.clientX < iframefilemenuleft || e.clientX > iframefilemenuleft || e.clientY < iframefilemenutop || e.clientY > iframefilemenubot){
+            desktop.removeChild(iframefilemenu);
+        }
     }
 });
 
