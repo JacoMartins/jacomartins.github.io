@@ -72,73 +72,99 @@ function settingsappcategory(category){
 
 var usernameinput = document.getElementById('settings-window-categories-users-input-uname');
 
-function changeusersettingsapp(){
-    localStorage.setItem('username', unameinput.value);
-    document.getElementById('logon-screen-username').innerHTML = unameinput.value;
-    document.getElementById('terminal-window-content-prompt').innerText = unameinput.value + '$:';
-
-    //localStorage.setItem('userpw', userpwinput.value);
+function settingsappchangeuname(){
+    localStorage.setItem('username', usernameinput.value);
+    document.getElementById('logon-screen-username').innerHTML = usernameinput.value;
+    document.getElementById('terminal-window-content-prompt').innerText = usernameinput.value + '$:';
 }
 
 // Change Password Dialogue Box Creation
 
 var genwindow = document.createElement('div');
-var genwindowclass = document.createAttribute('class');
-var genwindowappid = document.createAttribute('id');
-var genwindowevent = document.createAttribute('onmousedown');
-var genwindowclassname = genwindowclass.value = 'window';
-var genwindowidname = genwindowappid.value = 'generated' + genid + '-window';
-var genwindoweventvalue = genwindowevent.value = `generatedappfocus(${genid})`;
 
-
-function settingsappchangepw(){
+function settingsappchangepwform(){
         desktop.appendChild(genwindow);
-        genwindow.genwindowidname;
-        genwindow.setAttributeNode(genwindowappid);
-        genwindow.genwindowclassname;
-        genwindow.setAttributeNode(genwindowclass);
-        genwindow.genwindoweventvalue;
-        genwindow.setAttributeNode(genwindowevent);
+        createDOMAttribute(genwindow, 'id', 'settings-changepw-subwindow');
+        createDOMAttribute(genwindow, 'class', 'window');
+        createDOMAttribute(genwindow, 'onmousedown', "generatedappfocus('settings-changepw-subwindow', 1, 'settings-window')");
+
+        document.getElementById(`settings-changepw-subwindow`).innerHTML = `
         
-        document.getElementById(`generated${genid}-window`).innerHTML = `
+        <div id="settings-changepw-subwindow-header" class="window-header">
         
-        <div id="generated${genid}-window-header" class="window-header" onmouseover="">
-        
-          <button id="generated${genid}-window-close-button" class="window-header-close-button" onclick="closegeneratedapp(${genid})"></button>        
-          <a class="window-header-title" id="generated${genid}-window-header-title"></a>
+          <button id="settings-changepw-subwindow-close-button" class="window-header-close-button" onclick="closegeneratedapp('settings-changepw-subwindow')"></button>        
+          <a class="window-header-title" id="settings-changepw-subwindow-header-title"></a>
     
         </div>
     
-        <div id="generated${genid}-window-content" class="window-content">
-          <a class="text-default" id="generated${genid}-window-content-p">Paragraph</a>
-          <button class="system-input-button" id="generated${genid}-window-content-input-button1" onclick="closegeneratedapp(${genid})">OK</button>
+        <div id="settings-changepw-subwindow-content" class="window-content">
+
+          <a class="text-default" id="settings-changepw-subwindow-content-p">Please write a password you'll remember.</a>
+
+          <input id="settings-changepw-subwindow-content-currentuserpw-input" class="system-input-text" type="password" placeholder="Enter your current password" onkeydown="">
+
+          <input id="settings-changepw-subwindow-content-userpw-input" class="system-input-text" type="password" placeholder="Password" onkeydown="">
+          <input id="settings-changepw-subwindow-content-cuserpw-input" class="system-input-text" type="password" placeholder="Confirm Password" onkeydown="">
+          
+          <button class="system-input-button" id="settings-changepw-subwindow-content-input-button1" onclick="settingsappchangepw()">Change Password</button>
+        
         </div>
         
         `;
         
-        dragElement(document.getElementById(`generated${genid}-window`));
+        dragElement(`settings-changepw-subwindow`);
 
-      	document.getElementById(`generated${genid}-window`).style.animation = 'openwindow 0.25s';
+      	document.getElementById(`settings-changepw-subwindow`).style.animation = 'openwindow 0.25s';
 
-        document.getElementById(`generated${genid}-window`).style.height = '134px';
-        document.getElementById(`generated${genid}-window`).style.width = '352px';
-        document.getElementById(`generated${genid}-window`).style.top = `calc(50% - ${(parseInt(document.getElementById(`generated${genid}-window`).style.height) * 0.5)}px)`;
-        document.getElementById(`generated${genid}-window`).style.left = `calc(50% - ${(parseInt(document.getElementById(`generated${genid}-window`).style.width) * 0.5)}px)`;
-        document.getElementById(`generated${genid}-window-header-title`).innerText = `Message${genid}`;
-        document.getElementById(`generated${genid}-window`).style.zIndex = z + 1;
+        document.getElementById(`settings-changepw-subwindow`).style.height = '277px';
+        document.getElementById(`settings-changepw-subwindow`).style.width = '276px';
+        document.getElementById(`settings-changepw-subwindow`).style.top = `calc(50% - ${(parseInt(document.getElementById(`settings-changepw-subwindow`).style.height) * 0.5)}px)`;
+        document.getElementById(`settings-changepw-subwindow`).style.left = `calc(50% - ${(parseInt(document.getElementById(`settings-changepw-subwindow`).style.width) * 0.5)}px)`;
+        document.getElementById(`settings-changepw-subwindow-header-title`).innerText = `Change password`;
+        document.getElementById(`settings-changepw-subwindow`).style.zIndex = z + 1;
+        document.getElementById(`settings-changepw-subwindow`).style.resize = 'none';
 
-        document.getElementById(`generated${genid}-window-content-p`).style.top = '15px';
-        document.getElementById(`generated${genid}-window-content-p`).style.left = '15px';
+        document.getElementById(`settings-changepw-subwindow-content-p`).style.top = '13px';
+        document.getElementById(`settings-changepw-subwindow-content-p`).style.left = '15px';
 
-        document.getElementById(`generated${genid}-window-content-p`).innerText = 'Test';
+        document.getElementById(`settings-changepw-subwindow-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
+        document.getElementById(`settings-changepw-subwindow-content-input-button1`).style.left = `15px`;
+        document.getElementById(`settings-changepw-subwindow-content-input-button1`).style.width = `246px`;
+        document.getElementById(`settings-changepw-subwindow-content-input-button1`).focus();
 
-        document.getElementById(`generated${genid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
-        document.getElementById(`generated${genid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
-        document.getElementById(`generated${genid}-window-content-input-button1`).focus();
+        document.getElementById('settings-changepw-subwindow-content-currentuserpw-input').style.position = 'absolute';
+        document.getElementById('settings-changepw-subwindow-content-currentuserpw-input').style.top = '66px';
+        document.getElementById('settings-changepw-subwindow-content-currentuserpw-input').style.left = '15px';
+        document.getElementById('settings-changepw-subwindow-content-currentuserpw-input').style.width = '236px';
+        
+        document.getElementById('settings-changepw-subwindow-content-userpw-input').style.position = 'absolute';
+        document.getElementById('settings-changepw-subwindow-content-userpw-input').style.top = '114px';
+        document.getElementById('settings-changepw-subwindow-content-userpw-input').style.left = '15px';
+        document.getElementById('settings-changepw-subwindow-content-userpw-input').style.width = '236px';
 
-        setTimeout(() => {
-          document.getElementById(`generated${genid}-window`).onmousedown = generatedappfocus(genid);
-        }, 00);
+        document.getElementById('settings-changepw-subwindow-content-cuserpw-input').style.position = 'absolute';
+        document.getElementById('settings-changepw-subwindow-content-cuserpw-input').style.top = '146px';
+        document.getElementById('settings-changepw-subwindow-content-cuserpw-input').style.left = '15px';
+        document.getElementById('settings-changepw-subwindow-content-cuserpw-input').style.width = '236px';
+}
 
-        genid = genid + 1;
+function settingsappchangepw(){
+  var currentpwinput = document.getElementById('settings-changepw-subwindow-content-currentuserpw-input');
+  var pwinput = document.getElementById('settings-changepw-subwindow-content-userpw-input');
+  var confirmpwinput = document.getElementById('settings-changepw-subwindow-content-cuserpw-input');
+
+  if(currentpwinput.value === localStorage.getItem('userpw') && confirmpwinput.value === pwinput.value && confirmpwinput.value.length > 5){
+    localStorage.setItem('userpw', pwinput.value);
+    closegeneratedapp('settings-changepw-subwindow');
+  } else if(confirmpwinput.value !== pwinput.value) {
+    document.getElementById(`settings-changepw-subwindow-content-p`).innerText = "The two passwords don't match, please try again.";
+  } else if(confirmpwinput.value === '') {
+    document.getElementById(`settings-changepw-subwindow-content-p`).innerText = "Please fill all the inputs.";
+  } else if(confirmpwinput.value.length <= 5) {
+    document.getElementById(`settings-changepw-subwindow-content-p`).innerText = "Please write a password with at least 6 characters.";
+  } else if(currentpwinput.value !== localStorage.getItem('userpw')){
+    document.getElementById(`settings-changepw-subwindow-content-p`).innerText = "Please enter your current user password correctly.";
+  } else {
+    document.getElementById(`settings-changepw-subwindow-content-p`).innerText = "Invalid Password";
+  }
 }

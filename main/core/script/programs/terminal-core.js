@@ -21,7 +21,7 @@ function terminal(){
   var genwindowevent = document.createAttribute('onmousedown');
   var genwindowclassname = genwindowclass.value = 'window';
   var genwindowidname = genwindowappid.value = 'generated' + genid + '-window';
-  var genwindoweventvalue = genwindowevent.value = `generatedappfocus(${genid})`;
+  var genwindoweventvalue = genwindowevent.value = `generatedappfocus('generated${genid}-window')`;
 
   var resizebutton = document.getElementById("demo-window-resize-button");
   var minimizebutton = document.getElementById("demo-window-minimize-button");
@@ -88,19 +88,19 @@ function terminal(){
         
         <div id="generated${genid}-window-header" class="window-header" onmouseover="">
         
-          <button id="generated${genid}-window-close-button" class="window-header-close-button" onclick="closegeneratedapp(${genid})"></button>        
+          <button id="generated${genid}-window-close-button" class="window-header-close-button" onclick="closegeneratedapp('generated${genid}-window')"></button>        
           <a class="window-header-title" id="generated${genid}-window-header-title"></a>
     
         </div>
     
         <div id="generated${genid}-window-content" class="window-content">
           <a class="text-default" id="generated${genid}-window-content-p">Paragraph</a>
-          <button class="system-input-button" id="generated${genid}-window-content-input-button1" onclick="closegeneratedapp(${genid})">OK</button>
+          <button class="system-input-button" id="generated${genid}-window-content-input-button1" onclick="closegeneratedapp('generated${genid}-window')">OK</button>
         </div>
         
         `;
         
-        dragElement(document.getElementById(`generated${genid}-window`));
+        dragElement(`generated${genid}-window`);
 
       	document.getElementById(`generated${genid}-window`).style.animation = 'openwindow 0.25s';
 
@@ -119,10 +119,6 @@ function terminal(){
         document.getElementById(`generated${genid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
         document.getElementById(`generated${genid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
         document.getElementById(`generated${genid}-window-content-input-button1`).focus();
-
-        setTimeout(() => {
-          document.getElementById(`generated${genid}-window`).onmousedown = generatedappfocus(genid);
-        }, 00);
 
         genid = genid + 1;
       }, 000);
@@ -380,6 +376,8 @@ function terminal(){
         appcontainer.appendChild(returncommand);
         returncommand.returncommandclassvalue;
         returncommand.setAttributeNode(returncommandclass);
+        terminalprompt.innerHTML = '<span style="color: lightgray;">[sudo] Password for ' + username + ':</span>';
+        sudo = true;
         returncommand.innerHTML = 'Setting your password to ' + lastcommand.slice(15) + '...';
         localStorage.setItem('userpw', lastcommand.slice(15));
         userpw = localStorage.getItem('userpw');
