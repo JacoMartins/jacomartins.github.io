@@ -40,8 +40,8 @@ function openiframeapp(app = document.getElementById('iframe-window')){
   }
 
   app.style.width = '75%';
-	app.style.height = '500px';
-  app.style.top = 'calc(50% - calc(500px / 2))';
+	app.style.height = 'calc(75% / 2)';
+  app.style.top = 'calc(50% - calc(calc(75% / 2) / 2))';
 	app.style.left = 'calc(50% - calc(75% / 2))';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
