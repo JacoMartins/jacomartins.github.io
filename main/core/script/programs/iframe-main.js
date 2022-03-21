@@ -404,7 +404,7 @@ function iframeappopen(){
 var filenameinput = document.getElementById('iframe-window-open-window-content-filename-input');
 var iframecontent = document.getElementById('iframe-window-content-iframe');
 
-iframecontent.innerHTML = filenameinput.value;
+iframecontent.src = filenameinput.value;
 
 closegeneratedapp('iframe-window-open-window');
 }
