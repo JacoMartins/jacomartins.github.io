@@ -365,6 +365,14 @@ function iframeappopenwindow(){
   document.getElementById(`iframe-window-open-window`).style.zIndex = z + 1;
   document.getElementById(`iframe-window-open-window`).style.resize = 'both';
 
+  if(window.innerHeight > window.innerWidth){
+    document.getElementById(`iframe-window-open-window`).style.height = 'calc(100% - 40px)';
+    document.getElementById(`iframe-window-open-window`).style.width = '100%';
+    document.getElementById(`iframe-window-open-window`).style.top = `0px`;
+    document.getElementById(`iframe-window-open-window`).style.left = `0px`;
+    document.getElementById(`iframe-window-open-window`).style.resize = 'none';
+  }
+
   document.getElementById(`iframe-window-open-window-content-p`).style.top = '13px';
   document.getElementById(`iframe-window-open-window-content-p`).style.left = '15px';
 

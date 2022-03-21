@@ -368,6 +368,14 @@ function htmlviewerappopenwindow(){
   document.getElementById(`htmlviewer-window-open-window`).style.zIndex = z + 1;
   document.getElementById(`htmlviewer-window-open-window`).style.resize = 'both';
 
+  if(window.innerHeight > window.innerWidth){
+    document.getElementById(`htmlviewer-window-open-window`).style.height = 'calc(100% - 40px)';
+    document.getElementById(`htmlviewer-window-open-window`).style.width = '100%';
+    document.getElementById(`htmlviewer-window-open-window`).style.top = `0px`;
+    document.getElementById(`htmlviewer-window-open-window`).style.left = `0px`;
+    document.getElementById(`htmlviewer-window-open-window`).style.resize = 'none';
+  }
+
   document.getElementById(`htmlviewer-window-open-window-content-p`).style.top = '13px';
   document.getElementById(`htmlviewer-window-open-window-content-p`).style.left = '15px';
 

@@ -378,6 +378,14 @@ function notepadappsavewindow(){
         document.getElementById(`notepad-window-save-window`).style.zIndex = z + 1;
         document.getElementById(`notepad-window-save-window`).style.resize = 'both';
 
+        if(window.innerHeight > window.innerWidth){
+          document.getElementById(`notepad-window-save-window`).style.height = 'calc(100% - 40px)';
+          document.getElementById(`notepad-window-save-window`).style.width = '100%';
+          document.getElementById(`notepad-window-save-window`).style.top = `0px`;
+          document.getElementById(`notepad-window-save-window`).style.left = `0px`;
+          document.getElementById(`notepad-window-save-window`).style.resize = 'none';
+        }      
+
         document.getElementById(`notepad-window-save-window-content-p`).style.top = '13px';
         document.getElementById(`notepad-window-save-window-content-p`).style.left = '15px';
 
@@ -524,6 +532,14 @@ function notepadappopenwindow(){
   document.getElementById(`notepad-window-open-window-header-title`).innerText = `Open File`;
   document.getElementById(`notepad-window-open-window`).style.zIndex = z + 1;
   document.getElementById(`notepad-window-open-window`).style.resize = 'both';
+
+  if(window.innerHeight > window.innerWidth){
+    document.getElementById(`notepad-window-open-window`).style.height = 'calc(100% - 40px)';
+    document.getElementById(`notepad-window-open-window`).style.width = '100%';
+    document.getElementById(`notepad-window-open-window`).style.top = `0px`;
+    document.getElementById(`notepad-window-open-window`).style.left = `0px`;
+    document.getElementById(`notepad-window-open-window`).style.resize = 'none';
+  }      
 
   document.getElementById(`notepad-window-open-window-content-p`).style.top = '13px';
   document.getElementById(`notepad-window-open-window-content-p`).style.left = '15px';
