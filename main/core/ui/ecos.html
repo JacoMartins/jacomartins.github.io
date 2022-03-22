@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
     <link rel="icon" type="image/png" href="/favicon.png">
 
@@ -63,7 +63,7 @@
                 </div>
 
                 <div class="desktop-menu-category-menu">
-                    <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="opencalculatorapp()">Calculator</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="createDOMScript(`${'calculator'}-main`, 'text/javascript', '../script/programs/calculator/calculator-main.js');">Calculator</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-notepad-app" onclick="opennotepadapp()">Notepad</button>
@@ -353,8 +353,6 @@
 <script type="text/javascript" src="../script/programs/demo-main.js"></script>
 <script type="text/javascript" src="../script/programs/terminal-main.js"></script>
 <script type="text/javascript" src="../script/programs/terminal-core.js"></script>
-<script type="text/javascript" src="../script/programs/calculator-main.js"></script>
-<script type="text/javascript" src="../script/programs/calculator-core.js"></script>
 <script type="text/javascript" src="../script/programs/settings-main.js"></script>
 <script type="text/javascript" src="../script/programs/settings-core.js"></script>
 <script type="text/javascript" src="../script/programs/settings-main.js"></script>
