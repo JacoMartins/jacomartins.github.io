@@ -16,11 +16,11 @@ desktop.addEventListener('contextmenu', function (){
     
     if(contextmenu){
         contextmenu.style.position = 'absolute';
-        contextmenu.style.top = convertcsspx(window.event.clientY);
-        contextmenu.style.left = convertcsspx(window.event.clientX);
+        contextmenu.style.top = convert('toPixels', window.event.clientY);
+        contextmenu.style.left = convert('toPixels', window.event.clientX);
         creatediv.style.animation = 'openwindow 0.15s ease-out';
 
-        contextmenu.style.width = convertcsspx(180);
+        contextmenu.style.width = convert('toPixels', 180);
     } else {
         desktop.appendChild(creatediv);
         creatediv.dividvalue;
@@ -29,12 +29,12 @@ desktop.addEventListener('contextmenu', function (){
         creatediv.setAttributeNode(divclass);
 
         creatediv.style.position = 'absolute';
-        creatediv.style.top = convertcsspx(window.event.clientY);
-        creatediv.style.left = convertcsspx(window.event.clientX);
+        creatediv.style.top = convert('toPixels', window.event.clientY);
+        creatediv.style.left = convert('toPixels', window.event.clientX);
         creatediv.style.animation = 'openwindow 0.15s ease-out';
 
         creatediv.style.height = 'auto';
-        creatediv.style.width = convertcsspx(180);
+        creatediv.style.width = convert('toPixels', 180);
         creatediv.style.zIndex = -z;
 
         createMenuButton(
@@ -44,7 +44,7 @@ desktop.addEventListener('contextmenu', function (){
             /* Button Class */ 'desktop-menu-button',
             /* Button Event */ 'onclick',
             /* Button Link */ 'openterminalapp()',
-            /* Button Icon */ '../../res/images/icons/imageres/.png'
+            /* Button Icon */ '../../resources/images/icons/imageres/.png'
         );
 
         createMenuButton(
@@ -54,7 +54,7 @@ desktop.addEventListener('contextmenu', function (){
             /* Button Class */ 'desktop-menu-button',
             /* Button Event */ 'onclick',
             /* Button Link */ 'opensettingsapp(); settingsappcategory("appearance");',
-            /* Button Icon */ '../../res/images/icons/imageres/settings-small.png'
+            /* Button Icon */ '../../resources/images/icons/imageres/settings-small.png'
         );
     }
 });
@@ -86,10 +86,10 @@ window.addEventListener('click', function (){
     }
 
     if(htmlviewerfilemenu){
-        htmlviewerfilemenuleft = parseInt(htmlviewerfilemenu.style.left, 10);
-        htmlviewerfilemenuright = (parseInt(htmlviewerfilemenu.style.left, 10) + parseInt(htmlviewerfilemenu.style.width, 10));
-        htmlviewerfilemenutop = parseInt(htmlviewerfilemenu.style.top, 10);
-        htmlviewerfilemenubot = (parseInt(htmlviewerfilemenu.style.top, 10) + parseInt(htmlviewerfilemenu.style.left, 10));
+        htmlviewerfilemenuleft = convert('toInt', htmlviewerfilemenu.style.left);
+        htmlviewerfilemenuright = (convert('toInt', htmlviewerfilemenu.style.left) + convert('toInt', htmlviewerfilemenu.style.width));
+        htmlviewerfilemenutop = convert('toInt', htmlviewerfilemenu.style.top);
+        htmlviewerfilemenubot = (convert('toInt', htmlviewerfilemenu.style.top) + convert('toInt', htmlviewerfilemenu.style.height));
 
         if(e.clientX < htmlviewerfilemenuleft || e.clientX > htmlviewerfilemenuleft || e.clientY < htmlviewerfilemenutop || e.clientY > htmlviewerfilemenubot){
             desktop.removeChild(htmlviewerfilemenu);
@@ -107,37 +107,6 @@ window.addEventListener('click', function (){
         }
     }
 });
-
-function convertcsspx(value){
-    return value + 'px';
-}
-
-function createMenuButton(inside, value, id, cl, evnt, link, icon){
-    var button = document.createElement('button');
-
-    inside.appendChild(button);
-    createDOMAttribute(button, 'id', id);
-    createDOMAttribute(button, 'class', cl);
-    createDOMAttribute(button, 'style', `background-image: url("${icon}");`);
-    createDOMAttribute(button, evnt, link);
-    button.innerText= value;
-}
-
-function createDOMAttribute(id, eAtr, value){
-    var createatr = document.createAttribute(eAtr);
-    var createatrvalue = createatr.value = value;
-
-    id.createatrvalue;
-    id.setAttributeNode(createatr);
-}
-
-function createWindow(id){
-    var window = document.createElement('window');
-
-    desktop.appendChild(window);
-    createDOMAttribute(window, 'id', `${id}-window`);
-    createDOMAttribute(window, 'class', `window`);
-}
 
 // generated
 

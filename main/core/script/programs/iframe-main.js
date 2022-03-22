@@ -40,8 +40,8 @@ function openiframeapp(app = document.getElementById('iframe-window')){
   }
 
   app.style.width = '75%';
-	app.style.height = 'calc(75% / 2)';
-  app.style.top = 'calc(50% - calc(calc(75% / 2) / 2))';
+	app.style.height = '500px';
+  app.style.top = 'calc(50% - calc(500px / 2))';
 	app.style.left = 'calc(50% - calc(75% / 2))';
   app.style.resize = "both";
   app.style.borderRadius = "4px";
@@ -306,12 +306,12 @@ iframetaskbarfile.addEventListener('click', event => {
     creatediv.setAttributeNode(divclass);
 
     creatediv.style.position = 'absolute';
-    creatediv.style.top = convertcsspx(window.event.clientY);
-    creatediv.style.left = convertcsspx(window.event.clientX);
+    creatediv.style.top = convert('toPixels', window.event.clientY);
+    creatediv.style.left = convert('toPixels', window.event.clientX);
     creatediv.style.animation = 'openwindow 0.15s ease-out';
 
     creatediv.style.height = 'auto';
-    creatediv.style.width = convertcsspx(180);
+    creatediv.style.width = convert('toPixels', 180);
     creatediv.style.zIndex = document.getElementById('iframe-window').style.zIndex + 1;
 
     createMenuButton(
@@ -321,7 +321,7 @@ iframetaskbarfile.addEventListener('click', event => {
       /* Button Class */ 'desktop-menu-button',
       /* Button Event */ 'onclick',
       /* Button Link */ "iframeappopenwindow()",
-      /* Button Icon */ '../../res/images/icons/imageres/checked_small.png'
+      /* Button Icon */ '../../resources/images/icons/imageres/checked_small.png'
   );
   }
 });

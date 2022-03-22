@@ -34,7 +34,7 @@ if (localStorage.getItem('boot') == undefined) {
 }
 
 if (localStorage.getItem('userwp') == undefined) {
-  localStorage.setItem('userwp', '../../res/images/background/default.jpg')
+  localStorage.setItem('userwp', '../../resources/images/background/default.jpg')
 }
 
 if (localStorage.getItem('txtfilelist') == undefined) {
@@ -115,3 +115,118 @@ window.addEventListener('keyup', event => {
 
 document.body.oncontextmenu = function(){return false};
 
+/*Create Functions*/
+
+function createDOMScript(id, type, src){
+  var script = document.createElement('script');
+  document.head.appendChild(script);
+
+  createDOMAttribute(script, 'id', id);
+  createDOMAttribute(script, 'type', type);
+  createDOMAttribute(script, 'src', src);
+}
+
+function createDOMElement(mother, child, id, cl, event, code){
+  createelmnt = document.createElement(child);
+
+  document.getElementById(mother).appendChild(createelmnt);
+  createDOMAttribute(createelmnt, 'id', id);
+  createDOMAttribute(createelmnt, 'class', cl);
+  createDOMAttribute(createelmnt, event, code);
+}
+
+function createDOMAttribute(id, eAtr, value){
+  var createatr = document.createAttribute(eAtr);
+  var createatrvalue = createatr.value = value;
+
+  id.createatrvalue;
+  id.setAttributeNode(createatr);
+}
+
+function createWindow(id){
+  var window = document.createElement('div');
+
+  desktop.appendChild(window);
+  createDOMAttribute(window, 'id', `${id}-window`);
+  createDOMAttribute(window, 'class', `window`);
+}
+
+function createWindowHeader(mother, id){
+  var header = document.createElement('window');
+
+  desktop.appendChild(window);
+  createDOMAttribute(window, 'id', `${id}-window`);
+  createDOMAttribute(window, 'class', `window`);
+}
+
+function createMenuButton(mother, value, id, cl, evnt, link, icon){
+  var button = document.createElement('button');
+
+  mother.appendChild(button);
+  createDOMAttribute(button, 'id', id);
+  createDOMAttribute(button, 'class', cl);
+  createDOMAttribute(button, 'style', `background-image: url("${icon}");`);
+  createDOMAttribute(button, evnt, link);
+  button.innerText= value;
+}
+
+/*Remove window functions*/
+
+function removeDOMElement(child){
+  var elmnt = document.getElementById(child);
+
+  elmnt.parentNode.removeChild(elmnt);
+}
+
+/*Convert Functions*/
+
+function convert(command, value){
+  if(command == 'toPixels'){
+    return value + 'px';
+  }
+
+  if(command == 'toInt'){
+    return parseInt(value, 10);
+  }
+}
+
+/*Window functions*/
+
+function openapplication(app){
+  /*Sets up variable values to make the code easier.*/
+  var window = document.getElementById(`${app}-window`);
+  var resizebutton = document.getElementById(`${app}-window-resize-button`);
+  var minimizebutton = document.getElementById(`${app}-window-minimize-button`);
+  var menumain = document.getElementById('desktop-menu-main');
+  var menusettings = document.getElementById('desktop-menu-settings');
+
+  createDOMElement(
+    /*Mother Element*/ 'desktop-taskbar-minimized-apps',
+    /*Child Element*/ 'div',
+    /*Puts an ID attribute in your new element*/ 'desktop-taskbar-calculator-app-button',
+    /*Puts a class attribute in your new element*/ 'desktop-taskbar-app-button',
+    /*Puts an event attribute in your new element*/ 'onclick',
+    /*Gives the created event a code*/ 'minimizecalculatorapp()'
+  );
+
+  window.style.display = "block";
+  window.style.animation = 'openwindow 0.25s';
+
+  /*Bring window to the front along with the taskbar.*/
+  z++;
+  window.style.zIndex = z;
+  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
+  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
+  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
+  
+  /*Specifies what buttons should show or not in the desktop screen*/
+  resizebutton.style.display = 'block';
+  minimizebutton.style.left = '51px';
+
+  /*Closes start menu automatically when application is open*/
+
+  if(menumain.style.display = "block"){
+    menumain.style.display = "none";
+    menusettings.style.display = "none";
+  }
+}
