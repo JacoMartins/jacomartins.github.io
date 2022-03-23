@@ -1,8 +1,9 @@
 // Main Code
-let build = 48;
+let build = 52;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
+let stabilitystatus = 'stable';
 let systemname = 'Eclipse Cloud Operating System (ECOS)';
 let versionname = 'Beta';
 let permlevel = 0;
@@ -95,7 +96,7 @@ setTimeout(() => {
   const desktopbetatext = document.getElementById('desktop-beta-info');
 
   bootbetatext.innerHTML = 'beta ' + betastage + ' build ' + build;
-  desktopbetatext.innerHTML = 'Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ' Compilation: ' + comp + '.';
+  desktopbetatext.innerHTML = 'Eclipse Cloud Operating System, Beta ' + betastage + ', Build ' + build + ', ' + stabilitystatus + ' Compilation: ' + comp + '.';
 }, 250);
 
 window.addEventListener('load', function () {
