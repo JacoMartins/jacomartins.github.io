@@ -1064,7 +1064,7 @@ body {
     height: calc(100% - 25px);
     width: 100%;
     resize: none;
-    background-color: rgb(10, 10, 10);
+    background-color: rgba(00, 00, 00, 0.25);
     color: lightgray;
     outline: 0px;
     border: 0px;
@@ -1531,6 +1531,10 @@ body {
 
 #desktop-taskbar-beta-app-button {
     background-image: url(../../resources/images/icons/imageres/ecoslogo.png);
+}
+
+#notepad-window-content {
+	background-color: rgba(0, 0, 0, 0);
 }
 
 /* Html Viewer Application */
