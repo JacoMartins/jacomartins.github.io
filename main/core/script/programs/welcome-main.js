@@ -61,7 +61,7 @@ function openbetaapp(app = document.getElementById('beta-window')){
   betaparagraph1.style.height = 'calc(100% - 80px)';
   betaparagraph1.style.width = 'calc(100% - 50px)';
 
-  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved the source code and put right button click to work. We are getting there!</span><br></br><br>• Corrections: </br><br>- Fixed the msg command creation of elements and events.</br><br>- [+] Added context menu.</br><br>- [+] Functional Notepad, Html Viewer and Iframe applications.</br><br>- New login screen.</br><br>- Settings Users Category finally completed. Next step is customization.</br>`;
+  betaparagraph1.innerHTML = `<span style="color: lightgreen;">Welcome back to the ECOS project! In this build (${build}) we improoved the source code. Now the operating system procedurally creates a window, so it'll be way faster to start up. But now the applications load from the point you open then.</span><br></br><br>• Corrections: </br><br>- Code modularization under construction...</br><br>- [+] Added system element creating functions (You can create windows and buttons by the terminal).</br><br>- Procedural script call.</br><br>- Terminal commands translation to a linux-like command line (under construction).</br>`;
   betasubmitbutton.style.bottom = '20px';
   betasubmitbutton.style.right = '20px';
   betasubmitbutton.value = 'OK';
