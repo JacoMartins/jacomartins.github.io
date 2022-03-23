@@ -2,32 +2,32 @@
 
 @font-face {
     font-family: Inter Regular;
-    src: url(../../res/fonts/Inter-Regular.ttf);
+    src: url(../../resources/fonts/Inter-Regular.ttf);
 }
 
 @font-face {
     font-family: Inter Med;
-    src: url(../../res/fonts/Inter-Medium.ttf);
+    src: url(../../resources/fonts/Inter-Medium.ttf);
 }
 
 @font-face {
     font-family: Inter SemiBold;
-    src: url(../../res/fonts/Inter-SemiBold.ttf);
+    src: url(../../resources/fonts/Inter-SemiBold.ttf);
 }
 
 @font-face {
     font-family: Inter Bold;
-    src: url(../../res/fonts/Inter-Bold.ttf);
+    src: url(../../resources/fonts/Inter-Bold.ttf);
 }
 
 @font-face {
     font-family: Terminal;
-    src: url(../../res/fonts/lucon.ttf);
+    src: url(../../resources/fonts/lucon.ttf);
 }
 
 * {
-	cursor: url(../../res/cursors/busy.png), progress;
-    cursor: url(../../res/cursors/arrow.png), default;
+	cursor: url(../../resources/cursors/busy.png), progress;
+    cursor: url(../../resources/cursors/arrow.png), default;
 }
 
 body {
@@ -134,7 +134,7 @@ body {
 
 #logon-screen {
     position: absolute;
-    background-image: url('../../res/images/background/wpp1.jpg');
+    background-image: url('../../resources/images/background/wpp1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -215,7 +215,7 @@ body {
     position: relative;
     width: 100%;
     height: 29px;
-    background-image: url(../../res/images/icons/imageres/logo.png);
+    background-image: url(../../resources/images/icons/imageres/logo.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 110px 29px;
@@ -237,7 +237,7 @@ body {
     height: 100%;
     left: 0px;
     top: 0px;
-    background-image: url(../../res/images/background/default.jpg);
+    background-image: url(../../resources/images/background/default.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -303,17 +303,19 @@ body {
 #desktop-taskbar-button-menu {
     top: 5px; 
     left: 6px; 
-    background-image: url(../../res/images/icons/imageres/menu-small.png);
+    background-image: url(../../resources/images/icons/imageres/menu-small.png);
 }
 
 #desktop-taskbar-button-settings {
     top: 5px; 
     left: 41px; 
-    background-image: url(../../res/images/icons/imageres/settings-small.png);
+    background-image: url(../../resources/images/icons/imageres/settings-small.png);
 }
 
 .desktop-taskbar-minimized-apps {
     position: absolute;
+    display: inline-flex;
+    flex-direction: row;
     background-color: rgba(0, 0, 0, 0);
     top: 0px;
     left: 76px;
@@ -368,7 +370,7 @@ body {
 
 .desktop-menu-category-icon {
     position: absolute;
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: center;
@@ -424,7 +426,7 @@ body {
     width: calc(100% - 2px);
     height: 29px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 10px 9px;
@@ -445,7 +447,7 @@ body {
     width: calc(100% - 2px);
     height: 29px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 10px 9px;
@@ -465,7 +467,7 @@ body {
     width: calc(100% - 2px);
     height: 29px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 10px 9px;
@@ -633,7 +635,7 @@ body {
 	outline: none;
 	top: 11px;
 	left: 11px;
-	background-image: url("../../res/images/icons/imageres/close.png");
+	background-image: url("../../resources/images/icons/imageres/close.png");
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-color: rgba(0, 0, 0, 0);
@@ -654,7 +656,7 @@ body {
 	outline: none;
 	top: 11px;
 	left: 31px;
-	background-image: url("../../res/images/icons/imageres/max.png");
+	background-image: url("../../resources/images/icons/imageres/max.png");
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-color: rgba(0, 0, 0, 0);
@@ -674,7 +676,7 @@ body {
 	outline: none;
 	top: 11px;
 	left: 51px;
-	background-image: url("../../res/images/icons/imageres/min.png");
+	background-image: url("../../resources/images/icons/imageres/min.png");
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-color: rgba(0, 0, 0, 0);
@@ -989,7 +991,7 @@ body {
 }
 
 .system-input-checkbox-input:checked + .system-input-checkbox-box {
-    background-image: url('../../res/images/icons/imageres/checked_small.png');
+    background-image: url('../../resources/images/icons/imageres/checked_small.png');
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 1px 0px;
@@ -1189,14 +1191,14 @@ body {
 }
 
 .backarrow {
-    background-image: url('../../res/images/icons/imageres/left.png');
+    background-image: url('../../resources/images/icons/imageres/left.png');
     background-position: 7px 5px;
     background-repeat: no-repeat;
     background-size: 9px 16px;
 }
 
 .fwardarrow {
-    background-image: url('../../res/images/icons/imageres/left.png');
+    background-image: url('../../resources/images/icons/imageres/left.png');
     background-position: 7px 5px;
     background-repeat: no-repeat;
     background-size: 9px 16px;
@@ -1297,12 +1299,12 @@ body {
 }
 
 #desktop-taskbar-terminal-app-button {
-    background-image: url(../../res/images/icons/imageres/terminal-small.png);
+    background-image: url(../../resources/images/icons/imageres/terminal-small.png);
     background-size: 16px 12px;
 }
 
 #desktop-menu-button-terminal {
-    background-image: url(../../res/images/icons/imageres/terminal-small.png);
+    background-image: url(../../resources/images/icons/imageres/terminal-small.png);
     background-size: 16px 12px;
 }
 
@@ -1413,7 +1415,7 @@ body {
 }
 
 #desktop-taskbar-settings-app-button {
-    background-image: url(../../res/images/icons/imageres/settings-small.png);
+    background-image: url(../../resources/images/icons/imageres/settings-small.png);
 }
 
 /* DEMO WINDOW */
@@ -1430,7 +1432,7 @@ body {
 }
 
 #desktop-taskbar-demo-app-button {
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
 }
 
 .interactive-text {
@@ -1457,7 +1459,7 @@ body {
     height: 64px;
     top: 16px;
     left: 16px;
-    background-image: url(../../res/images/background/igor\ careca.png);
+    background-image: url(../../resources/images/background/igor\ careca.png);
     background-size: 64px 64px;
     border-radius: 100%;
 }
@@ -1517,11 +1519,18 @@ body {
 }
 
 #desktop-taskbar-calculator-app-button {
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../script/programs/calculator/resources/icon12x.png);
+    background-size: 9px 12px;
+}
+
+#desktop-menu-button-calculator {
+    background-image: url(../script/programs/calculator/resources/icon12x.png);
+    background-size: 9px 12px;
+    background-position: 12px 9px;
 }
 
 #desktop-taskbar-beta-app-button {
-    background-image: url(../../res/images/icons/imageres/ecoslogo.png);
+    background-image: url(../../resources/images/icons/imageres/ecoslogo.png);
 }
 
 /* Html Viewer Application */
@@ -1651,7 +1660,7 @@ body {
     height: 100%;
     left: 0px;
     top: 0px;
-    background-image: url(../../res/images/background/default.jpg);
+    background-image: url(../../resources/images/background/default.jpg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -1717,13 +1726,13 @@ body {
 #desktop-taskbar-button-menu {
     top: 5px; 
     left: 6px; 
-    background-image: url(../../res/images/icons/imageres/menu-small.png);
+    background-image: url(../../resources/images/icons/imageres/menu-small.png);
 }
 
 #desktop-taskbar-button-settings {
     top: 5px; 
     left: 51px; 
-    background-image: url(../../res/images/icons/imageres/settings-small.png);
+    background-image: url(../../resources/images/icons/imageres/settings-small.png);
 }
 
 .desktop-taskbar-minimized-apps {
@@ -1782,7 +1791,7 @@ body {
 
 .desktop-menu-category-icon {
     position: absolute;
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: center;
@@ -1851,7 +1860,7 @@ body {
     height: 100px;
     width: 100px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/icons/imageres/app.png);
+    background-image: url(../../resources/images/icons/imageres/app.png);
     background-size: 36px 36px;
     background-repeat: no-repeat;
     background-position: center;
@@ -1872,7 +1881,7 @@ body {
     height: 100px;
     width: 100px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/icons/imageres/app.png);
+    background-image: url(../../resources/images/icons/imageres/app.png);
     background-size: 36px 36px;
     background-repeat: no-repeat;
     background-position: center;
@@ -1893,7 +1902,7 @@ body {
     height: 100px;
     width: 100px;
     background-color: rgba(255, 255, 255, 0);
-    background-image: url(../../res/images/icons/imageres/app.png);
+    background-image: url(../../resources/images/icons/imageres/app.png);
     background-size: 36px 36px;
     background-repeat: no-repeat;
     background-position: center;
@@ -2061,7 +2070,7 @@ body {
 	outline: none;
 	top: 11px;
 	left: 11px;
-	background-image: url("../../res/images/icons/imageres/close.png");
+	background-image: url("../../resources/images/icons/imageres/close.png");
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-color: rgba(0, 0, 0, 0);
@@ -2082,7 +2091,7 @@ body {
 	outline: none;
 	top: 11px;
 	left: 31px;
-	background-image: url("../../res/images/icons/imageres/max.png");
+	background-image: url("../../resources/images/icons/imageres/max.png");
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-color: rgba(0, 0, 0, 0);
@@ -2102,7 +2111,7 @@ body {
 	outline: none;
 	top: 11px;
 	left: 51px;
-	background-image: url("../../res/images/icons/imageres/min.png");
+	background-image: url("../../resources/images/icons/imageres/min.png");
 	background-repeat: no-repeat;
 	background-size: 16px 16px;
 	background-color: rgba(0, 0, 0, 0);
@@ -2401,7 +2410,7 @@ body {
 }
 
 .system-input-checkbox-input:checked + .system-input-checkbox-box {
-    background-image: url('../../res/images/icons/imageres/checked_small.png');
+    background-image: url('../../resources/images/icons/imageres/checked_small.png');
     background-size: 12px 12px;
     background-repeat: no-repeat;
     background-position: 1px 0px;
@@ -2584,12 +2593,12 @@ body {
 }
 
 #desktop-taskbar-terminal-app-button {
-    background-image: url(../../res/images/icons/imageres/terminal-small.png);
+    background-image: url(../../resources/images/icons/imageres/terminal-small.png);
     background-size: 16px 12px;
 }
 
 #desktop-menu-button-terminal {
-    background-image: url(../../res/images/icons/imageres/terminal.png);
+    background-image: url(../../resources/images/icons/imageres/terminal.png);
     background-size: 48px 36px;
 }
 
@@ -2713,7 +2722,7 @@ body {
 }
 
 #desktop-taskbar-demo-app-button {
-    background-image: url(../../res/images/icons/imageres/app-small.png);
+    background-image: url(../../resources/images/icons/imageres/app-small.png);
 }
 
 .interactive-text {
@@ -2740,7 +2749,7 @@ body {
     height: 64px;
     top: 16px;
     left: 16px;
-    background-image: url(../../res/images/background/igor\ careca.png);
+    background-image: url(../../resources/images/background/igor\ careca.png);
     background-size: 64px 64px;
     border-radius: 100%;
 }
@@ -2800,7 +2809,7 @@ body {
 }
 
 #desktop-taskbar-calculator-app-button {
-    background-image: url(../../res/images/icons/imageres/app.png);
+    background-image: url(../../resources/images/icons/imageres/app.png);
 }
 
 }
