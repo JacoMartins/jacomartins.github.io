@@ -64,7 +64,7 @@
 
                 <div class="desktop-menu-category-menu">
                     <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="createDOMScript(`${'calculator'}-main`, 'text/javascript', '../script/programs/calculator/calculator-main.js');">Calculator</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
+                    <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="createDOMScript(`${'terminal'}-main`, 'text/javascript', '../script/programs/terminal/terminal-main.js');">Terminal</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-notepad-app" onclick="opennotepadapp()">Notepad</button>
                     <button class="desktop-menu-button" id="desktop-menu-button-htmlviewer-app" onclick="openhtmlviewerapp()">HTML Viewer</button>
@@ -195,7 +195,7 @@
 
             <div id="terminal-window-header" class="window-header" ondblclick="resizeterminalapp()">
                 
-                <button id="terminal-window-close-button" class="window-header-close-button" onclick="closeterminalapp()"></button>
+                <button id="terminal-window-close-button" class="window-header-close-button" onclick="closeapplication('terminal', terminalwindowopen); closeterminalappinfo();"></button>
                 <button id="terminal-window-resize-button" class="window-header-resize-button" onclick="resizeterminalapp()"></button>
                 <button id="terminal-window-minimize-button" class="window-header-minimize-button" onclick="minimizeterminalapp()"></button>
                 
@@ -351,8 +351,6 @@
 
 <!--Import core programs-->
 <script type="text/javascript" src="../script/programs/demo-main.js"></script>
-<script type="text/javascript" src="../script/programs/terminal-main.js"></script>
-<script type="text/javascript" src="../script/programs/terminal-core.js"></script>
 <script type="text/javascript" src="../script/programs/settings-main.js"></script>
 <script type="text/javascript" src="../script/programs/settings-core.js"></script>
 <script type="text/javascript" src="../script/programs/settings-main.js"></script>
