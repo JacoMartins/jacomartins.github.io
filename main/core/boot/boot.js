@@ -357,9 +357,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/igor careca.png...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/igor careca.png...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/igor careca.png')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/igor careca.png')";
            desktop.style.backgroundSize = 'contain';
          }, 000);
        }
@@ -371,9 +371,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/peitudoiori.jpeg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/peitudoiori.jpeg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/peitudoiori.jpeg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/peitudoiori.jpeg')";
            desktop.style.backgroundSize = 'contain';
          }, 000);
        }
@@ -385,9 +385,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/default.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/default.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/default.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/default.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }
@@ -399,9 +399,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp1.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/wpp1.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/wpp1.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/wpp1.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }
@@ -413,9 +413,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp2.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/wpp2.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/wpp2.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/wpp2.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }
@@ -427,9 +427,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp3.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/wpp3.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/wpp3.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/wpp3.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }
@@ -441,9 +441,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp4.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/wpp4.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/wpp4.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/wpp4.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }
@@ -455,9 +455,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp5.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/wpp5.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/wpp5.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/wpp5.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }
@@ -469,9 +469,9 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerHTML = 'Setting wallpaper to ../../res/images/background/wpp6.jpg...';
+           returncommand.innerHTML = 'Setting wallpaper to ../../resources/images/background/wpp6.jpg...';
            desktop.style.backgroundColor = 'black';
-           desktop.style.backgroundImage = "url('../../res/images/background/wpp6.jpg')";
+           desktop.style.backgroundImage = "url('../../resources/images/background/wpp6.jpg')";
            desktop.style.backgroundSize = 'cover';
          }, 000);
        }

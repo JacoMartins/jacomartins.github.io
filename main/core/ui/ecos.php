@@ -9,7 +9,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
     <link rel="icon" type="image/png" href="/favicon.png">
     <script type="text/javascript" src="desktop-ui.js"></script>
@@ -80,7 +80,7 @@
         
         <p class="desktop-beta-info" id="desktop-beta-info">Confidential Build. Eclipse Cloud Operating System, Beta 1, Build 15 Compilation: 040220222012</p>
 
-        <div id="settings-window" class="window" style="display: none;" onmousedown="settingsappfocus()"> 
+        <div id="settings-window" class="window" style="display: none;" onmousedown="settingsfocusWindow()"> 
 
             <div id="settings-window-header" class="window-header">
                 
@@ -152,7 +152,7 @@
 
         </div>
 
-        <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()"> 
+        <div id="demo-window" class="window" style="display: none;" onmousedown="demofocusWindow()"> 
 
             <div id="demo-window-header" class="window-header">
                 
@@ -179,7 +179,7 @@
 
         </div>
 
-        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()"> 
+        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalfocusWindow()"> 
 
             <div id="terminal-window-header" class="window-header">
                 
@@ -204,7 +204,7 @@
 
         </div>
 
-        <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorappfocus()"> 
+        <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorfocusWindow()"> 
 
             <div id="calculator-window-header" class="window-header">
                 
@@ -252,7 +252,7 @@
 
         </div>
 
-        <div id="beta-window" class="window" style="display: none;" onmousedown="betaappfocus()"> 
+        <div id="beta-window" class="window" style="display: none;" onmousedown="betafocusWindow()"> 
 
             <div id="beta-window-header" class="window-header">
                 

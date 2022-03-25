@@ -5,9 +5,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../res/css/themes/blur.css">
+    <link rel="stylesheet" type="text/css" href="../../resources/css/themes/blur.css">
     <link rel="stylesheet" type="text/css" href="straighten.css">
     <link rel="icon" type="image/png" href="/favicon.png">
+
+    <script type="text/javascript" src="../script/main.js"></script>
 
     <!--Web Title-->
     <title>Eclipse UI</title>
@@ -62,13 +64,7 @@
                     <a class="desktop-menu-category-text">Essential</a>
                 </div>
 
-                <div class="desktop-menu-category-menu">
-                    <button class="desktop-menu-button" id="desktop-menu-button-calculator" onclick="opencalculatorapp()">Calculator</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-terminal" onclick="openterminalapp()">Terminal</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-demo-app" onclick="opendemoapp()">UI Demo</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-notepad-app" onclick="opennotepadapp()">Notepad</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-htmlviewer-app" onclick="openhtmlviewerapp()">HTML Viewer</button>
-                    <button class="desktop-menu-button" id="desktop-menu-button-iframe-app" onclick="openiframeapp()">Iframe</button>
+                <div class="desktop-menu-category-menu" id="desktop-menu-essential-category">
                 </div>
             
             </div>
@@ -87,7 +83,7 @@
         
         <p class="desktop-beta-info" id="desktop-beta-info"></p>
 
-        <div id="settings-window" class="window" style="display: none;" onmousedown="settingsappfocus()"> 
+        <div id="settings-window" class="window" style="display: none;" onmousedown="settingsfocusWindow()"> 
 
             <div id="settings-window-header" class="window-header" ondblclick="resizesettingsapp()">
                 
@@ -164,7 +160,7 @@
 
         </div>
 
-        <div id="demo-window" class="window" style="display: none;" onmousedown="demoappfocus()"> 
+        <div id="demo-window" class="window" style="display: none;" onmousedown="demofocusWindow()"> 
 
             <div id="demo-window-header" class="window-header" ondblclick="resizedemoapp()">
                 
@@ -191,7 +187,7 @@
 
         </div>
 
-        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalappfocus()"> 
+        <div id="terminal-window" class="window" style="display: none;" onmousedown="terminalfocusWindow()"> 
 
             <div id="terminal-window-header" class="window-header" ondblclick="resizeterminalapp()">
                 
@@ -216,7 +212,7 @@
 
         </div>
 
-        <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorappfocus()"> 
+        <!-- <div id="calculator-window" class="window" style="display: none;" onmousedown="calculatorfocusWindow()"> 
 
             <div id="calculator-window-header" class="window-header" ondblclick="resizecalculatorapp()">
                 
@@ -262,9 +258,9 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
 
-        <div id="beta-window" class="window" style="display: none;" onmousedown="betaappfocus()"> 
+        <div id="beta-window" class="window" style="display: none;" onmousedown="betafocusWindow()"> 
 
             <div id="beta-window-header" class="window-header" ondblclick="resizebetaapp()">
                 
@@ -283,7 +279,7 @@
 
         </div>
 
-        <div id="notepad-window" class="window" style="display: none;" onmousedown="notepadappfocus()"> 
+        <div id="notepad-window" class="window" style="display: none;" onmousedown="notepadfocusWindow()"> 
 
             <div id="notepad-window-header" class="window-header" ondblclick="resizenotepadapp()">
                 
@@ -302,7 +298,7 @@
 
         </div>
 
-        <div id="htmlviewer-window" class="window" style="display: none;" onmousedown="htmlviewerappfocus()"> 
+        <div id="htmlviewer-window" class="window" style="display: none;" onmousedown="htmlviewerfocusWindow()"> 
 
             <div id="htmlviewer-window-header" class="window-header" ondblclick="resizehtmlviewerapp()">
                 
@@ -321,7 +317,7 @@
 
         </div>
 
-        <div id="iframe-window" class="window" style="display: none;" onmousedown="iframeappfocus()"> 
+        <div id="iframe-window" class="window" style="display: none;" onmousedown="iframefocusWindow()"> 
 
             <div id="iframe-window-header" class="window-header" ondblclick="resizeiframeapp()">
                 
@@ -342,25 +338,4 @@
         
     </div>
 </body>
-
-<!--Import main script-->
-<script type="text/javascript" src="../script/desktop.js"></script>
-<script type="text/javascript" src="../script/main.js"></script>
-<script type="text/javascript" src="../script/auth.js"></script>
-<script type="text/javascript" src="../script/menu.js"></script>
-
-<!--Import core programs-->
-<script type="text/javascript" src="../script/programs/demo-main.js"></script>
-<script type="text/javascript" src="../script/programs/terminal-main.js"></script>
-<script type="text/javascript" src="../script/programs/terminal-core.js"></script>
-<script type="text/javascript" src="../script/programs/calculator-main.js"></script>
-<script type="text/javascript" src="../script/programs/calculator-core.js"></script>
-<script type="text/javascript" src="../script/programs/settings-main.js"></script>
-<script type="text/javascript" src="../script/programs/settings-core.js"></script>
-<script type="text/javascript" src="../script/programs/settings-main.js"></script>
-<script type="text/javascript" src="../script/programs/notepad-main.js"></script>
-<script type="text/javascript" src="../script/programs/welcome-main.js"></script>
-<script type="text/javascript" src="../script/programs/html-viewer-main.js"></script>
-<script type="text/javascript" src="../script/programs/iframe-main.js"></script>
-
 </html>
