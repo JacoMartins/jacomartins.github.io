@@ -2,24 +2,220 @@
 
 var lastcommand;
 var prelastcommand;
-var sudo = false;
-var evaul = false;
-
-const appcontainer = document.getElementById("terminal-window-container");
-
-var returncommand = document.createElement('div');
-var returncommandclass = document.createAttribute('class');
-var returncommandclassvalue = returncommandclass.value = 'terminal-window-content-text';
 var lines = 0;
 
-function terminal(){
-  const terminal = document.getElementById("terminal-window-terminal");
-  const terminalprompt = document.getElementById("terminal-window-content-prompt");
+function terminalLine(windowId, inputId) {
+  var terminal = document.getElementById(inputId);
+
+  if (event.keyCode === 13) {
+    createDOMElement(
+      `terminal${windowId}-window-container`,
+      `div`,
+      `terminal${windowId}-window-line${lines}`,
+      `terminal-window-content-text`
+    );
+
+    if (sudo === false && evaul === false && passwd === false) {
+      terminal.type = 'text';
+      terminal.style.color = 'lightgray';
+      changeTerminalPrompt(windowId, `<span style="color: yellow;">${username}$:</span>`);
+      document.getElementById(`terminal${windowId}-window-line${lines}`).innerHTML = '<span style="color: yellow;">' + document.getElementById(`terminal${windowId}-window-content-prompt`).innerText + '</span> ' + terminal.value;
+    }
+
+    if (sudo === true && evaul === false && passwd === false) {
+      terminal.type = 'password';
+      terminal.style.color = 'black';
+      changeTerminalPrompt(windowId, `<span style="color: lightgray;">[sudo] Password for ${username}:</span>`);
+      document.getElementById(`terminal${windowId}-window-line${lines}`).innerHTML = `<span style="color: lightgray;">[sudo] Password for ${username}:</span> `;
+    }
+
+    if (sudo === false && evaul === false && passwd === true) {
+      terminal.type = 'text';
+      terminal.style.color = 'lightgray';
+      document.getElementById(`terminal${windowId}-window-line${lines}`).innerHTML = '<span style="color: lightgray;">' + document.getElementById(`terminal${windowId}-window-content-prompt`).innerText + '</span>';
+    }
+
+    lines++;
+  }
+}
+
+function terminalCommand(windowId, inputId) {
+  var terminal = document.getElementById(inputId);
+  var terminalPrompt = document.getElementById(`terminal${windowId}-window-content-prompt`);
+  var confirmPasswd;
+
+  if (event.keyCode === 13) {
+    if (sudo === false && evaul === false && passwd === false) {
+
+      if (terminal.value.slice(0, 8) == 'terminal') {
+        if (terminal.value.slice(0, 18) == 'terminal isworking') {
+          setTimeout(() => {
+            createTerminalLine(windowId, '<span style="color: lightgreen">#: </span> Working');
+          }, 000);
+        }
+      }
+
+      if (terminal.value.slice(0, 5) == 'clear') {
+        terminal.value = '';
+        for (n = (document.querySelectorAll(`[id*="terminal${windowId}-window-line"]`).length); n > -1; n--) {
+          removeDOMElement(document.querySelectorAll(`[id*="terminal${windowId}-window-line"]`)[0]);
+        }
+      }
+
+      if (terminal.value.slice(0, 4) == 'exit') {
+        setTimeout(() => {
+          createTerminalLine(windowId, '<span style="color: lightgreen">#: </span> Exitting terminal...');
+        }, 000);
+        closeWindow(`terminal${windowId}-window`);
+      }
+
+      if (terminal.value.slice(0, 4) == 'sudo') {
+        setTimeout(() => {
+          //appcontainer.appendChild(returncommand);
+          //returncommand.returncommandclassvalue;
+          //returncommand.setAttributeNode(returncommandclass);
+          //returncommand
+          changeTerminalPrompt(windowId, `<span style="color: lightgray;">[sudo] Password for ${username}:</span>`);
+          terminal.type = 'password';
+          terminal.style.color = 'black';
+          sudo = true;
+        }, 000);
+      }
+
+      /* if(terminal.value.slice(0, 6) == 'passwd'){
+        setTimeout(() => {
+          //appcontainer.appendChild(returncommand);
+          //returncommand.returncommandclassvalue;
+          //returncommand.setAttributeNode(returncommandclass);
+          //returncommand
+          changeTerminalPrompt(windowId, `<span style="color: lightgray;">Current Password: </span>`);
+          terminal.type = 'password';
+          terminal.style.color = 'black';
+          passwd = true;
+        }, 000);
+      }  */
+
+      if (terminal.value.slice(0, 6) == 'passwd') {
+        if (terminal.value == 'passwd') {
+          setTimeout(() => {
+            createTerminalLine(windowId, '<span style="color: lightgreen">$: </span> Invalid syntax. Please try passwd [Current Password] [New Password]');
+          }, 000);
+        }
+
+        if(userpw == ""){
+          localStorage.setItem('userpw', terminal.value.slice(7));
+          userpw = localStorage.getItem('userpw');
+        } else if (terminal.value.slice(7, 7 + userpw.length) == userpw) {
+          //createTerminalLine(windowId, terminal.value.slice((7 + userpw.length)));
+          localStorage.setItem('userpw', terminal.value.slice(8 + userpw.length));
+          userpw = localStorage.getItem('userpw');
+          setTimeout(() => {
+            createTerminalLine(windowId, '<span style="color: lightgreen">$: </span> Password changed.');            
+          }, 00);
+        } else {
+          setTimeout(() => {
+            createTerminalLine(windowId, '<span style="color: lightgreen">$: </span> Password is wrong, please try again.');
+          }, 000);
+        }
+        
+      }
+
+      if(terminal.value.slice(0, 3).includes("msg")){
+        var msgcontent = terminal.value.slice(4);
+        setTimeout(() => {
+
+          createWindow(`owner-user`, `generated${msgid}`);
+
+          document.getElementById(`generated${msgid}-window`).onmousedown = `focusWindow('generated${msgid}-window')`;
+          
+          createWindowHeader(`generated${msgid}-window`, `generated${msgid}`, 0, 2, `Message ${msgid}`, msgid);
+
+          createDOMElement(`generated${msgid}-window`, `div`, `generated${msgid}-window-content`, 'window-content');
+          
+          document.getElementById(`generated${msgid}-window-content`).innerHTML = `
+            <a class="text-default" id="generated${msgid}-window-content-p">Paragraph</a>
+            <button class="system-input-button" id="generated${msgid}-window-content-input-button1" onclick="closeWindow('generated${msgid}-window')">OK</button>
+          `;
+          
+          dragElement(`generated${msgid}-window`);
+          
+          document.getElementById(`generated${msgid}-window`).style.animation = 'openwindow 0.25s';
+  
+          document.getElementById(`generated${msgid}-window`).style.height = '134px';
+          document.getElementById(`generated${msgid}-window`).style.width = '352px';
+          document.getElementById(`generated${msgid}-window`).style.top = `calc(50% - ${(parseInt(document.getElementById(`generated${msgid}-window`).style.height) * 0.5)}px)`;
+          document.getElementById(`generated${msgid}-window`).style.left = `calc(50% - ${(parseInt(document.getElementById(`generated${msgid}-window`).style.width) * 0.5)}px)`;
+          document.getElementById(`generated${msgid}-window-header-title`).innerText = `Message${msgid}`;
+          document.getElementById(`generated${msgid}-window`).style.zIndex = z + 1;
+  
+          document.getElementById(`generated${msgid}-window-content-p`).style.top = '15px';
+          document.getElementById(`generated${msgid}-window-content-p`).style.left = '15px';
+  
+          document.getElementById(`generated${msgid}-window-content-p`).innerText = msgcontent;
+  
+          document.getElementById(`generated${msgid}-window-content-input-button1`).style.top = `calc(calc(100% - 31px) - 15px)`;
+          document.getElementById(`generated${msgid}-window-content-input-button1`).style.left = `calc(calc(100% - 78px) - 15px)`;
+          
+          document.getElementById(`generated${msgid}-window-content-input-button1`).focus();
+          //document.getElementById(`generated${msgid}-window`).onmousedown = `focusWindow('generated${msgid}-window')`;
+  
+          msgid = msgid + 1;
+        }, 000);
+      }
+    }
+
+    if (sudo === true && terminal.value == userpw) {
+      sudo = false;
+    }
+
+    if (passwd === true) { }
+    /* if(passwd === true && terminal.value == userpw){
+         createTerminalLine(windowId, terminalPrompt.innerHTML);
+         changeTerminalPrompt(windowId, `<span style="color: lightgray;">New Password: </span>`);
+         newPasswd = true;
+         passwd = false;
+     }
+ 
+     if(newPasswd === true && confirmPasswd === undefined){
+       confirmPasswd = terminal.value;
+       createTerminalLine(windowId, terminalPrompt.innerHTML);
+       changeTerminalPrompt(windowId, `<span style="color: lightgray;">Confirm Password: </span>`);
+       newPasswd = false;
+       conPasswd = true;
+     }
+ 
+     if(conPasswd === true && terminal.value == confirmPasswd){
+         changeTerminalPrompt(windowId, `<span style="color: lightgray;">Password changed.</span>`);
+         newPasswd = false;
+         passwd = false;
+         conPasswd = false;
+     }*/
+
+    lastcommand = terminal.value;
+    prelastcommand = lastcommand;
+    terminalLine(windowId, inputId);
+    terminal.value = '';
+  }
+
+  if(event.keyCode === 38){
+    terminal.value = lastcommand;
+  }
+}
+
+/* function terminal(windowId){
+  const terminal = document.getElementById(`terminal${windowId}-window-terminal`);
+  const terminalprompt = document.getElementById(`terminal${windowId}-window-content-prompt`);
+  const appcontainer = document.getElementById(`terminal${windowId}-window-container`);
+
+  var returncommand = document.createElement('div');
+  var returncommandclass = document.createAttribute('class');
+  var returncommandclassvalue = returncommandclass.value = `terminal${windowId}-window-content-text`;
+
 
   var createtext = document.createElement('div');
   var createtextclass = document.createAttribute('class');
-  var createtextclassvalue = createtextclass.value = 'terminal-window-content-text';
-  var textelements = document.getElementsByClassName('terminal-window-content-text');
+  var createtextclassvalue = createtextclass.value = `terminal${windowId}-window-content-text`;
+  var textelements = document.getElementsByClassName(`terminal${windowId}-window-content-text`);
 
   var genwindow = document.createElement('div');
   var genwindowclass = document.createAttribute('class');
@@ -104,7 +300,7 @@ function terminal(){
         
         dragElement(`generated${msgid}-window`);
 
-      	document.getElementById(`generated${msgid}-window`).style.animation = 'openwindow 0.25s';
+        document.getElementById(`generated${msgid}-window`).style.animation = 'openwindow 0.25s';
 
         document.getElementById(`generated${msgid}-window`).style.height = '134px';
         document.getElementById(`generated${msgid}-window`).style.width = '352px';
@@ -620,31 +816,34 @@ function terminal(){
  if(event.keyCode == 38) {
   terminal.value = lastcommand;
   }
-}
+} */
 
+function terminalPromptFocus(windowId) {
+  document.getElementById(`terminal${windowId}-window-terminal`).focus();
+}
 
 
 // Terminal Functions
 
-function write(text){
+function write(text) {
   return text;
 }
 
 var dimlist = [];
 
-function dim(con){
+function dim(con) {
   dimlist.push(con);
   return dimlist.lenght;
 }
 
-function clear(){
+function clear() {
   terminal.value = '';
-  for(n = (textelements.length - 1); n > -1; n--){
+  for (n = (textelements.length - 1); n > -1; n--) {
     appcontainer.removeChild(textelements[0]);
   }
 }
 
-function exit(){
+function exit() {
   evaul = false;
   sudo = false;
 

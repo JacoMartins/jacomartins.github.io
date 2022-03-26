@@ -1496,7 +1496,7 @@ body {
     text-align: right;
 }
 
-#calculator-window-content-input-button {
+.calculator-window-content-input-button {
     position: relative;
     left: 0px;
     top: 0px;
@@ -1506,7 +1506,7 @@ body {
     font-size: 24px;
 }
 
-#calculator-window-content-input-button-small {
+.calculator-window-content-input-button-small {
     position: relative;
     left: 0px;
     top: 0px;

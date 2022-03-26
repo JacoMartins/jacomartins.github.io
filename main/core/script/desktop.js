@@ -43,8 +43,8 @@ desktop.addEventListener('contextmenu', function () {
             /* Button Id */ 'desktop-context-menu-button-terminal',
             /* Button Class */ 'desktop-menu-button',
             /* Button Event */ 'onclick',
-            /* Button Link */ 'openterminalapp()',
-            /* Button Icon */ '../../resources/images/icons/imageres/.png',
+            /* Button Link */ 'createDOMScript(`terminal-main`, `text/javascript`, `../script/main-programs/terminal/main.js`);',
+            /* Button Icon */ '../../resources/images/icons/imageres/terminal-small.png',
             /* Button Icon Size and Position */ '16px 12px 09px 09px'
     );
 
@@ -133,10 +133,12 @@ function closeWindow(id) {
   setTimeout(() => {
     desktop.removeChild(document.getElementById(id));
     document.getElementById(`desktop-taskbar-${id.slice(0, -7)}-app-button`).parentNode.removeChild(document.getElementById(`desktop-taskbar-${id.slice(0, -7)}-app-button`));
-    removeDOMElement(`${id.slice(0, -8)}-main`);
-    removeDOMElement(`${id.slice(0, -8)}-window-functions`);
-    removeDOMElement(`${id.slice(0, -8)}-startstop`);
-    removeDOMElement(`${id.slice(0, -8)}-core`);
+    
+    if (document.getElementById(`${id.slice(0, -8)}-main`) && document.getElementById(`${id.slice(0, -8)}-window-functions`) && document.getElementById(`${id.slice(0, -8)}-core`)) {
+      removeDOMElementById(`${id.slice(0, -8)}-main`);
+      removeDOMElementById(`${id.slice(0, -8)}-window-functions`);
+      removeDOMElementById(`${id.slice(0, -8)}-core`);
+    }
   }, 250);
 }
 
@@ -190,7 +192,7 @@ function minimizeWindow(id, isopen) {
   else {
     createDOMScript(`${appname}-startstop`, 'text/javascript', '../script/main-programs/calculator/bin/window/startstop.js');
     createDOMScript(`${appname}-window-functions`, 'text/javascript', '../script/main-programs/calculator/bin/window/window-functions.js');
-    createDOMScript(`${appname}-core`, 'text/javascript', '../script/main-programs/calculator/bin/calculator-core.js');  
+    createDOMScript(`${appname}-core`, 'text/javascript', '../script/main-programs/calculator/bin/calculator-core.js');
   }
 }
 
@@ -240,37 +242,38 @@ function snapResizeWindow(id, restorewidth, restoreheight) {
   //console.log(restoreheight, '\n', restorewidth);
 }
 
-function snapWindow(app = document.getElementById(`${msgid - 1}-window`)) {
-  var clienttop = window.event.clientY;
-  var clientleft = window.event.clientX;
+function snapWindow(id) {
+  var wd = document.getElementById(id);
+  var mousetop = window.event.clientY;
+  var mouseleft = window.event.clientX;
 
-  if (clienttop <= 0) {
-    if (app.style.width === 'calc(100% - 40px)') {
-      app.style.width = restorewidth;
-      app.style.height = restoreheight;
-      app.style.resize = "both";
-      app.style.borderRadius = "4px";
+  if (mousetop <= 0) {
+    if (wd.style.width === 'calc(100% - 40px)') {
+      wd.style.width = restorewidth;
+      wd.style.height = restoreheight;
+      wd.style.resize = "both";
+      wd.style.borderRadius = "4px";
     } else {
-      app.style.width = '100%';
-      app.style.height = 'calc(100% - 40px)';
-      app.style.top = "40px";
-      app.style.left = "0px";
-      app.style.resize = "none";
-      app.style.borderRadius = "0px";
-      app.style.transition = "0.15s";
+      wd.style.width = '100%';
+      wd.style.height = 'calc(100% - 40px)';
+      wd.style.top = "40px";
+      wd.style.left = "0px";
+      wd.style.resize = "none";
+      wd.style.borderRadius = "0px";
+      wd.style.transition = "0.15s";
       setTimeout(function () {
-        app.style.transition = "none";
+        wd.style.transition = "none";
       }, 150)
     }
   }
 
-  if (clientleft <= 0) {
-    splitWindow()
+  if (mouseleft <= 0) {
+    splitWindow(id)
     // document.getElementById("-window-header-title").innerHTML = 'Detected';
   }
 
-  if (clientleft >= (window.innerWidth - 1)) {
-    splitWindow()
+  if (mouseleft >= (window.innerWidth - 1)) {
+    splitWindow(id)
   }
 }
 
@@ -312,6 +315,7 @@ function dragElement(elmnt, puller, restorewidth, restoreheight) {
   function closeDragElement() {
     document.onmouseup = null;
     document.onmousemove = null;
+    snapWindow(elmnt);
   }
 }
 
