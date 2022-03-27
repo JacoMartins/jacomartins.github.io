@@ -18,7 +18,7 @@ function terminalLine(windowId, inputId) {
     if (sudo === false && evaul === false && passwd === false) {
       terminal.type = 'text';
       terminal.style.color = 'lightgray';
-      changeTerminalPrompt(windowId, `<span style="color: yellow;">${email.split('@')[0]}@${usernamme}</span>`);
+      changeTerminalPrompt(windowId, `<span style="color: yellow;">${email.split('@')[0]}@${username}</span>`);
       document.getElementById(`terminal${windowId}-window-line${lines}`).innerHTML = '<span style="color: yellow;">' + document.getElementById(`terminal${windowId}-window-content-prompt`).innerText + '</span> ' + terminal.value;
     }
 

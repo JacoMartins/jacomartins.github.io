@@ -72,7 +72,7 @@ function ecosSignUp() {
     username = localStorage.getItem('username');
     email = localStorage.getItem('email');
     document.getElementById('logon-screen-username').innerHTML = usernameInput.value;
-    document.getElementById('terminal-window-content-prompt').innerText = `${email.split('@')[0]}@${usernamme}`;
+    document.getElementById('terminal-window-content-prompt').innerText = `${email.split('@')[0]}@${username}`;
 
     localStorage.setItem('userpw', passwordInput.value);
     userpw = localStorage.getItem('userpw');
