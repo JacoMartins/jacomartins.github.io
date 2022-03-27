@@ -111,7 +111,7 @@ function terminalBuildWindow() {
     `terminalCommand(${terminalWindowId}, 'terminal${terminalWindowId}-window-terminal');`
   );
 
-  document.getElementById(`terminal${terminalWindowId}-window-content-prompt`).innerText = `${email.split('@')[0]}@${username}`;
+  document.getElementById(`terminal${terminalWindowId}-window-content-prompt`).innerText = `${email.split('@')[0]}@${username}:$`;
   document.getElementById(`terminal${terminalWindowId}-window-content-prompt`).style.color = 'yellow';
   document.getElementById(`terminal${terminalWindowId}-window-terminal`).focus();
   

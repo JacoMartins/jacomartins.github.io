@@ -18,7 +18,7 @@ function terminalLine(windowId, inputId) {
     if (sudo === false && evaul === false && passwd === false) {
       terminal.type = 'text';
       terminal.style.color = 'lightgray';
-      changeTerminalPrompt(windowId, `<span style="color: yellow;">${email.split('@')[0]}@${username}</span>`);
+      changeTerminalPrompt(windowId, `<span style="color: yellow;">${email.split('@')[0]}@${username}:$</span>`);
       document.getElementById(`terminal${windowId}-window-line${lines}`).innerHTML = '<span style="color: yellow;">' + document.getElementById(`terminal${windowId}-window-content-prompt`).innerText + '</span> ' + terminal.value;
     }
 
@@ -252,7 +252,7 @@ function terminalCommand(windowId, inputId) {
           terminalPrompt.innerText = 'js-console' + '$:';
           terminalPrompt.style.color = 'orange';
           terminal.focus();
-          createTerminalLine('<span style="color: orange;">Opening JS Terminal...</span>');
+          createTerminalLine(windowId, '<span style="color: orange;">Opening JS Terminal...</span>');
         }, 000);
       }
 
@@ -544,7 +544,7 @@ function terminalCommand(windowId, inputId) {
     prelastcommand = lastcommand;
     lastcommand = terminal.value;
 
-    createTerminalLine(windowId, `<span style="color: orange;">js-console$:</span> '${terminal.value}<br><span style="color: lightgreen;">console:</span>${eval(terminal.value)}`);
+    createTerminalLine(windowId, `<span style="color: orange;">js-console$:</span> '${terminal.value}<br><span style="color: lightgreen;">console: </span>${eval(terminal.value)}`);
     terminal.value = '';
     eval(terminal.value);
 
