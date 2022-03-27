@@ -545,7 +545,6 @@ function terminalCommand(windowId, inputId) {
     lastcommand = terminal.value;
 
     createTerminalLine(windowId, `<span style="color: orange;">js-console$:</span> '${terminal.value}<br><span style="color: lightgreen;">console: </span>${eval(terminal.value)}`);
-    terminal.value = '';
     eval(terminal.value);
 
     lastcommand = terminal.value;
