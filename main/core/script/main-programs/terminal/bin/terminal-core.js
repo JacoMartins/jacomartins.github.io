@@ -553,7 +553,6 @@ function terminalCommand(windowId, inputId) {
     setTimeout(() => {
       document.getElementById(`terminal${windowId}-window-content`).scrollTo(0, document.getElementById(`terminal${windowId}-window-content`).scrollHeight);
     }, 00);
-    terminal.value = '';
   }
 
   if (event.keyCode === 38) {
