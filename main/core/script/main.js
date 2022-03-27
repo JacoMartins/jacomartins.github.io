@@ -1,28 +1,34 @@
 // Main Code
-let build = 55;
+let build = 59;
 let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
 let systemname = 'Eclipse Cloud Operating System (ECOS)';
-let versionname = 'Beta';
+let buildtype = 'Beta';
 let permlevel = 0;
 var date = new Date();
 
+if (localStorage.getItem('firstTime') == undefined) {
+  localStorage.setItem('firstTime', false);
+}
 if (localStorage.getItem('auth') == undefined) {
   localStorage.setItem('auth', 'true');
 }
 
 if (localStorage.getItem('username') == undefined) {
-  localStorage.setItem('username', 'owner');
+  localStorage.setItem('username', 'Root');
+}
+
+if (localStorage.getItem('userpw') == undefined) {
+  localStorage.setItem('userpw', '')
+}
+
+if (localStorage.getItem('email') == undefined) {
+  localStorage.setItem('email', 'noemail@email.com')
 }
 
 if (localStorage.getItem('notepad') == undefined) {
   localStorage.setItem('notepad', '');
-}
-
-
-if (localStorage.getItem('userpw') == undefined) {
-  localStorage.setItem('userpw', '')
 }
 
 if (localStorage.getItem('rebootT') == undefined) {
@@ -35,6 +41,10 @@ if (localStorage.getItem('boot') == undefined) {
 
 if (localStorage.getItem('userwp') == undefined) {
   localStorage.setItem('userwp', '../../resources/images/background/default.jpg')
+}
+
+if (localStorage.getItem('userfwp') == undefined) {
+  localStorage.setItem('userfwp', '../../resources/images/background/wpp1.jpg')
 }
 
 if (localStorage.getItem('txtfilelist') == undefined) {
@@ -61,6 +71,10 @@ setTimeout(() => {
 
 var username = localStorage.getItem('username');
 var userpw = localStorage.getItem('userpw');
+var email = localStorage.getItem('email');
+
+document.innerWidth = window.innerWidth;
+document.innerHeight = window.innerHeight;
 
 setInterval(function time() {
   if (window.innerHeight > window.innerWidth) {
@@ -118,6 +132,143 @@ setTimeout(() => {
 window.addEventListener('load', function () {
   const bootscreen = document.getElementById('bootscreen');
   bootscreen.className += '.done';
+
+  if (localStorage.getItem('firstTime') === 'true') {
+    createDOMElement(
+      document.body,
+      'div',
+      'signup-screen',
+      '', undefined, undefined,
+      `position: absolute;
+      background-image: url('${localStorage.getItem('userfwp')}');
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      height: 100%;
+      width: 100%;
+      top: 0px;
+      left: 0px;
+      z-index: 1249;
+    `);
+
+    createDOMElement(
+      document.getElementById('signup-screen'),
+      `div`,
+      'signup-screen-blur', undefined, undefined, undefined,
+
+      `position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(90px);
+      top: 0px;
+      left: 0px;
+      z-index: 1250;
+    `);
+
+    var formHeight = 312;
+    var formWidth = 330;
+
+    createDOMElement(
+      document.getElementById('signup-screen'),
+      'form',
+      'signup-screen-form', undefined, undefined, undefined,
+      `position: absolute;
+      width: ${convert('toPixels', formWidth)};
+      height: ${convert('toPixels', formHeight)};
+      left: calc(50% - calc(${convert('toPixels', formWidth)} / 2));
+      top: calc(50% - calc(${convert('toPixels', formHeight)} / 2));
+      background-color: rgba(0, 0, 0, 0);
+      z-index: 1250;
+    `);
+
+    createText(document.getElementById('signup-screen-form'), `Sign up on ECOS`, 'signup-screen-form-h1', `text-header1`,
+      `
+    `);
+
+    createInput(
+      document.getElementById('signup-screen-form'),
+      '',
+      'Please, create an username',
+      'text',
+      `signup-screen-form-username-input`,
+      'system-input-text',
+      `onkeydown`,
+      ``,
+      `position: relative;
+      margin-top: 32px;
+      width: 320px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    `);
+
+    createInput(
+      document.getElementById('signup-screen-form'),
+      '',
+      'Your email adress',
+      'text',
+      `signup-screen-form-email-input`,
+      'system-input-text',
+      `onkeydown`,
+      ``,
+      `position: relative;
+        margin-top: 6px;
+        width: 320px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    `);
+
+    createInput(
+      document.getElementById('signup-screen-form'),
+      '',
+      'Create a password',
+      'password',
+      `signup-screen-form-password-input`,
+      'system-input-text',
+      `onkeydown`,
+      ``,
+      `position: relative;
+          margin-top: 16px;
+          width: 320px;
+          padding-top: 8px;
+          padding-bottom: 8px;
+    `);
+
+    createInput(
+      document.getElementById('signup-screen-form'),
+      '',
+      'Confirm your password',
+      'password',
+      `signup-screen-form-conpassword-input`,
+      'system-input-text',
+      `onkeydown`,
+      ``,
+      `position: relative;
+        margin-top: 6px;
+        width: 320px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    `);
+
+    createButton(
+      document.getElementById('signup-screen-form'),
+      'Sign Up',
+      'signup-screen-form-singup-button',
+      'system-input-sidebar-button',
+      `onclick`,
+      ``,
+      `position: relative;
+      width: 128px;
+      margin-top: 16px;
+      text-align: center;
+      padding-left: 0px;
+      padding-right: 0px;
+      background-color: rgba(255, 255, 255, 0.05);
+      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.1);
+      `);
+  }
+
+  document.getElementById('logon-screen').style.backgroundImage = `url('${localStorage.getItem('userfwp')}')`;
 });
 
 window.addEventListener('keyup', event => {
@@ -148,7 +299,7 @@ function createDOMScript(id, type, src) {
 function createDOMElement(mother, child, id, cl, evnt, link, css) {
   createelmnt = document.createElement(child);
 
-  document.getElementById(mother).appendChild(createelmnt);
+  mother.appendChild(createelmnt);
   createDOMAttribute(createelmnt, 'id', id);
   createDOMAttribute(createelmnt, 'class', cl);
   createDOMAttribute(createelmnt, evnt, link);
@@ -256,7 +407,7 @@ function createInput(mother, value, placeholder, type, id, cl, evnt, link, css) 
 
 function createTerminalLine(windowId, content) {
   createDOMElement(
-    `terminal${windowId}-window-container`,
+    document.getElementById(`terminal${windowId}-window-container`),
     `div`,
     `terminal${windowId}-window-line${lines}`,
     `terminal-window-content-text`
@@ -311,7 +462,7 @@ function screenratio(desktop, mobile) {
 
 function showKeyNames(dicionary) {
   for (n = (Object.keys(dicionary).length - 1); n > -1; n--) {
-    createDOMElement('terminal-window-container', 'div', `line${lines}`, 'terminal-window-content-text');
+    createDOMElement(document.getElementById('terminal-window-container'), 'div', `line${lines}`, 'terminal-window-content-text');
     document.getElementById(`line${lines}`).innerText = Object.keys(dicionary)[n];
     lines++;
   }

@@ -48,7 +48,7 @@ function calculatorBuildWindow() {
   );
 
   createDOMElement(
-    `calculator${calculatorWindowId}-window`,
+    document.getElementById(`calculator${calculatorWindowId}-window`),
     'div',
     `calculator${calculatorWindowId}-window-content`,
     'window-content',
@@ -93,7 +93,7 @@ function calculatorBuildWindow() {
   )
 
   createDOMElement(
-    `calculator${calculatorWindowId}-window-content`,
+    document.getElementById(`calculator${calculatorWindowId}-window-content`),
     'div',
     `calculator${calculatorWindowId}-window-container`,
     undefined,

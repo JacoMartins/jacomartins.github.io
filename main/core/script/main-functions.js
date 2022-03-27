@@ -11,7 +11,7 @@ function openapplication(id) {
   var menusettings = document.getElementById('desktop-menu-settings');
 
   createDOMElement(
-    /*Mother Element*/ 'desktop-taskbar-minimized-apps',
+    /*Mother Element*/ document.getElementById('desktop-taskbar-minimized-apps'),
     /*Child Element*/ 'div',
     /*Puts an ID attribute in your new element*/ `desktop-taskbar-${id}-app-button`,
     /*Puts a class attribute in your new element*/ 'desktop-taskbar-app-button',

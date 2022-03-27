@@ -3,7 +3,7 @@ let isbeta = true;
 let betastage = 1;
 let version = '1.0.0';
 let systemname = 'Eclipse Cloud Operating System (ECOS)';
-let versionname = 'Beta';
+let buildtype = 'Beta';
 var username = localStorage.getItem('username');
 var userpw = localStorage.getItem('userpw');
 var date = new Date();
@@ -195,7 +195,7 @@ window.addEventListener('keyup', event => {
            container.appendChild(returncommand);
            returncommand.returncommandclassvalue;
            returncommand.setAttributeNode(returncommandclass);
-           returncommand.innerText = '\n- System Info: \n[System Name] ' + systemname + '\n[Version Name] ' + versionname + '\n[Build] '+ build + '\n[Compilation] ' + today;
+           returncommand.innerText = '\n- System Info: \n[System Name] ' + systemname + '\n[Version Name] ' + buildtype + '\n[Build] '+ build + '\n[Compilation] ' + today;
          }, 000);
        }
    

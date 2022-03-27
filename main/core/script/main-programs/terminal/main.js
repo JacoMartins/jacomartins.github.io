@@ -1,9 +1,11 @@
 // Terminal Application - Main Code
+
 var terminalrestoreheight;
 var terminalrestorewidth;
 var terminalrestoretop;
 var terminalrestoreleft;
 var terminalOpen = true;
+var lines = 0;
 sudo = false;
 passwd = false;
 newPasswd = false;
@@ -28,7 +30,7 @@ function callterminalscripts() {
 callterminalscripts();
 
 function terminalBuildWindow() {
-  // terminal Basic Window Structure
+  // Terminal Basic Window Structure
 
   z++;
 
@@ -55,7 +57,7 @@ function terminalBuildWindow() {
   );
 
   createDOMElement(
-    `terminal${terminalWindowId}-window`,
+    document.getElementById(`terminal${terminalWindowId}-window`),
     'div',
     `terminal${terminalWindowId}-window-content`,
     'window-content',
@@ -66,7 +68,7 @@ function terminalBuildWindow() {
     overflow: auto;`);
 
   createDOMElement(
-    `terminal${terminalWindowId}-window-content`,
+    document.getElementById(`terminal${terminalWindowId}-window-content`),
     'div',
     `terminal${terminalWindowId}-window-container`,
     '',
@@ -83,14 +85,14 @@ function terminalBuildWindow() {
   );
 
   createDOMElement(
-    `terminal${terminalWindowId}-window-container`,
+    document.getElementById(`terminal${terminalWindowId}-window-container`),
     'div',
     `terminal${terminalWindowId}-window-content-line`,
     `terminal-window-content-line`
   );
 
   createDOMElement(
-    `terminal${terminalWindowId}-window-content-line`,
+    document.getElementById(`terminal${terminalWindowId}-window-content-line`),
     `span`,
     `terminal${terminalWindowId}-window-content-prompt`,
     `terminal-window-content-prompt`,
@@ -109,9 +111,11 @@ function terminalBuildWindow() {
     `terminalCommand(${terminalWindowId}, 'terminal${terminalWindowId}-window-terminal');`
   );
 
-  document.getElementById(`terminal${terminalWindowId}-window-content-prompt`).innerText = username + '$:';
+  document.getElementById(`terminal${terminalWindowId}-window-content-prompt`).innerText = `${email.split('@')[0]}@${usernamme}`;
   document.getElementById(`terminal${terminalWindowId}-window-content-prompt`).style.color = 'yellow';
   document.getElementById(`terminal${terminalWindowId}-window-terminal`).focus();
+  
+  createTerminalLine(terminalWindowId, "<span style='color: lightgray;'>Welcome to eclipse's terminal, type <span style='color: salmon;'>help</span> to see available commands.</span><br></br>")
 
   dragElement(`terminal${terminalWindowId}-window`, `terminal${terminalWindowId}-window-header`, terminalrestorewidth, terminalrestoreheight);
 
@@ -127,121 +131,5 @@ function terminalBuildWindow() {
 
   terminalWindowId++;
 }
-
-/* function openterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button'), appcontainer = document.getElementById('terminal-window-container')){
-  var terminal = document.getElementById('terminal-window-terminal');
-  
-  var taskbarminimizedapps = document.getElementById('desktop-taskbar-minimized-apps');
-  
-  var miniapp = document.createElement('button');
-  var miniappclass = document.createAttribute('class');
-  var miniappid = document.createAttribute('id');
-  var miniapponclick = document.createAttribute('onclick');
-  var miniappclassname = miniappclass.value = 'desktop-taskbar-app-button';
-  var miniappidname = miniappid.value = 'desktop-taskbar-terminal-app-button';
-  var miniapponclickfunction = miniapponclick.value = 'minimizeterminalapp()';
-  var terminalprompt = document.getElementById('terminal-window-content-prompt');
-  var resizebutton = document.getElementById("terminal-window-resize-button");
-  var minimizebutton = document.getElementById("terminal-window-minimize-button");
-  
-  taskbarminimizedapps.appendChild(miniapp);
-  miniapp.miniappclassname;
-  miniapp.setAttributeNode(miniappclass);
-  miniapp.miniappidname;
-  miniapp.setAttributeNode(miniappid);
-  miniapp.miniapponclickfunction;
-  miniapp.setAttributeNode(miniapponclick);
-  
-  app.style.display = "block";
-  app.style.animation = 'openwindow 0.25s';
-  menumain = document.getElementById('desktop-menu-main')
-  menusettings = document.getElementById('desktop-menu-settings')
-
-  if(menumain.style.display = "block"){
-      menumain.style.display = "none";
-      menusettings.style.display = "none";
-  }
-
-  app.style.width = '680px';
-  app.style.height = '420px';
-  app.style.top = '120px';
-  app.style.left = '120px';
-  app.style.resize = "both";
-  app.style.borderRadius = "4px";
-  z++;
-  app.style.zIndex = z;
-  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
-  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
-  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
-  resizebutton.style.display = 'block';
-  minimizebutton.style.left = '51px';
-
-  if (window.innerHeight > window.innerWidth){
-    restoreheight = app.style.height;
-    restorewidth = app.style.width; 
-    restoretop = app.style.top;
-    restoreleft = app.style.left;
-    app.style.width = '100%';
-    app.style.height = 'calc(100% - 50px)';
-    app.style.top = "0px";
-    app.style.left = "0px";
-    app.style.resize = "none";
-    app.style.borderRadius = "0px";
-    app.style.transition = "0.15s";
-    resizebutton.style.display = 'none';
-    minimizebutton.style.left = '31px';
-    setTimeout(function() {
-        app.style.transition = "none";
-    }, 150)
-  }
-
-  var returncommand = document.createElement('div');
-  var returncommandclass = document.createAttribute('class');
-  var returncommandclassvalue = returncommandclass.value = 'terminal-window-content-text';
-  setTimeout(() => {
-    appcontainer.appendChild(returncommand);
-    returncommand.returncommandclassvalue;
-    returncommand.setAttributeNode(returncommandclass);
-    returncommand.innerHTML = "<span style='color: lightgray;'>Welcome to eclipse's terminal, type <span style='color: salmon;'>help</span> to see available commands.</span><br></br>";
-  }, 000);
-
-  terminalprompt.innerText = username + '$:';
-  terminalprompt.style.color = 'yellow';
-  terminal.focus();
-
-  terminalrestoreheight = app.style.height;
-  terminalrestorewidth = app.style.width;
-  terminalrestoretop = app.style.top;
-  terminalrestoreleft = app.style.left;
-  terminalwindowopen = true;
-  evaul = false;
-  sudo = false;
-}
-
-function terminalfocusWindow(app = document.getElementById('terminal-window')){
-  z++;
-  app.style.zIndex = z;
-  document.getElementById('desktop-taskbar').style.zIndex = z + 999;
-  document.getElementById('desktop-menu-main').style.zIndex = z + 998;
-  document.getElementById('desktop-menu-settings').style.zIndex = z + 998;
-}
-
-function promptfocus(prompt = document.getElementById("terminal-window-terminal")){
-  prompt.focus();
-}
-
-function closeterminalapp(app = document.getElementById('terminal-window'), miniapp = document.getElementById('desktop-taskbar-terminal-app-button')){
-  var textelements = document.getElementsByClassName('terminal-window-content-text');
-  var appcontainer = document.getElementById('terminal-window-container');
-  
-  app.style.animation = 'closewindow 0.25s';
-  app.style.animationDuration = '0.25s';
-  setTimeout(() => {
-    while(textelements.length > 0) appcontainer.removeChild(textelements[0]);
-    app.style.display = "none";
-    miniapp.parentNode.removeChild(miniapp);
-    terminalwindowopen = false;
-  }, 250); 
-} */
 
 terminalBuildWindow();
