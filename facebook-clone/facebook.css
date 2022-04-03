@@ -1,0 +1,276 @@
+body {
+  position: relative;
+  min-height: 100%;
+  background-color: #F0F2F5;
+}
+
+body input {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border-radius: 8px;
+}
+
+body button {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  border-radius: 6px;
+  width: 100%;
+}
+
+body section {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  min-width: 100%;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-top: 10%;
+}
+
+@media screen and (max-width: 720px) {
+  body section {
+    max-width: 100%;
+    min-width: 256px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body section {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    margin-top: -12px;
+  }
+}
+
+body .cont-facebook {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: left;
+      -ms-flex-pack: left;
+          justify-content: left;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  margin-right: 144px;
+  padding-top: 40px;
+}
+
+@media screen and (max-width: 900px) {
+  body .cont-facebook {
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-right: 0px;
+  }
+}
+
+body .cont-facebook .cont-img-logo {
+  position: relative;
+  width: 300px;
+}
+
+@media screen and (max-width: 600px) {
+  body .cont-facebook .cont-img-logo {
+    max-width: 144px;
+    margin-bottom: 26px;
+  }
+}
+
+body .cont-facebook .cont-img-logo img {
+  position: relative;
+  min-width: 100%;
+  left: -30px;
+}
+
+@media screen and (max-width: 900px) {
+  body .cont-facebook .cont-img-logo img {
+    left: 0px;
+  }
+}
+
+body .cont-facebook .cont-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 28px;
+  letter-spacing: -0.3px;
+  line-height: normal;
+  text-align: left;
+  width: 100%;
+}
+
+@media screen and (max-width: 1075px) {
+  body .cont-facebook .cont-text {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body .cont-facebook .cont-text {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body .cont-facebook .cont-text {
+    display: none;
+  }
+}
+
+body .cont-all {
+  position: relative;
+  margin-bottom: 10%;
+}
+
+@media screen and (max-width: 600px) {
+  body .cont-all {
+    max-width: 100%;
+    margin-bottom: 10%;
+  }
+}
+
+body .cont-all .cont-card {
+  -webkit-box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.15);
+          box-shadow: 0px 10px 16px rgba(0, 0, 0, 0.15);
+  border-radius: 8px;
+}
+
+body .cont-all .cont-card .card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body .cont-all .cont-card .card-body a {
+  position: relative;
+  text-align: center;
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-decoration: none;
+  margin-top: 15px;
+}
+
+body .cont-all .cont-card .card-body a:hover {
+  text-decoration: underline;
+}
+
+body .cont-all .cont-card .card-body .form-control {
+  margin-bottom: 12px;
+  padding: 14px 16px;
+  width: 100%;
+  margin-left: 15px;
+  margin-right: 15px;
+  border-radius: 6px;
+}
+
+body .cont-all .cont-card .card-body .entrar {
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 6px;
+  height: 52px;
+}
+
+body .cont-all .cont-card .card-body hr {
+  width: 100%;
+  margin: 15px;
+}
+
+body .cont-all .cont-card .card-body .crconta {
+  max-width: 158px;
+  height: 48px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #42b72a;
+  border-radius: 6px;
+  border-color: #42b72a;
+}
+
+body .cont-all p {
+  width: 396px;
+  margin-top: 10px;
+  padding-top: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  text-align: center;
+}
+
+@media screen and (max-width: 440px) {
+  body .cont-all p {
+    display: none;
+  }
+}
+
+body .cont-all p a {
+  color: black;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+body .cont-all p a:hover {
+  text-decoration: underline;
+}
+
+body footer {
+  display: block;
+  position: relative;
+  background-color: white;
+  padding-bottom: 16px;
+}
+
+body footer .footer-content {
+  padding-top: 28px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  margin: 0px 40px 0px 40px;
+}
+
+body footer a {
+  margin-right: 10px;
+  opacity: 0.5;
+  color: black;
+  text-decoration: none;
+}
+
+body footer a:hover {
+  color: black;
+  text-decoration: underline;
+}
+
+body footer p {
+  opacity: 0.5;
+}
+/*# sourceMappingURL=facebook.css.map */
