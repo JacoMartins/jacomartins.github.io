@@ -12,6 +12,8 @@
 
 .sc-iJnaPW {
 	animation: rotateAnimation 1s infinite;
-	background-url: url("https://i.imgur.com/eHCPppV.png");
 }
 
+.sc-iJnaPW div {
+	background-image: url("https://i.imgur.com/eHCPppV.png") !important;
+}
