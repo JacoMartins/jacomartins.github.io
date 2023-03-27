@@ -1,6 +1,10 @@
 @keyframes rotateAnimation {
-    from {transform: rotateY(45deg);}
-    to {transform: rotateY(225deg);}
+    from {
+	    transform: rotateY(45deg), scale(1);
+	}
+    to {
+	    transform: rotateY(225deg), scale(2);
+	}
 }
 
 .sc-iJnaPW {
